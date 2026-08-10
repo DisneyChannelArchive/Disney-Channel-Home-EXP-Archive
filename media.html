@@ -97,6 +97,9 @@ main {
 
 let records = [];
 
+
+/* CSV parser */
+
 function parseCSV(text) {
 
     const rows = [];
@@ -169,6 +172,8 @@ function parseCSV(text) {
 }
 
 
+/* Load CSV */
+
 async function loadArchive() {
 
     try {
@@ -204,6 +209,8 @@ async function loadArchive() {
 }
 
 
+/* Display records */
+
 function displayRecords(items) {
 
     const results = document.getElementById("results");
@@ -211,7 +218,9 @@ function displayRecords(items) {
     results.innerHTML = "";
 
     if (items.length === 0) {
+
         results.innerHTML = "<p>No records found.</p>";
+
         return;
     }
 
@@ -223,7 +232,9 @@ function displayRecords(items) {
 
         card.innerHTML = `
 
-            <h2>${item["Release Title"] || "Untitled Release"}</h2>
+            <h2>
+                ${item["RELEASE"] || "Untitled Release"}
+            </h2>
 
             <div class="meta">
 
@@ -231,33 +242,38 @@ function displayRecords(items) {
                 ${item["ID"] || ""}<br>
 
                 <strong>Country:</strong>
-                ${item["Country"] || ""}<br>
-
-                <strong>Year:</strong>
-                ${item["Year"] || ""}<br>
+                ${item["COUNTRY"] || ""}<br>
 
                 <strong>Franchise:</strong>
-                ${item["Franchise"] || ""}<br>
+                ${item["FRANCHISE"] || ""}<br>
 
-                <strong>Quantity:</strong>
-                ${item["Quantity"] || ""}<br>
-
-                <strong>Rarity:</strong>
-                ${item["Rarity"] || ""}<br>
+                <strong>Year:</strong>
+                ${item["YEAR"] || ""}<br>
 
                 <strong>Condition:</strong>
-                ${item["Condition"] || ""}
+                ${item["CONDITION"] || ""}<br>
+
+                <strong>Barcode:</strong>
+                ${item["BAR CODE"] || ""}<br>
+
+                <strong>Rarity:</strong>
+                ${item["RARITY"] || ""}
 
             </div>
 
-            <p>${item["Additional Notes"] || ""}</p>
+            <p>
+                ${item["ADD INFORMATION"] || ""}
+            </p>
 
         `;
 
         results.appendChild(card);
+
     });
 }
 
+
+/* Search */
 
 document
     .getElementById("search")
@@ -275,6 +291,7 @@ document
         });
 
         displayRecords(filtered);
+
     });
 
 
