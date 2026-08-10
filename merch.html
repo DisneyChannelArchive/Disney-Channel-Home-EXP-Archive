@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
-
-<title>Merchandise — Disney Channel Home</title>
+<title>Merchandise — Disney Channel Home EXP Archive</title>
 
 <style>
 
@@ -15,229 +12,327 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
-
-    background: #f5f3ed;
-
-    color: #171717;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-}
-
-
-/* =========================
-   HEADER
-========================= */
-
-header {
-    padding: 7px;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
 
     background:
-        linear-gradient(
-            135deg,
-            #ffcf00 0%,
-            #ffcf00 25%,
-            #ff5a36 25%,
-            #ff5a36 50%,
-            #7c4dff 50%,
-            #7c4dff 75%,
-            #00a8ff 75%
-        );
+        radial-gradient(circle at 50% 20%, rgba(255,255,255,.08), transparent 35%),
+        linear-gradient(#191919, #080808);
 
-    box-shadow:
-        0 4px 0 #111;
+    min-height: 100vh;
 }
 
 
-.header-inner {
-    background: #111;
+/* =====================================================
+   TOP
+===================================================== */
 
-    color: white;
-
-    padding: 38px 7%;
+.top {
+    padding: 55px 7% 35px;
+    text-align: center;
 }
 
-
-.header-inner h1 {
+.top h1 {
     margin: 0;
 
-    font-size:
-        clamp(32px, 6vw, 64px);
+    font-size: clamp(42px, 8vw, 82px);
 
-    letter-spacing: -2px;
+    font-weight: 900;
+
+    letter-spacing: -4px;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        4px 4px 0 #000;
 }
 
+.top p {
+    margin: 12px auto 0;
 
-.header-inner p {
-    margin: 8px 0 0;
+    max-width: 650px;
 
-    color: #ddd;
-}
+    color: #cfcfcf;
 
-
-/* =========================
-   MAIN
-========================= */
-
-main {
-    max-width: 1400px;
-
-    margin: auto;
-
-    padding: 45px 5%;
-}
-
-
-/* =========================
-   INTRO
-========================= */
-
-.intro {
-    margin-bottom: 35px;
-}
-
-
-.intro h2 {
-    margin: 0 0 8px;
-
-    font-size: 30px;
-}
-
-
-.intro p {
-    max-width: 700px;
-
-    color: #666;
+    font-size: 16px;
 
     line-height: 1.6;
 }
 
 
-/* =========================
-   SEARCH
-========================= */
+/* =====================================================
+   ROOM
+===================================================== */
 
-.controls {
-    margin-bottom: 30px;
-}
+.room {
 
+    width: min(1500px, 94%);
 
-.search {
-    width: 100%;
+    margin: 20px auto 80px;
 
-    padding: 15px 20px;
+    padding: 35px 25px 55px;
 
-    border:
-        2px solid #171717;
+    position: relative;
 
-    border-radius: 50px;
+    border-radius: 20px;
 
-    background: white;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.025),
+            transparent 20%,
+            transparent 80%,
+            rgba(255,255,255,.025)
+        ),
+        #242424;
 
-    font-size: 16px;
-
-    outline: none;
-}
-
-
-.search:focus {
     box-shadow:
-        5px 5px 0 #ffcf00;
+        inset 0 0 80px rgba(0,0,0,.8),
+        0 20px 60px rgba(0,0,0,.6);
 }
 
 
-/* =========================
-   STATUS
-========================= */
+/* =====================================================
+   SHELF
+===================================================== */
 
-.status {
-    margin-bottom: 20px;
+.shelf-section {
+    margin: 0 auto 70px;
 
-    color: #777;
+    max-width: 1300px;
+}
 
-    font-size: 14px;
+.shelf-label {
+
+    margin: 0 0 12px 10px;
+
+    color: #d7d7d7;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
 }
 
 
-/* =========================
-   IMAGE GALLERY
-========================= */
+/* Wooden back */
 
-.gallery {
+.shelf {
 
-    columns:
-        4 220px;
+    position: relative;
 
-    column-gap: 18px;
+    min-height: 240px;
+
+    padding:
+        25px
+        25px
+        30px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 22px;
+
+    flex-wrap: wrap;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.04),
+            transparent 50%,
+            rgba(0,0,0,.12)
+        ),
+
+        linear-gradient(
+            #633b20,
+            #472914
+        );
+
+    border-radius:
+        8px 8px 3px 3px;
+
+    box-shadow:
+
+        inset 0 8px 0 rgba(255,255,255,.06),
+
+        inset 0 -15px 25px rgba(0,0,0,.3),
+
+        0 14px 0 #2b180d,
+
+        0 18px 25px rgba(0,0,0,.5);
 }
 
 
-.card {
+/* Shelf surface */
 
-    break-inside: avoid;
+.shelf::after {
 
-    margin-bottom: 18px;
+    content: "";
 
-    background: white;
+    position: absolute;
 
-    border:
-        2px solid #171717;
+    left: -8px;
+    right: -8px;
 
-    border-radius: 16px;
+    bottom: -18px;
 
-    overflow: hidden;
+    height: 20px;
+
+    border-radius: 4px;
+
+    background:
+        linear-gradient(
+            #7b4b29,
+            #4b2b17
+        );
+
+    box-shadow:
+        0 5px 0 #201208,
+        0 10px 15px rgba(0,0,0,.5);
+}
+
+
+/* =====================================================
+   MERCH ITEM
+===================================================== */
+
+.item {
+
+    position: relative;
+
+    width: 125px;
+
+    min-height: 155px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: center;
 
     cursor: pointer;
 
     transition:
-        transform .15s ease,
-        box-shadow .15s ease;
+        transform .2s ease,
+        filter .2s ease;
+
+    z-index: 2;
 }
 
 
-.card:hover {
+.item:hover {
 
     transform:
-        translateY(-5px);
+        translateY(-12px)
+        scale(1.04);
 
-    box-shadow:
-        6px 6px 0 #ffcf00;
+    filter:
+        drop-shadow(
+            0 12px 12px
+            rgba(0,0,0,.6)
+        );
 }
 
 
-.card img {
+.item img {
 
     display: block;
 
-    width: 100%;
+    max-width: 125px;
+
+    max-height: 165px;
+
+    width: auto;
 
     height: auto;
 
-    background: #eee;
+    object-fit: contain;
+
+    border-radius: 4px;
+
+    filter:
+        drop-shadow(
+            0 5px 5px
+            rgba(0,0,0,.5)
+        );
 }
 
 
-/* =========================
-   EMPTY / ERROR
-========================= */
+/* =====================================================
+   ITEM NUMBER
+===================================================== */
 
-.message {
+.item-number {
 
-    padding: 60px 20px;
+    position: absolute;
 
-    text-align: center;
+    top: -8px;
 
-    color: #777;
+    left: -5px;
+
+    width: 25px;
+
+    height: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #fff;
+
+    color: #111;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    opacity: 0;
+
+    transition: opacity .2s;
+
+    box-shadow:
+        0 3px 5px rgba(0,0,0,.4);
+}
+
+.item:hover .item-number {
+    opacity: 1;
 }
 
 
-/* =========================
-   IMAGE VIEWER
-========================= */
+/* =====================================================
+   EMPTY SHELF
+===================================================== */
+
+.empty {
+
+    color: rgba(255,255,255,.4);
+
+    font-size: 13px;
+
+    font-style: italic;
+
+    padding: 20px;
+}
+
+
+/* =====================================================
+   VIEWER
+===================================================== */
 
 .viewer {
 
@@ -256,7 +351,10 @@ main {
     padding: 30px;
 
     background:
-        rgba(0, 0, 0, .88);
+        rgba(0,0,0,.94);
+
+    backdrop-filter:
+        blur(8px);
 }
 
 
@@ -265,15 +363,52 @@ main {
 }
 
 
+.viewer-content {
+
+    max-width: 900px;
+
+    width: 100%;
+
+    max-height: 92vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
 .viewer img {
 
-    max-width: 95vw;
+    max-width: 90vw;
 
-    max-height: 90vh;
+    max-height: 80vh;
+
+    width: auto;
+
+    height: auto;
 
     object-fit: contain;
 
-    border-radius: 8px;
+    border-radius: 6px;
+
+    box-shadow:
+        0 20px 70px rgba(0,0,0,.8);
+}
+
+
+.viewer-caption {
+
+    margin-top: 18px;
+
+    color: #ddd;
+
+    font-size: 14px;
+
+    text-align: center;
 }
 
 
@@ -281,19 +416,108 @@ main {
 
     position: fixed;
 
-    top: 20px;
+    top: 22px;
 
-    right: 25px;
+    right: 28px;
+
+    width: 45px;
+
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.12);
 
     color: white;
 
-    font-size: 35px;
+    font-size: 30px;
 
     cursor: pointer;
 
-    line-height: 1;
+    transition:
+        background .2s;
 }
 
+
+.close:hover {
+    background: rgba(255,255,255,.25);
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer {
+
+    padding: 30px;
+
+    text-align: center;
+
+    color: #777;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 650px) {
+
+    .top {
+        padding-top: 35px;
+    }
+
+    .top h1 {
+        letter-spacing: -2px;
+    }
+
+    .room {
+        width: 96%;
+        padding: 25px 12px 45px;
+    }
+
+    .shelf {
+        padding: 20px 12px 25px;
+
+        gap: 14px;
+
+        justify-content: center;
+    }
+
+    .item {
+        width: 90px;
+        min-height: 130px;
+    }
+
+    .item img {
+        max-width: 90px;
+        max-height: 135px;
+    }
+
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    * {
+        scroll-behavior: auto !important;
+        transition: none !important;
+    }
+
+}
 
 </style>
 
@@ -303,255 +527,254 @@ main {
 <body>
 
 
-<header>
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-    <div class="header-inner">
+<header class="top">
 
-        <h1>Merchandise</h1>
+    <h1>Merchandise</h1>
 
-        <p>
-            Disney Channel Home EXP Archive
-        </p>
-
-    </div>
+    <p>
+        Physical objects preserved in the
+        Disney Channel Home EXP Archive.
+    </p>
 
 </header>
 
 
-<main>
+
+<!-- =====================================================
+     ARCHIVE ROOM
+===================================================== -->
+
+<main class="room">
 
 
-<section class="intro">
+    <!-- SHELF 1 -->
 
-    <h2>
-        The Merchandise Archive
-    </h2>
+    <section class="shelf-section">
 
-    <p>
-        A visual collection of Disney Channel
-        merchandise preserved in the archive.
-    </p>
+        <div class="shelf-label">
+            Collection — 01
+        </div>
 
-</section>
+        <div class="shelf" id="shelf-1">
 
+            <!--
+                PUT YOUR CLOUDINARY IMAGES HERE.
 
-<div class="controls">
-
-    <input
-        id="search"
-        class="search"
-        type="search"
-        placeholder="Search merchandise..."
-    >
-
-</div>
+                Duplicate an .item whenever you
+                want to add another object.
+            -->
 
 
-<div
-    id="status"
-    class="status"
->
-    Loading merchandise...
-</div>
+            <div class="item"
+                 onclick="openViewer(this)">
+
+                <span class="item-number">
+                    1
+                </span>
+
+                <img
+                    src="PASTE-CLOUDINARY-URL-HERE"
+                    alt="Disney Channel merchandise"
+                >
+
+            </div>
 
 
-<div
-    id="gallery"
-    class="gallery"
-></div>
+            <div class="item"
+                 onclick="openViewer(this)">
+
+                <span class="item-number">
+                    2
+                </span>
+
+                <img
+                    src="PASTE-CLOUDINARY-URL-HERE"
+                    alt="Disney Channel merchandise"
+                >
+
+            </div>
+
+
+            <div class="item"
+                 onclick="openViewer(this)">
+
+                <span class="item-number">
+                    3
+                </span>
+
+                <img
+                    src="PASTE-CLOUDINARY-URL-HERE"
+                    alt="Disney Channel merchandise"
+                >
+
+            </div>
+
+
+            <div class="item"
+                 onclick="openViewer(this)">
+
+                <span class="item-number">
+                    4
+                </span>
+
+                <img
+                    src="PASTE-CLOUDINARY-URL-HERE"
+                    alt="Disney Channel merchandise"
+                >
+
+            </div>
+
+
+            <div class="item"
+                 onclick="openViewer(this)">
+
+                <span class="item-number">
+                    5
+                </span>
+
+                <img
+                    src="PASTE-CLOUDINARY-URL-HERE"
+                    alt="Disney Channel merchandise"
+                >
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- SHELF 2 -->
+
+    <section class="shelf-section">
+
+        <div class="shelf-label">
+            Collection — 02
+        </div>
+
+        <div class="shelf" id="shelf-2">
+
+            <div class="empty">
+                More objects from the collection will be preserved here.
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- SHELF 3 -->
+
+    <section class="shelf-section">
+
+        <div class="shelf-label">
+            Collection — 03
+        </div>
+
+        <div class="shelf" id="shelf-3">
+
+            <div class="empty">
+                Archive in progress.
+            </div>
+
+        </div>
+
+    </section>
 
 
 </main>
 
 
-<!-- IMAGE VIEWER -->
+
+<footer class="footer">
+
+    Disney Channel Home EXP Archive
+
+</footer>
+
+
+
+<!-- =====================================================
+     IMAGE VIEWER
+===================================================== -->
 
 <div
-    id="viewer"
     class="viewer"
+    id="viewer"
 >
 
-    <div
-        id="close"
+    <button
         class="close"
+        onclick="closeViewer()"
+        aria-label="Close"
     >
         ×
-    </div>
+    </button>
 
-    <img
-        id="viewerImage"
-        src=""
-        alt=""
-    >
+
+    <div class="viewer-content">
+
+        <img
+            id="viewer-image"
+            src=""
+            alt=""
+        >
+
+        <div
+            class="viewer-caption"
+            id="viewer-caption"
+        ></div>
+
+    </div>
 
 </div>
 
 
+
 <script>
 
+/* =====================================================
+   IMAGE VIEWER
+===================================================== */
 
-let images = [];
+function openViewer(item) {
 
-
-/* =========================
-   LOAD JSON
-========================= */
-
-async function loadMerchandise() {
-
-    try {
-
-        const response =
-            await fetch(
-                "data/merch-images.json"
-            );
-
-
-        if (!response.ok) {
-
-            throw new Error(
-                "Could not load merch JSON"
-            );
-
-        }
-
-
-        images =
-            await response.json();
-
-
-        displayImages(images);
-
-    }
-
-
-    catch (error) {
-
-        console.error(error);
-
-
-        document
-            .getElementById("status")
-            .textContent =
-            "Unable to load merchandise.";
-
-    }
-
-}
-
-
-/* =========================
-   DISPLAY
-========================= */
-
-function displayImages(items) {
-
-    const gallery =
-        document.getElementById(
-            "gallery"
-        );
-
-
-    const status =
-        document.getElementById(
-            "status"
-        );
-
-
-    gallery.innerHTML = "";
-
-
-    if (!items.length) {
-
-        status.textContent =
-            "No merchandise images yet.";
-
-        return;
-
-    }
-
-
-    status.textContent =
-        items.length +
-        " merchandise items";
-
-
-    items.forEach(
-        function(url, index) {
-
-
-            const card =
-                document.createElement(
-                    "div"
-                );
-
-
-            card.className =
-                "card";
-
-
-            const image =
-                document.createElement(
-                    "img"
-                );
-
-
-            image.src = url;
-
-
-            image.alt =
-                "Disney Channel merchandise " +
-                (index + 1);
-
-
-            image.loading =
-                "lazy";
-
-
-            image.addEventListener(
-                "click",
-                function() {
-
-                    openViewer(url);
-
-                }
-            );
-
-
-            card.appendChild(
-                image
-            );
-
-
-            gallery.appendChild(
-                card
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================
-   VIEWER
-========================= */
-
-function openViewer(url) {
+    const image =
+        item.querySelector("img");
 
     const viewer =
         document.getElementById(
             "viewer"
         );
 
-
-    const image =
+    const viewerImage =
         document.getElementById(
-            "viewerImage"
+            "viewer-image"
+        );
+
+    const caption =
+        document.getElementById(
+            "viewer-caption"
         );
 
 
-    image.src = url;
+    viewerImage.src =
+        image.src;
+
+
+    viewerImage.alt =
+        image.alt;
+
+
+    caption.textContent =
+        image.alt;
 
 
     viewer.classList.add(
@@ -572,13 +795,7 @@ function closeViewer() {
 }
 
 
-document
-    .getElementById("close")
-    .addEventListener(
-        "click",
-        closeViewer
-    );
-
+/* Close when clicking outside */
 
 document
     .getElementById("viewer")
@@ -587,8 +804,7 @@ document
         function(event) {
 
             if (
-                event.target ===
-                this
+                event.target === this
             ) {
 
                 closeViewer();
@@ -599,59 +815,25 @@ document
     );
 
 
-/* =========================
-   SEARCH
-========================= */
+/* Escape key */
 
-document
-    .getElementById("search")
-    .addEventListener(
-        "input",
-        function() {
+document.addEventListener(
+    "keydown",
+    function(event) {
 
-            /*
-                Because the JSON currently
-                contains only URLs, search
-                matches the URL itself.
+        if (
+            event.key === "Escape"
+        ) {
 
-                Later, when we add names/tags,
-                this can become a real archive
-                search.
-            */
-
-            const query =
-                this.value.toLowerCase();
-
-
-            const filtered =
-                images.filter(
-                    function(url) {
-
-                        return url
-                            .toLowerCase()
-                            .includes(
-                                query
-                            );
-
-                    }
-                );
-
-
-            displayImages(
-                filtered
-            );
+            closeViewer();
 
         }
-    );
 
-
-/* START */
-
-loadMerchandise();
-
+    }
+);
 
 </script>
 
-</body>
 
+</body>
 </html>
