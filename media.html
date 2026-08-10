@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Home Media Archive — Disney Channel Home EXP Archive</title>
+<title>Home Media Archive</title>
 
 <style>
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -18,6 +19,7 @@ header {
     background: #111;
     color: white;
     padding: 35px 7%;
+    color: white;
 }
 
 header h1 {
@@ -66,15 +68,21 @@ main {
     margin-bottom: 20px;
     color: #666;
 }
+
 </style>
+
 </head>
 
 <body>
 
 <header>
-    <h1>Home Media Archive</h1>
-    <p>Disney Channel Home EXP Archive</p>
+
+<h1>Home Media Archive</h1>
+
+<p>Disney Channel Home EXP Archive</p>
+
 </header>
+
 
 <main>
 
@@ -82,218 +90,385 @@ main {
     id="search"
     class="search"
     type="search"
-    placeholder="Search releases, franchises, countries..."
+    placeholder="Search the archive..."
 >
 
-<div id="status" class="status">
-    Loading archive...
+<div
+    id="status"
+    class="status"
+>
+Loading archive...
 </div>
 
-<div id="results" class="grid"></div>
+<div
+    id="results"
+    class="grid"
+></div>
 
 </main>
+
 
 <script>
 
 let records = [];
 
 
-/* CSV parser */
+/* CSV PARSER */
 
 function parseCSV(text) {
 
     const rows = [];
+
     let row = [];
+
     let cell = "";
+
     let insideQuotes = false;
 
-    for (let i = 0; i < text.length; i++) {
+
+    for (
+        let i = 0;
+        i < text.length;
+        i++
+    ) {
 
         const char = text[i];
+
         const next = text[i + 1];
 
-        if (char === '"' && insideQuotes && next === '"') {
+
+        if (
+            char === '"' &&
+            insideQuotes &&
+            next === '"'
+        ) {
+
             cell += '"';
+
             i++;
+
         }
 
         else if (char === '"') {
-            insideQuotes = !insideQuotes;
+
+            insideQuotes =
+                !insideQuotes;
+
         }
 
-        else if (char === "," && !insideQuotes) {
+        else if (
+            char === "," &&
+            !insideQuotes
+        ) {
+
             row.push(cell);
+
             cell = "";
+
         }
 
-        else if ((char === "\n" || char === "\r") && !insideQuotes) {
+        else if (
+            (char === "\n" ||
+             char === "\r") &&
+            !insideQuotes
+        ) {
 
-            if (char === "\r" && next === "\n") {
+            if (
+                char === "\r" &&
+                next === "\n"
+            ) {
+
                 i++;
+
             }
 
             row.push(cell);
+
             rows.push(row);
 
             row = [];
+
             cell = "";
+
         }
 
         else {
+
             cell += char;
+
         }
+
     }
 
-    if (cell !== "" || row.length > 0) {
+
+    if (
+        cell !== "" ||
+        row.length > 0
+    ) {
+
         row.push(cell);
+
         rows.push(row);
+
     }
 
-    const headers = rows.shift().map(function(header) {
-        return header.trim();
-    });
 
-    return rows
-        .filter(function(row) {
-            return row.some(function(cell) {
-                return cell.trim() !== "";
-            });
-        })
-        .map(function(row) {
+    return rows;
 
-            const record = {};
-
-            headers.forEach(function(header, index) {
-                record[header] = (row[index] || "").trim();
-            });
-
-            return record;
-        });
 }
 
 
-/* Load CSV */
+/* LOAD DATABASE */
 
 async function loadArchive() {
 
     try {
 
-        const response = await fetch(
-            "data/Disney%20Channel%20Archive%20-%20Home%20Media.csv"
-        );
+        const response =
+            await fetch(
+                "data/Disney%20Channel%20Archive%20-%20Home%20Media.csv"
+            );
+
 
         if (!response.ok) {
+
             throw new Error(
-                "CSV could not be loaded. Status: " + response.status
+                "CSV error: " +
+                response.status
             );
+
         }
 
-        const text = await response.text();
 
-        records = parseCSV(text);
+        const text =
+            await response.text();
 
-        document.getElementById("status").textContent =
-            records.length + " records in the archive.";
+
+        const rows =
+            parseCSV(text);
+
+
+        /*
+            ROW 1 = BLANK
+            ROW 2 = HEADERS
+            ROW 3+ = RECORDS
+        */
+
+
+        const headers =
+            rows[1].map(
+                function(header) {
+
+                    return header
+                        .replace(/^\uFEFF/, "")
+                        .trim()
+                        .toUpperCase();
+
+                }
+            );
+
+
+        records =
+            rows
+            .slice(2)
+            .filter(
+                function(row) {
+
+                    return row.some(
+                        function(cell) {
+
+                            return cell.trim() !== "";
+
+                        }
+                    );
+
+                }
+            )
+            .map(
+                function(row) {
+
+                    const record = {};
+
+
+                    headers.forEach(
+                        function(header, index) {
+
+                            record[header] =
+                                (
+                                    row[index] ||
+                                    ""
+                                ).trim();
+
+                        }
+                    );
+
+
+                    return record;
+
+                }
+            );
+
+
+        document
+            .getElementById("status")
+            .textContent =
+            records.length +
+            " records in the archive.";
+
 
         displayRecords(records);
 
     }
 
+
     catch (error) {
 
-        document.getElementById("status").textContent =
+        console.error(error);
+
+
+        document
+            .getElementById("status")
+            .textContent =
             "Unable to load the archive data.";
 
-        console.error(error);
     }
+
 }
 
 
-/* Display records */
+/* DISPLAY RECORDS */
 
 function displayRecords(items) {
 
-    const results = document.getElementById("results");
+    const results =
+        document.getElementById(
+            "results"
+        );
+
 
     results.innerHTML = "";
 
-    if (items.length === 0) {
 
-        results.innerHTML = "<p>No records found.</p>";
+    if (
+        items.length === 0
+    ) {
+
+        results.innerHTML =
+            "<p>No records found.</p>";
 
         return;
+
     }
 
-    items.forEach(function(item) {
 
-        const card = document.createElement("article");
+    items.forEach(
+        function(item) {
 
-        card.className = "item";
 
-        card.innerHTML = `
+            const card =
+                document.createElement(
+                    "article"
+                );
 
-            <h2>
-                ${item["RELEASE"] || "Untitled Release"}
-            </h2>
 
-            <div class="meta">
+            card.className =
+                "item";
 
-                <strong>Archive ID:</strong>
-                ${item["ID"] || ""}<br>
 
-                <strong>Country:</strong>
-                ${item["COUNTRY"] || ""}<br>
+            card.innerHTML = `
 
-                <strong>Franchise:</strong>
-                ${item["FRANCHISE"] || ""}<br>
+                <h2>
+                    ${item["RELEASE"] || "Untitled Release"}
+                </h2>
 
-                <strong>Year:</strong>
-                ${item["YEAR"] || ""}<br>
+                <div class="meta">
 
-                <strong>Condition:</strong>
-                ${item["CONDITION"] || ""}<br>
+                    <strong>Archive ID:</strong>
+                    ${item["ID"] || "—"}
 
-                <strong>Barcode:</strong>
-                ${item["BAR CODE"] || ""}<br>
+                    <br>
 
-                <strong>Rarity:</strong>
-                ${item["RARITY"] || ""}
+                    <strong>Country:</strong>
+                    ${item["COUNTRY"] || "—"}
 
-            </div>
+                    <br>
 
-            <p>
-                ${item["ADD INFORMATION"] || ""}
-            </p>
+                    <strong>Franchise:</strong>
+                    ${item["FRANCHISE"] || "—"}
 
-        `;
+                    <br>
 
-        results.appendChild(card);
+                    <strong>Condition:</strong>
+                    ${item["CONDITION"] || "—"}
 
-    });
+                    <br>
+
+                    <strong>Year:</strong>
+                    ${item["YEAR"] || "—"}
+
+                    <br>
+
+                    <strong>Barcode:</strong>
+                    ${item["BAR CODE"] || "—"}
+
+                    <br>
+
+                    <strong>Rarity:</strong>
+                    ${item["RARITY"] || "—"}
+
+                </div>
+
+                <p>
+                    ${item["ADD INFORMATION"] || ""}
+                </p>
+
+            `;
+
+
+            results.appendChild(card);
+
+        }
+    );
+
 }
 
 
-/* Search */
+/* SEARCH */
 
 document
     .getElementById("search")
-    .addEventListener("input", function() {
+    .addEventListener(
+        "input",
+        function() {
 
-        const query = this.value.toLowerCase();
+            const query =
+                this.value
+                .toLowerCase();
 
-        const filtered = records.filter(function(item) {
 
-            return Object.values(item)
-                .join(" ")
-                .toLowerCase()
-                .includes(query);
+            const filtered =
+                records.filter(
+                    function(item) {
 
-        });
+                        return Object
+                            .values(item)
+                            .join(" ")
+                            .toLowerCase()
+                            .includes(query);
 
-        displayRecords(filtered);
+                    }
+                );
 
-    });
 
+            displayRecords(
+                filtered
+            );
+
+        }
+    );
+
+
+/* START */
 
 loadArchive();
 
