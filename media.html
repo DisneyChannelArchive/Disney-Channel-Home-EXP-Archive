@@ -4,124 +4,246 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Home Media Archive</title>
+<title>Home Media — Disney Channel Home</title>
 
 <style>
+* {
+    box-sizing: border-box;
+}
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f4f1e8;
-    color: #222;
+    background: #f5f3ed;
+    color: #171717;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
+/* HEADER */
 header {
+    padding: 7px;
+    background: linear-gradient(
+        135deg,
+        #ffcf00 0%,
+        #ffcf00 25%,
+        #ff5a36 25%,
+        #ff5a36 50%,
+        #7c4dff 50%,
+        #7c4dff 75%,
+        #00a8ff 75%
+    );
+    box-shadow: 0 4px 0 #111;
+}
+
+.header-inner {
     background: #111;
     color: white;
-    padding: 35px 7%;
+    padding: 38px 7%;
 }
 
-header h1 {
+.header-inner h1 {
+    font-size: clamp(32px, 6vw, 64px);
+    margin: 0;
+    letter-spacing: -2px;
+}
+
+.header-inner p {
+    margin: 8px 0 0;
+    color: #ddd;
+}
+
+/* MAIN */
+main {
+    max-width: 1250px;
+    margin: auto;
+    padding: 45px 7%;
+}
+
+.intro {
+    margin-bottom: 30px;
+}
+
+.intro h2 {
+    font-size: 30px;
     margin: 0 0 8px;
 }
 
-main {
-    max-width: 1200px;
-    margin: auto;
-    padding: 40px 7%;
+.intro p {
+    color: #666;
+    max-width: 700px;
+    line-height: 1.6;
+}
+
+/* CONTROLS */
+.controls {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
 }
 
 .search {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 15px;
-    font-size: 17px;
-    border: 1px solid #bbb;
-    border-radius: 8px;
-    margin-bottom: 25px;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-}
-
-.item {
+    flex: 1;
+    min-width: 250px;
+    padding: 15px 18px;
+    border: 2px solid #222;
+    border-radius: 50px;
     background: white;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 22px;
+    font-size: 16px;
+    outline: none;
 }
 
-.item h2 {
-    margin-top: 8px;
+.search:focus {
+    box-shadow: 4px 4px 0 #ffcf00;
 }
 
-.type {
-    display: inline-block;
-    background: #222;
-    color: white;
-    padding: 5px 9px;
-    border-radius: 5px;
-    font-size: 12px;
-}
-
-.meta {
-    color: #666;
-    line-height: 1.7;
+.filter {
+    padding: 14px 20px;
+    border: 2px solid #222;
+    border-radius: 50px;
+    background: white;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .status {
     margin-bottom: 20px;
     color: #666;
+    font-size: 14px;
 }
 
-</style>
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fill, minmax(290px, 1fr));
+    gap: 22px;
+}
 
+/* CARD */
+.item {
+    background: white;
+    border: 2px solid #171717;
+    border-radius: 18px;
+    padding: 24px;
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.item:hover {
+    transform: translateY(-5px);
+    box-shadow: 7px 7px 0 #ffcf00;
+}
+
+.type {
+    display: inline-block;
+    padding: 6px 11px;
+    border-radius: 50px;
+    background: #111;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.item h2 {
+    font-size: 23px;
+    line-height: 1.15;
+    margin: 16px 0 20px;
+}
+
+.details {
+    border-top: 1px solid #ddd;
+    padding-top: 14px;
+}
+
+.detail {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 6px 0;
+    font-size: 14px;
+}
+
+.detail span:first-child {
+    color: #777;
+}
+
+.detail span:last-child {
+    font-weight: bold;
+    text-align: right;
+}
+
+.extra {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+    color: #555;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: #777;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-
-<h1>Home Media Archive</h1>
-
-<p>Disney Channel Home EXP Archive</p>
-
+    <div class="header-inner">
+        <h1>Home Media</h1>
+        <p>Disney Channel Home EXP Archive</p>
+    </div>
 </header>
-
 
 <main>
 
-<input
-    id="search"
-    class="search"
-    type="search"
-    placeholder="Search the archive..."
->
+<section class="intro">
+    <h2>The Home Media Archive</h2>
 
-<div
-    id="status"
-    class="status"
->
-Loading archive...
+    <p>
+        DVDs, CDs and physical releases from the Disney Channel world,
+        preserved and documented as part of the archive.
+    </p>
+</section>
+
+<div class="controls">
+
+    <input
+        id="search"
+        class="search"
+        type="search"
+        placeholder="Search releases, franchises, countries..."
+    >
+
+    <select id="typeFilter" class="filter">
+        <option value="ALL">All formats</option>
+        <option value="CD">CD</option>
+        <option value="DVD">DVD</option>
+    </select>
+
 </div>
 
-<div
-    id="results"
-    class="grid"
-></div>
+<div id="status" class="status">
+    Loading archive...
+</div>
+
+<div id="results" class="grid"></div>
 
 </main>
-
 
 <script>
 
 let records = [];
 
 
-/* CSV PARSER */
+/* =========================
+   CSV PARSER
+========================= */
 
 function parseCSV(text) {
 
@@ -131,48 +253,34 @@ function parseCSV(text) {
     let cell = "";
     let insideQuotes = false;
 
-
-    for (
-        let i = 0;
-        i < text.length;
-        i++
-    ) {
+    for (let i = 0; i < text.length; i++) {
 
         const char = text[i];
         const next = text[i + 1];
-
 
         if (
             char === '"' &&
             insideQuotes &&
             next === '"'
         ) {
-
             cell += '"';
             i++;
-
         }
 
         else if (char === '"') {
-
-            insideQuotes =
-                !insideQuotes;
-
+            insideQuotes = !insideQuotes;
         }
 
         else if (
             char === "," &&
             !insideQuotes
         ) {
-
             row.push(cell);
             cell = "";
-
         }
 
         else if (
-            (char === "\n" ||
-             char === "\r") &&
+            (char === "\n" || char === "\r") &&
             !insideQuotes
         ) {
 
@@ -188,95 +296,65 @@ function parseCSV(text) {
 
             row = [];
             cell = "";
-
         }
 
         else {
-
             cell += char;
-
         }
-
     }
-
 
     if (
         cell !== "" ||
         row.length > 0
     ) {
-
         row.push(cell);
         rows.push(row);
-
     }
 
-
     return rows;
-
 }
 
 
-/* LOAD DATABASE */
+/* =========================
+   LOAD DATABASE
+========================= */
 
 async function loadArchive() {
 
     try {
 
-        const response =
-            await fetch(
-                "data/Disney%20Channel%20Archive%20-%20Home%20Media.csv"
-            );
-
+        const response = await fetch(
+            "data/Disney%20Channel%20Archive%20-%20Home%20Media.csv"
+        );
 
         if (!response.ok) {
-
             throw new Error(
-                "CSV error: " +
-                response.status
+                "CSV error " + response.status
             );
-
         }
 
+        const text = await response.text();
 
-        const text =
-            await response.text();
-
-
-        const rows =
-            parseCSV(text);
+        const rows = parseCSV(text);
 
 
         /*
             ROW 1 = BLANK
+            ROW 2 = HEADERS
+            ROW 3+ = RECORDS
 
-            ROW 2:
-            HEADERS
-
-            ROW 3+:
-            RECORDS
-
-            CD:
+            CD TABLE:
             COLUMNS 1–9
 
-            DVD:
-            COLUMNS 13–22
+            COLUMNS 10–13:
+            IGNORED
+
+            DVD TABLE:
+            COLUMNS 14–23
         */
 
 
-        const cdHeaders = [
-            "ID",
-            "RELEASE",
-            "COUNTRY",
-            "QUANTITY",
-            "FRANCHISE",
-            "CONDITION",
-            "YEAR",
-            "BAR CODE",
-            "RARITY"
-        ];
-
-
-        const dvdHeaders = [
+        const headers = [
             "ID",
             "RELEASE",
             "COUNTRY",
@@ -291,96 +369,83 @@ async function loadArchive() {
 
 
         const cdRecords = [];
-
         const dvdRecords = [];
 
 
-        rows
-            .slice(2)
-            .forEach(
-                function(row) {
+        /* DATA STARTS AT ROW 3 */
+
+        rows.slice(2).forEach(function(row) {
 
 
-                    /* CD */
+            /* =====================
+               CD TABLE — COLUMNS 1–9
+            ===================== */
 
-                    const cd = {};
+            const cd = {};
 
+            headers.forEach(function(header, index) {
 
-                    cdHeaders.forEach(
-                        function(header, index) {
+                if (index < 9) {
 
-                            cd[header] =
-                                (
-                                    row[index] ||
-                                    ""
-                                ).trim();
-
-                        }
-                    );
-
-
-                    if (
-                        cd["ID"] ||
-                        cd["RELEASE"]
-                    ) {
-
-                        cd["TYPE"] = "CD";
-
-                        cdRecords.push(cd);
-
-                    }
-
-
-                    /* DVD */
-
-                    const dvd = {};
-
-
-                    dvdHeaders.forEach(
-                        function(header, index) {
-
-                            dvd[header] =
-                                (
-                                    row[index + 12] ||
-                                    ""
-                                ).trim();
-
-                        }
-                    );
-
-
-                    if (
-                        dvd["ID"] ||
-                        dvd["RELEASE"]
-                    ) {
-
-                        dvd["TYPE"] = "DVD";
-
-                        dvdRecords.push(dvd);
-
-                    }
+                    cd[header] =
+                        (row[index] || "").trim();
 
                 }
-            );
 
+            });
+
+
+            if (
+                cd.ID ||
+                cd.RELEASE
+            ) {
+
+                cd.TYPE = "CD";
+
+                cdRecords.push(cd);
+            }
+
+
+            /* =====================
+               DVD TABLE — COLUMNS 14–23
+            ===================== */
+
+            const dvd = {};
+
+            headers.forEach(function(header, index) {
+
+                dvd[header] =
+                    (
+                        row[index + 13] || ""
+                    ).trim();
+
+            });
+
+
+            if (
+                dvd.ID ||
+                dvd.RELEASE
+            ) {
+
+                dvd.TYPE = "DVD";
+
+                dvdRecords.push(dvd);
+            }
+
+        });
+
+
+        /* COMBINE BOTH TABLES */
 
         records =
-            cdRecords.concat(
-                dvdRecords
-            );
+            cdRecords.concat(dvdRecords);
 
 
-        document
-            .getElementById("status")
-            .textContent =
-            records.length +
-            " records in the archive.";
-
+        updateStatus();
 
         displayRecords(records);
 
     }
-
 
     catch (error) {
 
@@ -389,146 +454,204 @@ async function loadArchive() {
         document
             .getElementById("status")
             .textContent =
-            "Unable to load the archive data.";
+            "Unable to load archive data.";
 
     }
 
 }
 
 
-/* DISPLAY */
+/* =========================
+   STATUS
+========================= */
+
+function updateStatus() {
+
+    const cdCount =
+        records.filter(
+            item => item.TYPE === "CD"
+        ).length;
+
+    const dvdCount =
+        records.filter(
+            item => item.TYPE === "DVD"
+        ).length;
+
+    document
+        .getElementById("status")
+        .textContent =
+        records.length +
+        " records · " +
+        cdCount +
+        " CDs · " +
+        dvdCount +
+        " DVDs";
+
+}
+
+
+/* =========================
+   DISPLAY
+========================= */
 
 function displayRecords(items) {
 
     const results =
-        document.getElementById(
-            "results"
-        );
-
+        document.getElementById("results");
 
     results.innerHTML = "";
 
 
-    if (
-        items.length === 0
-    ) {
+    if (!items.length) {
 
-        results.innerHTML =
-            "<p>No records found.</p>";
+        results.innerHTML = `
+            <div class="empty">
+                No records found.
+            </div>
+        `;
 
         return;
-
     }
 
 
-    items.forEach(
-        function(item) {
+    items.forEach(function(item) {
+
+        const card =
+            document.createElement("article");
+
+        card.className = "item";
 
 
-            const card =
-                document.createElement(
-                    "article"
-                );
+        card.innerHTML = `
 
+            <div class="type">
+                ${item.TYPE}
+            </div>
 
-            card.className =
-                "item";
+            <h2>
+                ${item.RELEASE || "Untitled Release"}
+            </h2>
 
+            <div class="details">
 
-            card.innerHTML = `
-
-                <div class="type">
-                    ${item["TYPE"]}
+                <div class="detail">
+                    <span>ID</span>
+                    <span>${item.ID || "—"}</span>
                 </div>
 
-                <h2>
-                    ${item["RELEASE"] || "Untitled Release"}
-                </h2>
-
-                <div class="meta">
-
-                    <strong>Archive ID:</strong>
-                    ${item["ID"] || "—"}
-
-                    <br>
-
-                    <strong>Country:</strong>
-                    ${item["COUNTRY"] || "—"}
-
-                    <br>
-
-                    <strong>Franchise:</strong>
-                    ${item["FRANCHISE"] || "—"}
-
-                    <br>
-
-                    <strong>Condition:</strong>
-                    ${item["CONDITION"] || "—"}
-
-                    <br>
-
-                    <strong>Year:</strong>
-                    ${item["YEAR"] || "—"}
-
-                    <br>
-
-                    <strong>Barcode:</strong>
-                    ${item["BAR CODE"] || "—"}
-
-                    <br>
-
-                    <strong>Rarity:</strong>
-                    ${item["RARITY"] || "—"}
-
+                <div class="detail">
+                    <span>Country</span>
+                    <span>${item.COUNTRY || "—"}</span>
                 </div>
 
-                <p>
-                    ${item["ADD INFORMATION"] || ""}
-                </p>
+                <div class="detail">
+                    <span>Franchise</span>
+                    <span>${item.FRANCHISE || "—"}</span>
+                </div>
 
-            `;
+                <div class="detail">
+                    <span>Year</span>
+                    <span>${item.YEAR || "—"}</span>
+                </div>
 
+                <div class="detail">
+                    <span>Condition</span>
+                    <span>${item.CONDITION || "—"}</span>
+                </div>
 
-            results.appendChild(card);
+                <div class="detail">
+                    <span>Barcode</span>
+                    <span>${item["BAR CODE"] || "—"}</span>
+                </div>
 
-        }
-    );
+                <div class="detail">
+                    <span>Rarity</span>
+                    <span>${item.RARITY || "—"}</span>
+                </div>
+
+            </div>
+
+            ${
+                item["ADD INFORMATION"]
+                ?
+                `
+                <div class="extra">
+                    ${item["ADD INFORMATION"]}
+                </div>
+                `
+                :
+                ""
+            }
+
+        `;
+
+        results.appendChild(card);
+
+    });
 
 }
 
 
-/* SEARCH */
+/* =========================
+   SEARCH + FILTER
+========================= */
+
+function filterRecords() {
+
+    const query =
+        document
+            .getElementById("search")
+            .value
+            .toLowerCase();
+
+    const type =
+        document
+            .getElementById("typeFilter")
+            .value;
+
+
+    const filtered =
+        records.filter(function(item) {
+
+            const matchesSearch =
+                Object
+                    .values(item)
+                    .join(" ")
+                    .toLowerCase()
+                    .includes(query);
+
+
+            const matchesType =
+                type === "ALL" ||
+                item.TYPE === type;
+
+
+            return (
+                matchesSearch &&
+                matchesType
+            );
+
+        });
+
+
+    displayRecords(filtered);
+
+}
+
 
 document
     .getElementById("search")
     .addEventListener(
         "input",
-        function() {
-
-            const query =
-                this.value
-                .toLowerCase();
+        filterRecords
+    );
 
 
-            const filtered =
-                records.filter(
-                    function(item) {
-
-                        return Object
-                            .values(item)
-                            .join(" ")
-                            .toLowerCase()
-                            .includes(query);
-
-                    }
-                );
-
-
-            displayRecords(
-                filtered
-            );
-
-        }
+document
+    .getElementById("typeFilter")
+    .addEventListener(
+        "change",
+        filterRecords
     );
 
 
