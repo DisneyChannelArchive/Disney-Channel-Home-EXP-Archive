@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Media Archive — Disney Channel Home EXP Archive</title>
+<title>Home Media Archive — Disney Channel Home EXP Archive</title>
 
 <style>
 body {
@@ -32,6 +32,7 @@ main {
 
 .search {
     width: 100%;
+    box-sizing: border-box;
     padding: 15px;
     font-size: 17px;
     border: 1px solid #bbb;
@@ -41,7 +42,7 @@ main {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
 }
 
@@ -58,14 +59,12 @@ main {
 
 .meta {
     color: #666;
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
-.back {
-    display: inline-block;
-    margin-top: 30px;
-    color: #111;
-    font-weight: bold;
+.status {
+    margin-bottom: 20px;
+    color: #666;
 }
 </style>
 </head>
@@ -73,7 +72,7 @@ main {
 <body>
 
 <header>
-    <h1>Media Archive</h1>
+    <h1>Home Media Archive</h1>
     <p>Disney Channel Home EXP Archive</p>
 </header>
 
@@ -86,9 +85,9 @@ main {
     placeholder="Search releases, franchises, countries..."
 >
 
-<div id="results" class="grid"></div>
+<div id="status" class="status">Loading archive...</div>
 
-<a class="back" href="index.html">← Back to Archive</a>
+<div id="results" class="grid"></div>
 
 </main>
 
@@ -96,14 +95,115 @@ main {
 
 let records = [];
 
+
+/* CSV parser */
+
+function parseCSV(text) {
+
+    const rows = [];
+    let row = [];
+    let cell = "";
+    let insideQuotes = false;
+
+    for (let i = 0; i < text.length; i++) {
+
+        const char = text[i];
+        const next = text[i + 1];
+
+        if (char === '"' && insideQuotes && next === '"') {
+
+            cell += '"';
+            i++;
+
+        } else if (char === '"') {
+
+            insideQuotes = !insideQuotes;
+
+        } else if (char === "," && !insideQuotes) {
+
+            row.push(cell);
+            cell = "";
+
+        } else if ((char === "\n" || char === "\r") && !insideQuotes) {
+
+            if (char === "\r" && next === "\n") {
+                i++;
+            }
+
+            row.push(cell);
+            rows.push(row);
+
+            row = [];
+            cell = "";
+
+        } else {
+
+            cell += char;
+        }
+    }
+
+    if (cell !== "" || row.length > 0) {
+        row.push(cell);
+        rows.push(row);
+    }
+
+    const headers = rows.shift().map(function(header) {
+        return header.trim();
+    });
+
+    return rows
+        .filter(function(row) {
+            return row.some(function(cell) {
+                return cell.trim() !== "";
+            });
+        })
+        .map(function(row) {
+
+            const record = {};
+
+            headers.forEach(function(header, index) {
+                record[header] = (row[index] || "").trim();
+            });
+
+            return record;
+        });
+}
+
+
+/* Load your actual CSV */
+
 async function loadArchive() {
 
-    const response = await fetch("data/media.json");
+    try {
 
-    records = await response.json();
+        const response = await fetch(
+            "Disney%20Channel%20Archive%20-%20Home%20Media.csv"
+        );
 
-    displayRecords(records);
+        if (!response.ok) {
+            throw new Error("CSV could not be loaded.");
+        }
+
+        const text = await response.text();
+
+        records = parseCSV(text);
+
+        document.getElementById("status").textContent =
+            records.length + " records in the archive.";
+
+        displayRecords(records);
+
+    } catch (error) {
+
+        document.getElementById("status").textContent =
+            "Unable to load the archive data.";
+
+        console.error(error);
+    }
 }
+
+
+/* Display records */
 
 function displayRecords(items) {
 
@@ -112,30 +212,51 @@ function displayRecords(items) {
     results.innerHTML = "";
 
     if (items.length === 0) {
+
         results.innerHTML = "<p>No records found.</p>";
+
         return;
     }
 
-    items.forEach(item => {
+    items.forEach(function(item) {
 
         const card = document.createElement("article");
 
         card.className = "item";
 
         card.innerHTML = `
-            <h2>${item.releaseTitle}</h2>
+
+            <h2>${item["Release Title"] || "Untitled Release"}</h2>
 
             <div class="meta">
-                <strong>Archive ID:</strong> ${item.id}<br>
-                <strong>Country:</strong> ${item.country}<br>
-                <strong>Year:</strong> ${item.year}<br>
-                <strong>Franchise:</strong> ${item.franchise}<br>
-                <strong>Quantity:</strong> ${item.quantity}<br>
-                <strong>Rarity:</strong> ${item.rarity}<br>
-                <strong>Condition:</strong> ${item.condition}
+
+                <strong>Archive ID:</strong>
+                ${item["ID"] || ""}<br>
+
+                <strong>Country:</strong>
+                ${item["Country"] || ""}<br>
+
+                <strong>Year:</strong>
+                ${item["Year"] || ""}<br>
+
+                <strong>Franchise:</strong>
+                ${item["Franchise"] || ""}<br>
+
+                <strong>Quantity:</strong>
+                ${item["Quantity"] || ""}<br>
+
+                <strong>Rarity:</strong>
+                ${item["Rarity"] || ""}<br>
+
+                <strong>Condition:</strong>
+                ${item["Condition"] || ""}
+
             </div>
 
-            <p>${item.additionalNotes || ""}</p>
+            <p>
+                ${item["Additional Notes"] || ""}
+            </p>
+
         `;
 
         results.appendChild(card);
@@ -143,21 +264,32 @@ function displayRecords(items) {
     });
 }
 
-document.getElementById("search").addEventListener("input", function() {
 
-    const query = this.value.toLowerCase();
+/* Search */
 
-    const filtered = records.filter(item =>
-        JSON.stringify(item).toLowerCase().includes(query)
-    );
+document
+    .getElementById("search")
+    .addEventListener("input", function() {
 
-    displayRecords(filtered);
+        const query = this.value.toLowerCase();
 
-});
+        const filtered = records.filter(function(item) {
+
+            return Object.values(item)
+                .join(" ")
+                .toLowerCase()
+                .includes(query);
+
+        });
+
+        displayRecords(filtered);
+
+    });
+
 
 loadArchive();
 
 </script>
 
 </body>
-  </html>
+</html>
