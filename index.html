@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Disney Channel Archive</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f1e8;
+    color: #222;
+}
+
+header {
+    background: #111;
+    color: white;
+    padding: 40px 7%;
+}
+
+header h1 {
+    margin: 0 0 10px;
+    font-size: 42px;
+}
+
+header p {
+    margin: 0;
+    opacity: .8;
+}
+
+nav {
+    background: white;
+    padding: 15px 7%;
+    border-bottom: 1px solid #ddd;
+}
+
+nav a {
+    margin-right: 25px;
+    color: #111;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+main {
+    padding: 50px 7%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.search {
+    width: 100%;
+    padding: 18px;
+    font-size: 18px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.collections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    color: #111;
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+.card:hover {
+    background: #fafafa;
+    transform: translateY(-2px);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Disney Channel Archive</h1>
+    <p>A digital archive of Disney Channel media, broadcasts and merchandise.</p>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="media.html">Media</a>
+    <a href="broadcast.html">Broadcast</a>
+    <a href="merch.html">Merchandise</a>
+</nav>
+
+<main>
+
+    <input
+        class="search"
+        type="search"
+        placeholder="Search the archive..."
+        id="search"
+    >
+
+    <section class="collections">
+
+        <a class="card" href="media.html">
+            <h2>📀 Media</h2>
+            <p>DVDs, CDs, VHS, digital releases and other media.</p>
+        </a>
+
+        <a class="card" href="broadcast.html">
+            <h2>📺 Broadcast Archive</h2>
+            <p>Broadcast recordings, videos, promos, bumpers and IDs.</p>
+        </a>
+
+        <a class="card" href="merch.html">
+            <h2>🎁 Merchandise</h2>
+            <p>Clothing, stationery, toys, collectibles, household items and more.</p>
+        </a>
+
+    </section>
+
+</main>
+
+</body>
+  </html>
