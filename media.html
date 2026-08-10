@@ -97,9 +97,6 @@ main {
 
 let records = [];
 
-
-/* CSV parser */
-
 function parseCSV(text) {
 
     const rows = [];
@@ -113,23 +110,20 @@ function parseCSV(text) {
         const next = text[i + 1];
 
         if (char === '"' && insideQuotes && next === '"') {
-
             cell += '"';
             i++;
+        }
 
-        } else if (char === '"') {
-
+        else if (char === '"') {
             insideQuotes = !insideQuotes;
+        }
 
-        } else if (char === "," && !insideQuotes) {
-
+        else if (char === "," && !insideQuotes) {
             row.push(cell);
             cell = "";
+        }
 
-        } else if (
-            (char === "\n" || char === "\r")
-            && !insideQuotes
-        ) {
+        else if ((char === "\n" || char === "\r") && !insideQuotes) {
 
             if (char === "\r" && next === "\n") {
                 i++;
@@ -140,11 +134,10 @@ function parseCSV(text) {
 
             row = [];
             cell = "";
+        }
 
-        } else {
-
+        else {
             cell += char;
-
         }
     }
 
@@ -172,25 +165,21 @@ function parseCSV(text) {
             });
 
             return record;
-
         });
 }
 
-
-/* Load the Home Media CSV */
 
 async function loadArchive() {
 
     try {
 
         const response = await fetch(
-            "./Disney%20Channel%20Archive%20-%20Home%20Media.csv"
+            "data/Disney%20Channel%20Archive%20-%20Home%20Media.csv"
         );
 
         if (!response.ok) {
             throw new Error(
-                "CSV could not be loaded. Status: "
-                + response.status
+                "CSV could not be loaded. Status: " + response.status
             );
         }
 
@@ -203,18 +192,17 @@ async function loadArchive() {
 
         displayRecords(records);
 
-    } catch (error) {
+    }
+
+    catch (error) {
 
         document.getElementById("status").textContent =
             "Unable to load the archive data.";
 
         console.error(error);
-
     }
 }
 
-
-/* Display records */
 
 function displayRecords(items) {
 
@@ -223,9 +211,7 @@ function displayRecords(items) {
     results.innerHTML = "";
 
     if (items.length === 0) {
-
         results.innerHTML = "<p>No records found.</p>";
-
         return;
     }
 
@@ -237,9 +223,7 @@ function displayRecords(items) {
 
         card.innerHTML = `
 
-            <h2>
-                ${item["Release Title"] || "Untitled Release"}
-            </h2>
+            <h2>${item["Release Title"] || "Untitled Release"}</h2>
 
             <div class="meta">
 
@@ -266,19 +250,14 @@ function displayRecords(items) {
 
             </div>
 
-            <p>
-                ${item["Additional Notes"] || ""}
-            </p>
+            <p>${item["Additional Notes"] || ""}</p>
 
         `;
 
         results.appendChild(card);
-
     });
 }
 
-
-/* Search */
 
 document
     .getElementById("search")
@@ -296,11 +275,8 @@ document
         });
 
         displayRecords(filtered);
-
     });
 
-
-/* Start */
 
 loadArchive();
 
