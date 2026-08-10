@@ -85,7 +85,9 @@ main {
     placeholder="Search releases, franchises, countries..."
 >
 
-<div id="status" class="status">Loading archive...</div>
+<div id="status" class="status">
+    Loading archive...
+</div>
 
 <div id="results" class="grid"></div>
 
@@ -124,7 +126,10 @@ function parseCSV(text) {
             row.push(cell);
             cell = "";
 
-        } else if ((char === "\n" || char === "\r") && !insideQuotes) {
+        } else if (
+            (char === "\n" || char === "\r")
+            && !insideQuotes
+        ) {
 
             if (char === "\r" && next === "\n") {
                 i++;
@@ -139,6 +144,7 @@ function parseCSV(text) {
         } else {
 
             cell += char;
+
         }
     }
 
@@ -166,22 +172,26 @@ function parseCSV(text) {
             });
 
             return record;
+
         });
 }
 
 
-/* Load your actual CSV */
+/* Load the Home Media CSV */
 
 async function loadArchive() {
 
     try {
 
         const response = await fetch(
-            "Disney%20Channel%20Archive%20-%20Home%20Media.csv"
+            "./Disney%20Channel%20Archive%20-%20Home%20Media.csv"
         );
 
         if (!response.ok) {
-            throw new Error("CSV could not be loaded.");
+            throw new Error(
+                "CSV could not be loaded. Status: "
+                + response.status
+            );
         }
 
         const text = await response.text();
@@ -199,6 +209,7 @@ async function loadArchive() {
             "Unable to load the archive data.";
 
         console.error(error);
+
     }
 }
 
@@ -226,7 +237,9 @@ function displayRecords(items) {
 
         card.innerHTML = `
 
-            <h2>${item["Release Title"] || "Untitled Release"}</h2>
+            <h2>
+                ${item["Release Title"] || "Untitled Release"}
+            </h2>
 
             <div class="meta">
 
@@ -286,6 +299,8 @@ document
 
     });
 
+
+/* Start */
 
 loadArchive();
 
