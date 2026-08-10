@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Broadcast Archive — Disney Channel Home EXP Archive</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f1e8;
+    color: #222;
+}
+
+header {
+    background: #111;
+    color: white;
+    padding: 35px 7%;
+}
+
+main {
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 7%;
+}
+
+.search {
+    width: 100%;
+    padding: 15px;
+    font-size: 17px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.item {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 22px;
+}
+
+.item h2 {
+    margin-top: 0;
+}
+
+.meta {
+    color: #666;
+    line-height: 1.6;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Broadcast Archive</h1>
+    <p>Videos, recordings, commercials, promos, bumpers and IDs.</p>
+</header>
+
+<main>
+
+<input
+    id="search"
+    class="search"
+    type="search"
+    placeholder="Search the broadcast archive..."
+>
+
+<div id="results" class="grid"></div>
+
+</main>
+
+<script>
+
+let records = [];
+
+async function loadArchive() {
+
+    const response = await fetch("data/broadcast.json");
+
+    records = await response.json();
+
+    displayRecords(records);
+}
+
+function displayRecords(items) {
+
+    const results = document.getElementById("results");
+
+    results.innerHTML = "";
+
+    if (items.length === 0) {
+        results.innerHTML = "<p>No records found.</p>";
+        return;
+    }
+
+    items.forEach(item => {
+
+        const card = document.createElement("article");
+
+        card.className = "item";
+
+        card.innerHTML = `
+            <h2>${item.type || "Broadcast Record"}</h2>
+
+            <div class="meta">
+                <strong>Archive ID:</strong> ${item.id}<br>
+                <strong>Date:</strong> ${item.date || ""}<br>
+                <strong>Year:</strong> ${item.year || ""}<br>
+                <strong>Franchise:</strong> ${item.franchise || ""}<br>
+                <strong>Season / Movie:</strong> ${item.seasonOrMovie || ""}
+            </div>
+
+            <p>${item.description || ""}</p>
+        `;
+
+        results.appendChild(card);
+
+    });
+}
+
+document.getElementById("search").addEventListener("input", function() {
+
+    const query = this.value.toLowerCase();
+
+    const filtered = records.filter(item =>
+        JSON.stringify(item).toLowerCase().includes(query)
+    );
+
+    displayRecords(filtered);
+
+});
+
+loadArchive();
+
+</script>
+
+</body>
+</html>
