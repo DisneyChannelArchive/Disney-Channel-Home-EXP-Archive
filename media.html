@@ -19,7 +19,6 @@ header {
     background: #111;
     color: white;
     padding: 35px 7%;
-    color: white;
 }
 
 header h1 {
@@ -56,7 +55,16 @@ main {
 }
 
 .item h2 {
-    margin-top: 0;
+    margin-top: 8px;
+}
+
+.type {
+    display: inline-block;
+    background: #222;
+    color: white;
+    padding: 5px 9px;
+    border-radius: 5px;
+    font-size: 12px;
 }
 
 .meta {
@@ -120,9 +128,7 @@ function parseCSV(text) {
     const rows = [];
 
     let row = [];
-
     let cell = "";
-
     let insideQuotes = false;
 
 
@@ -133,7 +139,6 @@ function parseCSV(text) {
     ) {
 
         const char = text[i];
-
         const next = text[i + 1];
 
 
@@ -144,7 +149,6 @@ function parseCSV(text) {
         ) {
 
             cell += '"';
-
             i++;
 
         }
@@ -162,7 +166,6 @@ function parseCSV(text) {
         ) {
 
             row.push(cell);
-
             cell = "";
 
         }
@@ -177,17 +180,13 @@ function parseCSV(text) {
                 char === "\r" &&
                 next === "\n"
             ) {
-
                 i++;
-
             }
 
             row.push(cell);
-
             rows.push(row);
 
             row = [];
-
             cell = "";
 
         }
@@ -207,7 +206,6 @@ function parseCSV(text) {
     ) {
 
         row.push(cell);
-
         rows.push(row);
 
     }
@@ -250,50 +248,68 @@ async function loadArchive() {
 
         /*
             ROW 1 = BLANK
-            ROW 2 = HEADERS
-            ROW 3+ = RECORDS
+
+            ROW 2:
+            HEADERS
+
+            ROW 3+:
+            RECORDS
+
+            CD:
+            COLUMNS 1–9
+
+            DVD:
+            COLUMNS 13–22
         */
 
 
-        const headers =
-            rows[1].map(
-                function(header) {
+        const cdHeaders = [
+            "ID",
+            "RELEASE",
+            "COUNTRY",
+            "QUANTITY",
+            "FRANCHISE",
+            "CONDITION",
+            "YEAR",
+            "BAR CODE",
+            "RARITY"
+        ];
 
-                    return header
-                        .replace(/^\uFEFF/, "")
-                        .trim()
-                        .toUpperCase();
 
-                }
-            );
+        const dvdHeaders = [
+            "ID",
+            "RELEASE",
+            "COUNTRY",
+            "QUANTITY",
+            "FRANCHISE",
+            "CONDITION",
+            "YEAR",
+            "BAR CODE",
+            "RARITY",
+            "ADD INFORMATION"
+        ];
 
 
-        records =
-            rows
+        const cdRecords = [];
+
+        const dvdRecords = [];
+
+
+        rows
             .slice(2)
-            .filter(
+            .forEach(
                 function(row) {
 
-                    return row.some(
-                        function(cell) {
 
-                            return cell.trim() !== "";
+                    /* CD */
 
-                        }
-                    );
-
-                }
-            )
-            .map(
-                function(row) {
-
-                    const record = {};
+                    const cd = {};
 
 
-                    headers.forEach(
+                    cdHeaders.forEach(
                         function(header, index) {
 
-                            record[header] =
+                            cd[header] =
                                 (
                                     row[index] ||
                                     ""
@@ -303,9 +319,54 @@ async function loadArchive() {
                     );
 
 
-                    return record;
+                    if (
+                        cd["ID"] ||
+                        cd["RELEASE"]
+                    ) {
+
+                        cd["TYPE"] = "CD";
+
+                        cdRecords.push(cd);
+
+                    }
+
+
+                    /* DVD */
+
+                    const dvd = {};
+
+
+                    dvdHeaders.forEach(
+                        function(header, index) {
+
+                            dvd[header] =
+                                (
+                                    row[index + 12] ||
+                                    ""
+                                ).trim();
+
+                        }
+                    );
+
+
+                    if (
+                        dvd["ID"] ||
+                        dvd["RELEASE"]
+                    ) {
+
+                        dvd["TYPE"] = "DVD";
+
+                        dvdRecords.push(dvd);
+
+                    }
 
                 }
+            );
+
+
+        records =
+            cdRecords.concat(
+                dvdRecords
             );
 
 
@@ -325,7 +386,6 @@ async function loadArchive() {
 
         console.error(error);
 
-
         document
             .getElementById("status")
             .textContent =
@@ -336,7 +396,7 @@ async function loadArchive() {
 }
 
 
-/* DISPLAY RECORDS */
+/* DISPLAY */
 
 function displayRecords(items) {
 
@@ -376,6 +436,10 @@ function displayRecords(items) {
 
 
             card.innerHTML = `
+
+                <div class="type">
+                    ${item["TYPE"]}
+                </div>
 
                 <h2>
                     ${item["RELEASE"] || "Untitled Release"}
@@ -467,8 +531,6 @@ document
         }
     );
 
-
-/* START */
 
 loadArchive();
 
