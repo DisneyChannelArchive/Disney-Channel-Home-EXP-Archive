@@ -1,146 +1,657 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Merchandise Archive — Disney Channel Home EXP Archive</title>
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Merchandise — Disney Channel Home</title>
 
 <style>
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f4f1e8;
-    color: #222;
+
+    background: #f5f3ed;
+
+    color: #171717;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 }
+
+
+/* =========================
+   HEADER
+========================= */
 
 header {
-    background: #111;
-    color: white;
-    padding: 35px 7%;
+    padding: 7px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffcf00 0%,
+            #ffcf00 25%,
+            #ff5a36 25%,
+            #ff5a36 50%,
+            #7c4dff 50%,
+            #7c4dff 75%,
+            #00a8ff 75%
+        );
+
+    box-shadow:
+        0 4px 0 #111;
 }
 
-main {
-    max-width: 1200px;
-    margin: auto;
-    padding: 40px 7%;
+
+.header-inner {
+    background: #111;
+
+    color: white;
+
+    padding: 38px 7%;
 }
+
+
+.header-inner h1 {
+    margin: 0;
+
+    font-size:
+        clamp(32px, 6vw, 64px);
+
+    letter-spacing: -2px;
+}
+
+
+.header-inner p {
+    margin: 8px 0 0;
+
+    color: #ddd;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+    max-width: 1400px;
+
+    margin: auto;
+
+    padding: 45px 5%;
+}
+
+
+/* =========================
+   INTRO
+========================= */
+
+.intro {
+    margin-bottom: 35px;
+}
+
+
+.intro h2 {
+    margin: 0 0 8px;
+
+    font-size: 30px;
+}
+
+
+.intro p {
+    max-width: 700px;
+
+    color: #666;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+.controls {
+    margin-bottom: 30px;
+}
+
 
 .search {
     width: 100%;
-    padding: 15px;
-    font-size: 17px;
-    border: 1px solid #bbb;
-    border-radius: 8px;
-    margin-bottom: 25px;
-}
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-}
+    padding: 15px 20px;
 
-.item {
+    border:
+        2px solid #171717;
+
+    border-radius: 50px;
+
     background: white;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 22px;
+
+    font-size: 16px;
+
+    outline: none;
 }
 
-.item h2 {
-    margin-top: 0;
+
+.search:focus {
+    box-shadow:
+        5px 5px 0 #ffcf00;
 }
 
-.meta {
-    color: #666;
-    line-height: 1.6;
+
+/* =========================
+   STATUS
+========================= */
+
+.status {
+    margin-bottom: 20px;
+
+    color: #777;
+
+    font-size: 14px;
 }
+
+
+/* =========================
+   IMAGE GALLERY
+========================= */
+
+.gallery {
+
+    columns:
+        4 220px;
+
+    column-gap: 18px;
+}
+
+
+.card {
+
+    break-inside: avoid;
+
+    margin-bottom: 18px;
+
+    background: white;
+
+    border:
+        2px solid #171717;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    transition:
+        transform .15s ease,
+        box-shadow .15s ease;
+}
+
+
+.card:hover {
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        6px 6px 0 #ffcf00;
+}
+
+
+.card img {
+
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    background: #eee;
+}
+
+
+/* =========================
+   EMPTY / ERROR
+========================= */
+
+.message {
+
+    padding: 60px 20px;
+
+    text-align: center;
+
+    color: #777;
+}
+
+
+/* =========================
+   IMAGE VIEWER
+========================= */
+
+.viewer {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 30px;
+
+    background:
+        rgba(0, 0, 0, .88);
+}
+
+
+.viewer.active {
+    display: flex;
+}
+
+
+.viewer img {
+
+    max-width: 95vw;
+
+    max-height: 90vh;
+
+    object-fit: contain;
+
+    border-radius: 8px;
+}
+
+
+.close {
+
+    position: fixed;
+
+    top: 20px;
+
+    right: 25px;
+
+    color: white;
+
+    font-size: 35px;
+
+    cursor: pointer;
+
+    line-height: 1;
+}
+
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <header>
-    <h1>Merchandise Archive</h1>
-    <p>Clothing, stationery, toys, collectibles, household items and more.</p>
+
+    <div class="header-inner">
+
+        <h1>Merchandise</h1>
+
+        <p>
+            Disney Channel Home EXP Archive
+        </p>
+
+    </div>
+
 </header>
+
 
 <main>
 
-<input
-    id="search"
-    class="search"
-    type="search"
-    placeholder="Search the merchandise archive..."
->
 
-<div id="results" class="grid"></div>
+<section class="intro">
+
+    <h2>
+        The Merchandise Archive
+    </h2>
+
+    <p>
+        A visual collection of Disney Channel
+        merchandise preserved in the archive.
+    </p>
+
+</section>
+
+
+<div class="controls">
+
+    <input
+        id="search"
+        class="search"
+        type="search"
+        placeholder="Search merchandise..."
+    >
+
+</div>
+
+
+<div
+    id="status"
+    class="status"
+>
+    Loading merchandise...
+</div>
+
+
+<div
+    id="gallery"
+    class="gallery"
+></div>
+
 
 </main>
 
+
+<!-- IMAGE VIEWER -->
+
+<div
+    id="viewer"
+    class="viewer"
+>
+
+    <div
+        id="close"
+        class="close"
+    >
+        ×
+    </div>
+
+    <img
+        id="viewerImage"
+        src=""
+        alt=""
+    >
+
+</div>
+
+
 <script>
 
-let records = [];
 
-async function loadArchive() {
+let images = [];
 
-    const response = await fetch("data/merch.json");
 
-    records = await response.json();
+/* =========================
+   LOAD JSON
+========================= */
 
-    displayRecords(records);
-}
+async function loadMerchandise() {
 
-function displayRecords(items) {
+    try {
 
-    const results = document.getElementById("results");
+        const response =
+            await fetch(
+                "data/merch-images.json"
+            );
 
-    results.innerHTML = "";
 
-    if (items.length === 0) {
-        results.innerHTML = "<p>No records found.</p>";
-        return;
+        if (!response.ok) {
+
+            throw new Error(
+                "Could not load merch JSON"
+            );
+
+        }
+
+
+        images =
+            await response.json();
+
+
+        displayImages(images);
+
     }
 
-    items.forEach(item => {
 
-        const card = document.createElement("article");
+    catch (error) {
 
-        card.className = "item";
+        console.error(error);
 
-        card.innerHTML = `
-            <h2>${item.name || "Merchandise Record"}</h2>
 
-            <div class="meta">
-                <strong>Archive ID:</strong> ${item.id}<br>
-                <strong>Type:</strong> ${item.type || ""}<br>
-                <strong>Season / Movie:</strong> ${item.seasonOrMovie || ""}<br>
-                <strong>Condition:</strong> ${item.condition || ""}
-            </div>
+        document
+            .getElementById("status")
+            .textContent =
+            "Unable to load merchandise.";
 
-            <p>${item.additionalInfo || ""}</p>
-        `;
+    }
 
-        results.appendChild(card);
-
-    });
 }
 
-document.getElementById("search").addEventListener("input", function() {
 
-    const query = this.value.toLowerCase();
+/* =========================
+   DISPLAY
+========================= */
 
-    const filtered = records.filter(item =>
-        JSON.stringify(item).toLowerCase().includes(query)
+function displayImages(items) {
+
+    const gallery =
+        document.getElementById(
+            "gallery"
+        );
+
+
+    const status =
+        document.getElementById(
+            "status"
+        );
+
+
+    gallery.innerHTML = "";
+
+
+    if (!items.length) {
+
+        status.textContent =
+            "No merchandise images yet.";
+
+        return;
+
+    }
+
+
+    status.textContent =
+        items.length +
+        " merchandise items";
+
+
+    items.forEach(
+        function(url, index) {
+
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "card";
+
+
+            const image =
+                document.createElement(
+                    "img"
+                );
+
+
+            image.src = url;
+
+
+            image.alt =
+                "Disney Channel merchandise " +
+                (index + 1);
+
+
+            image.loading =
+                "lazy";
+
+
+            image.addEventListener(
+                "click",
+                function() {
+
+                    openViewer(url);
+
+                }
+            );
+
+
+            card.appendChild(
+                image
+            );
+
+
+            gallery.appendChild(
+                card
+            );
+
+        }
     );
 
-    displayRecords(filtered);
+}
 
-});
 
-loadArchive();
+/* =========================
+   VIEWER
+========================= */
+
+function openViewer(url) {
+
+    const viewer =
+        document.getElementById(
+            "viewer"
+        );
+
+
+    const image =
+        document.getElementById(
+            "viewerImage"
+        );
+
+
+    image.src = url;
+
+
+    viewer.classList.add(
+        "active"
+    );
+
+}
+
+
+function closeViewer() {
+
+    document
+        .getElementById("viewer")
+        .classList.remove(
+            "active"
+        );
+
+}
+
+
+document
+    .getElementById("close")
+    .addEventListener(
+        "click",
+        closeViewer
+    );
+
+
+document
+    .getElementById("viewer")
+    .addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target ===
+                this
+            ) {
+
+                closeViewer();
+
+            }
+
+        }
+    );
+
+
+/* =========================
+   SEARCH
+========================= */
+
+document
+    .getElementById("search")
+    .addEventListener(
+        "input",
+        function() {
+
+            /*
+                Because the JSON currently
+                contains only URLs, search
+                matches the URL itself.
+
+                Later, when we add names/tags,
+                this can become a real archive
+                search.
+            */
+
+            const query =
+                this.value.toLowerCase();
+
+
+            const filtered =
+                images.filter(
+                    function(url) {
+
+                        return url
+                            .toLowerCase()
+                            .includes(
+                                query
+                            );
+
+                    }
+                );
+
+
+            displayImages(
+                filtered
+            );
+
+        }
+    );
+
+
+/* START */
+
+loadMerchandise();
+
 
 </script>
 
 </body>
+
 </html>
