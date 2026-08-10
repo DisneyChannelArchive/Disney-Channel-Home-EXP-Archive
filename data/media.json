@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "id": "TEST-001",
+    "releaseTitle": "Hannah Montana — Test Release",
+    "country": "Chile",
+    "quantity": 1,
+    "rarity": "Rare",
+    "year": 2007,
+    "franchise": "Hannah Montana",
+    "additionalNotes": "TEST RECORD — DELETE LATER",
+    "condition": "Very Good"
+  }
+]
