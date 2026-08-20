@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +7,10 @@
 <title>Merchandise — Disney Channel Home EXP Archive</title>
 
 <style>
+
+/* ==============================
+   BASIC
+================================ */
 
 * {
     box-sizing: border-box;
@@ -21,191 +24,378 @@ body {
     margin: 0;
     min-height: 100vh;
 
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Georgia, "Times New Roman", serif;
 
-    color: #263b2b;
+    color: #31563b;
 
     background:
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.55),
-            transparent 25%,
-            transparent 75%,
-            rgba(255,255,255,.55)
-        ),
-        #dcebd8;
+        repeating-linear-gradient(
+            0deg,
+            #eee9dc 0px,
+            #eee9dc 24px,
+            #d8d2c4 25px,
+            #f4f0e5 27px
+        );
 }
 
 
-/* =========================
+/* ==============================
    HEADER
-========================= */
+================================ */
 
-.top {
-    padding: 55px 7% 35px;
+.header {
     text-align: center;
+
+    padding: 45px 20px 30px;
+
+    background: rgba(245, 242, 231, 0.94);
+
+    border-bottom:
+        1px solid rgba(90, 80, 60, 0.2);
 }
 
-.top h1 {
+.header h1 {
     margin: 0;
 
-    font-size: clamp(42px, 8vw, 82px);
+    color: #31563b;
 
-    font-weight: 900;
+    font-size: clamp(42px, 6vw, 76px);
 
-    letter-spacing: -4px;
+    letter-spacing: 3px;
 
     text-transform: uppercase;
 
-    color: #25452b;
-
-    text-shadow:
-        3px 3px 0 rgba(255,255,255,.7);
+    font-weight: normal;
 }
 
-.top p {
+.header p {
+    margin: 8px auto 0;
+
     max-width: 650px;
 
-    margin: 12px auto 0;
+    color: #526a57;
 
-    color: #45604a;
+    font-family: Arial, Helvetica, sans-serif;
 
-    font-size: 16px;
+    font-size: 15px;
 
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
 
-/* =========================
+/* ==============================
    ROOM
-========================= */
+================================ */
 
 .room {
     width: min(1500px, 94%);
 
-    margin: 20px auto 80px;
+    margin: 0 auto;
 
-    padding: 35px 25px 55px;
-
-    border-radius: 20px;
+    padding:
+        40px
+        25px
+        80px;
 
     background:
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.22),
-            transparent 50%,
-            rgba(255,255,255,.22)
-        ),
-        #edf5e9;
+        rgba(247, 244, 234, 0.48);
 
-    box-shadow:
-        inset 0 0 80px rgba(90,120,90,.12),
-        0 20px 60px rgba(60,90,60,.20);
+    min-height: 100vh;
 }
 
 
-/* =========================
-   FRANCHISE SECTION
-========================= */
+/* ==============================
+   CABINET GRID
+================================ */
 
-.shelf-section {
-    max-width: 1300px;
+.cabinet-grid {
+    display: grid;
 
-    margin: 0 auto 75px;
-}
+    grid-template-columns:
+        repeat(3, 1fr);
 
-.shelf-label {
-    margin: 0 0 14px 10px;
+    gap:
+        70px
+        28px;
 
-    color: #45604a;
+    max-width: 1350px;
 
-    font-size: 18px;
-
-    font-weight: 800;
-
-    letter-spacing: 2px;
-
-    text-transform: uppercase;
+    margin: 0 auto;
 }
 
 
-/* =========================
-   WOODEN SHELF
-========================= */
+/* ==============================
+   CABINET SECTION
+================================ */
 
-.shelf {
+.cabinet-wrap {
     position: relative;
 
-    min-height: 245px;
+    padding-top: 28px;
+}
 
-    padding: 30px 25px 35px;
 
-    display: flex;
+/* ==============================
+   GREEN FRANCHISE LABEL
+================================ */
 
-    align-items: flex-end;
+.franchise-label {
+    position: absolute;
 
-    gap: 25px;
+    z-index: 20;
 
-    flex-wrap: wrap;
+    top: 0;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    width: max-content;
+
+    max-width: 92%;
+
+    padding:
+        9px
+        20px;
+
+    border-radius:
+        7px
+        7px
+        2px
+        2px;
+
+    background: #315f3c;
+
+    color: white;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: .5px;
+
+    text-transform: uppercase;
+
+    box-shadow:
+        0 3px 5px
+        rgba(0,0,0,.18);
+}
+
+
+/* ==============================
+   CABINET
+================================ */
+
+.cabinet {
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 0.72;
+
+    padding:
+        17px;
 
     background:
         linear-gradient(
             90deg,
-            rgba(255,255,255,.14),
-            transparent 50%,
-            rgba(80,45,20,.08)
-        ),
-        #b98250;
+            #8f5e31 0%,
+            #bd8550 7%,
+            #a86e3b 50%,
+            #c18a55 93%,
+            #89572e 100%
+        );
 
     border-radius:
-        8px 8px 3px 3px;
+        4px
+        4px
+        2px
+        2px;
 
     box-shadow:
-        inset 0 8px 0 rgba(255,255,255,.12),
-        inset 0 -15px 25px rgba(90,50,20,.18),
-        0 14px 0 #8b5c36,
-        0 18px 25px rgba(50,30,15,.25);
+        inset 0 0 0 3px rgba(92, 55, 28, .55),
+        inset 0 0 25px rgba(70, 40, 18, .3),
+        0 8px 0 #744622,
+        0 14px 25px rgba(50, 35, 20, .28);
 }
 
 
-/* Shelf front */
+/* ==============================
+   INNER WOOD BACK
+================================ */
 
-.shelf::after {
+.cabinet-inner {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            rgba(70, 38, 15, .08) 0px,
+            rgba(255,255,255,.03) 4px,
+            rgba(70, 38, 15, .07) 9px
+        ),
+        #8e5d32;
+
+    border:
+        5px solid #6f431f;
+
+    box-shadow:
+        inset 0 0 35px
+        rgba(40,20,8,.4);
+}
+
+
+/* ==============================
+   INTERIOR SHELVES
+================================ */
+
+.inner-shelf {
+    position: absolute;
+
+    left: 7%;
+    right: 7%;
+
+    height: 9px;
+
+    background:
+        linear-gradient(
+            #d19a60,
+            #a86f3b
+        );
+
+    box-shadow:
+        0 5px 0 #704421,
+        0 7px 10px rgba(40,20,8,.28);
+}
+
+.inner-shelf.one {
+    top: 34%;
+}
+
+.inner-shelf.two {
+    top: 67%;
+}
+
+
+/* ==============================
+   CABINET DOORS
+================================ */
+
+.door {
+    position: absolute;
+
+    top: 3%;
+    bottom: 3%;
+
+    width: 47%;
+
+    z-index: 10;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(90,52,26,.45),
+            rgba(190,140,90,.13),
+            rgba(70,38,18,.42)
+        );
+
+    border:
+        4px solid #6c411f;
+
+    box-shadow:
+        inset 0 0 12px rgba(40,20,8,.4);
+
+    pointer-events: none;
+}
+
+.door.left {
+    left: 3%;
+}
+
+.door.right {
+    right: 3%;
+}
+
+
+/* Glass effect */
+
+.door::after {
     content: "";
 
     position: absolute;
 
-    left: -8px;
-    right: -8px;
+    inset: 6px;
 
-    bottom: -18px;
-
-    height: 20px;
-
-    border-radius: 4px;
+    border:
+        1px solid
+        rgba(245, 235, 210, .22);
 
     background:
         linear-gradient(
-            #c99665,
-            #9d6b43
+            120deg,
+            rgba(255,255,255,.12),
+            transparent 25%,
+            transparent 75%,
+            rgba(255,255,255,.04)
         );
-
-    box-shadow:
-        0 5px 0 #704729,
-        0 10px 15px rgba(50,30,15,.25);
 }
 
 
-/* =========================
-   MERCH ITEM
-========================= */
+/* ==============================
+   DOOR HANDLES
+================================ */
 
-.item {
-    position: relative;
+.handle {
+    position: absolute;
 
-    width: 135px;
+    z-index: 15;
 
-    min-height: 170px;
+    top: 50%;
+
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #e7c681,
+            #8a5b29
+        );
+
+    box-shadow:
+        0 1px 2px rgba(0,0,0,.5);
+}
+
+.handle.left {
+    left: 48.2%;
+}
+
+.handle.right {
+    right: 48.2%;
+}
+
+
+/* ==============================
+   MERCH ITEMS
+================================ */
+
+.merch-item {
+    position: absolute;
+
+    z-index: 7;
 
     display: flex;
 
@@ -214,32 +404,43 @@ body {
     justify-content: center;
 
     cursor: pointer;
-
-    z-index: 2;
 
     transition:
         transform .2s ease,
         filter .2s ease;
 }
 
-.item:hover {
+.merch-item:hover {
     transform:
-        translateY(-12px)
+        translateY(-8px)
         scale(1.04);
 
     filter:
         drop-shadow(
-            0 12px 12px
-            rgba(0,0,0,.35)
+            0 8px 8px
+            rgba(0,0,0,.45)
         );
 }
 
-.item img {
-    display: block;
 
-    max-width: 135px;
+/* First test object */
 
-    max-height: 175px;
+.merch-item.hannah-one {
+
+    left: 12%;
+
+    top: 17%;
+
+    width: 28%;
+
+    height: 20%;
+}
+
+.merch-item img {
+
+    max-width: 100%;
+
+    max-height: 100%;
 
     width: auto;
 
@@ -247,243 +448,211 @@ body {
 
     object-fit: contain;
 
-    border-radius: 5px;
+    display: block;
 
     filter:
         drop-shadow(
             0 5px 5px
-            rgba(0,0,0,.35)
+            rgba(0,0,0,.45)
         );
 }
 
 
-/* =========================
-   ITEM NUMBER
-========================= */
-
-.item-number {
-    position: absolute;
-
-    top: -8px;
-    left: -5px;
-
-    width: 26px;
-    height: 26px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: white;
-
-    color: #25452b;
-
-    font-size: 11px;
-
-    font-weight: bold;
-
-    opacity: 0;
-
-    transition: opacity .2s;
-
-    box-shadow:
-        0 3px 5px rgba(0,0,0,.25);
-}
-
-.item:hover .item-number {
-    opacity: 1;
-}
-
-
-/* =========================
-   EMPTY SHELF
-========================= */
+/* ==============================
+   EMPTY CABINET MESSAGE
+================================ */
 
 .empty {
-    color: rgba(60,80,60,.55);
+    position: absolute;
 
-    font-size: 13px;
+    z-index: 6;
 
-    font-style: italic;
+    left: 0;
+    right: 0;
 
-    padding: 20px;
+    top: 48%;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.22);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
 }
 
 
-/* =========================
+/* ==============================
+   CABINET BASE
+================================ */
+
+.cabinet-base {
+    position: absolute;
+
+    left: -4px;
+    right: -4px;
+
+    bottom: -17px;
+
+    height: 18px;
+
+    background:
+        linear-gradient(
+            #c28a52,
+            #8d5a30
+        );
+
+    border-radius:
+        2px
+        2px
+        4px
+        4px;
+
+    box-shadow:
+        0 5px 0 #68401f,
+        0 9px 13px rgba(40,25,10,.25);
+}
+
+
+/* ==============================
    IMAGE VIEWER
-========================= */
+================================ */
 
 .viewer {
     position: fixed;
 
     inset: 0;
 
-    z-index: 1000;
+    z-index: 9999;
 
     display: none;
 
     align-items: center;
     justify-content: center;
 
-    padding: 30px;
+    padding: 25px;
 
     background:
-        rgba(20,35,20,.88);
-
-    backdrop-filter: blur(8px);
+        rgba(30,40,30,.88);
 }
 
 .viewer.active {
     display: flex;
 }
 
-.viewer-content {
-    max-width: 900px;
-
-    width: 100%;
-
-    max-height: 92vh;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-}
-
 .viewer img {
     max-width: 90vw;
 
-    max-height: 80vh;
-
-    width: auto;
-
-    height: auto;
+    max-height: 85vh;
 
     object-fit: contain;
 
-    border-radius: 6px;
-
     box-shadow:
-        0 20px 70px rgba(0,0,0,.65);
-}
-
-.viewer-caption {
-    margin-top: 18px;
-
-    color: white;
-
-    font-size: 14px;
-
-    text-align: center;
+        0 20px 70px
+        rgba(0,0,0,.6);
 }
 
 .close {
     position: fixed;
 
-    top: 22px;
-    right: 28px;
-
-    width: 45px;
-    height: 45px;
+    right: 25px;
+    top: 20px;
 
     border: none;
 
-    border-radius: 50%;
-
-    background:
-        rgba(255,255,255,.15);
+    background: none;
 
     color: white;
 
-    font-size: 30px;
+    font-size: 45px;
 
     cursor: pointer;
 }
 
-.close:hover {
-    background:
-        rgba(255,255,255,.30);
-}
 
-
-/* =========================
+/* ==============================
    FOOTER
-========================= */
+================================ */
 
 .footer {
-    padding: 30px;
+    padding:
+        45px
+        20px;
 
     text-align: center;
 
-    color: #58705c;
+    background:
+        rgba(247,244,234,.95);
 
-    font-size: 12px;
+    color: #31563b;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 13px;
 }
 
 
-/* =========================
+/* ==============================
    MOBILE
-========================= */
+================================ */
 
-@media (max-width: 650px) {
+@media (max-width: 850px) {
 
-    .top {
-        padding-top: 35px;
+    .cabinet-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap:
+            65px
+            18px;
     }
 
-    .top h1 {
-        letter-spacing: -2px;
-    }
+}
+
+@media (max-width: 520px) {
 
     .room {
-        width: 96%;
-
         padding:
-            25px
-            12px
-            45px;
+            30px
+            8px
+            60px;
     }
 
-    .shelf {
-        padding:
-            20px
-            12px
-            25px;
+    .cabinet-grid {
+        grid-template-columns: 1fr;
 
-        gap: 14px;
-
-        justify-content: center;
+        max-width: 380px;
     }
 
-    .item {
-        width: 90px;
-
-        min-height: 130px;
+    .header h1 {
+        letter-spacing: 1px;
     }
 
-    .item img {
-        max-width: 90px;
-
-        max-height: 135px;
-    }
 }
 
 </style>
-
 </head>
 
 
 <body>
 
 
-<header class="top">
+<!-- ==============================
+     HEADER
+================================ -->
+
+<header class="header">
 
     <h1>Merchandise</h1>
 
@@ -496,217 +665,303 @@ body {
 
 
 
+<!-- ==============================
+     ROOM
+================================ -->
+
 <main class="room">
 
+<div class="cabinet-grid">
 
-    <!-- =========================
-         HANNAH
-    ========================== -->
 
-    <section class="shelf-section">
+<!-- HANNAH -->
+<section class="cabinet-wrap">
 
-        <div class="shelf-label">
-            Hannah Montana
-        </div>
+    <div class="franchise-label">
+        Hannah Montana
+    </div>
 
-        <div class="shelf">
+    <div class="cabinet">
+
+        <div class="cabinet-inner">
+
+            <div class="inner-shelf one"></div>
+            <div class="inner-shelf two"></div>
+
+
+            <!-- HANNAH IMAGE -->
 
             <div
-                class="item"
-                onclick="openViewer(this)"
+                class="merch-item hannah-one"
+                onclick="openImage(this)"
             >
 
-                <span class="item-number">
-                    1
-                </span>
-
                 <img
-                    src="https://drive.google.com/uc?export=view&id=1gTg6pqPIqNWVbEfKsbChUEiEwVk7tr_6"
+                    src="https://drive.google.com/thumbnail?id=1gTg6pqPIqNWVbEfKsbChUEiEwVk7tr_6&sz=w1000"
                     alt="Hannah Montana merchandise"
                 >
 
             </div>
 
-        </div>
 
-    </section>
+            <!-- DOORS -->
 
+            <div class="door left"></div>
+            <div class="door right"></div>
 
-
-    <!-- =========================
-         KIM
-    ========================== -->
-
-    <section class="shelf-section">
-
-        <div class="shelf-label">
-            Kim Possible
-        </div>
-
-        <div class="shelf">
-
-            <div class="empty">
-                Collection in progress.
-            </div>
+            <div class="handle left"></div>
+            <div class="handle right"></div>
 
         </div>
 
-    </section>
+        <div class="cabinet-base"></div>
+
+    </div>
+
+</section>
 
 
 
-    <!-- =========================
-         RAVEN
-    ========================== -->
+<!-- KIM -->
+<section class="cabinet-wrap">
 
-    <section class="shelf-section">
+    <div class="franchise-label">
+        Kim Possible
+    </div>
 
-        <div class="shelf-label">
-            That's So Raven
-        </div>
+    <div class="cabinet">
 
-        <div class="shelf">
+        <div class="cabinet-inner">
 
-            <div class="empty">
-                Collection in progress.
-            </div>
+            <div class="inner-shelf one"></div>
+            <div class="inner-shelf two"></div>
 
-        </div>
+            <div class="door left"></div>
+            <div class="door right"></div>
 
-    </section>
-
-
-
-    <!-- =========================
-         PROUD
-    ========================== -->
-
-    <section class="shelf-section">
-
-        <div class="shelf-label">
-            The Proud Family
-        </div>
-
-        <div class="shelf">
-
-            <div class="empty">
-                Collection in progress.
-            </div>
+            <div class="handle left"></div>
+            <div class="handle right"></div>
 
         </div>
 
-    </section>
+        <div class="cabinet-base"></div>
+
+    </div>
+
+</section>
 
 
 
-    <!-- =========================
-         WIZARDS
-    ========================== -->
+<!-- RAVEN -->
+<section class="cabinet-wrap">
 
-    <section class="shelf-section">
+    <div class="franchise-label">
+        That's So Raven
+    </div>
 
-        <div class="shelf-label">
-            Wizards of Waverly Place
-        </div>
+    <div class="cabinet">
 
-        <div class="shelf">
+        <div class="cabinet-inner">
 
-            <div class="empty">
-                Collection in progress.
-            </div>
+            <div class="inner-shelf one"></div>
+            <div class="inner-shelf two"></div>
 
-        </div>
+            <div class="door left"></div>
+            <div class="door right"></div>
 
-    </section>
-
-
-
-    <!-- =========================
-         CAMP ROCK
-    ========================== -->
-
-    <section class="shelf-section">
-
-        <div class="shelf-label">
-            Camp Rock
-        </div>
-
-        <div class="shelf">
-
-            <div class="empty">
-                Collection in progress.
-            </div>
+            <div class="handle left"></div>
+            <div class="handle right"></div>
 
         </div>
 
-    </section>
+        <div class="cabinet-base"></div>
+
+    </div>
+
+</section>
 
 
 
-    <!-- =========================
-         HSM
-    ========================== -->
+<!-- PROUD -->
+<section class="cabinet-wrap">
 
-    <section class="shelf-section">
+    <div class="franchise-label">
+        The Proud Family
+    </div>
 
-        <div class="shelf-label">
-            High School Musical
-        </div>
+    <div class="cabinet">
 
-        <div class="shelf">
+        <div class="cabinet-inner">
 
-            <div class="empty">
-                Collection in progress.
-            </div>
+            <div class="inner-shelf one"></div>
+            <div class="inner-shelf two"></div>
 
-        </div>
+            <div class="door left"></div>
+            <div class="door right"></div>
 
-    </section>
-
-
-
-    <!-- =========================
-         CHEETAH
-    ========================== -->
-
-    <section class="shelf-section">
-
-        <div class="shelf-label">
-            The Cheetah Girls
-        </div>
-
-        <div class="shelf">
-
-            <div class="empty">
-                Collection in progress.
-            </div>
+            <div class="handle left"></div>
+            <div class="handle right"></div>
 
         </div>
 
-    </section>
+        <div class="cabinet-base"></div>
+
+    </div>
+
+</section>
 
 
 
-    <!-- =========================
-         MASHED-UP
-    ========================== -->
+<!-- WIZARDS -->
+<section class="cabinet-wrap">
 
-    <section class="shelf-section">
+    <div class="franchise-label">
+        Wizards of Waverly Place
+    </div>
 
-        <div class="shelf-label">
-            Mashed-Up
+    <div class="cabinet">
+
+        <div class="cabinet-inner">
+
+            <div class="inner-shelf one"></div>
+            <div class="inner-shelf two"></div>
+
+            <div class="door left"></div>
+            <div class="door right"></div>
+
+            <div class="handle left"></div>
+            <div class="handle right"></div>
+
         </div>
 
-        <div class="shelf">
+        <div class="cabinet-base"></div>
 
-            <div class="empty">
-                Collection in progress.
-            </div>
+    </div>
+
+</section>
+
+
+
+<!-- CAMP ROCK -->
+<section class="cabinet-wrap">
+
+    <div class="franchise-label">
+        Camp Rock
+    </div>
+
+    <div class="cabinet">
+
+        <div class="cabinet-inner">
+
+            <div class="inner-shelf one"></div>
+            <div class="inner-shelf two"></div>
+
+            <div class="door left"></div>
+            <div class="door right"></div>
+
+            <div class="handle left"></div>
+            <div class="handle right"></div>
 
         </div>
 
-    </section>
+        <div class="cabinet-base"></div>
 
+    </div>
+
+</section>
+
+
+
+<!-- HSM -->
+<section class="cabinet-wrap">
+
+    <div class="franchise-label">
+        High School Musical
+    </div>
+
+    <div class="cabinet">
+
+        <div class="cabinet-inner">
+
+            <div class="inner-shelf one"></div>
+            <div class="inner-shelf two"></div>
+
+            <div class="door left"></div>
+            <div class="door right"></div>
+
+            <div class="handle left"></div>
+            <div class="handle right"></div>
+
+        </div>
+
+        <div class="cabinet-base"></div>
+
+    </div>
+
+</section>
+
+
+
+<!-- CHEETAH -->
+<section class="cabinet-wrap">
+
+    <div class="franchise-label">
+        The Cheetah Girls
+    </div>
+
+    <div class="cabinet">
+
+        <div class="cabinet-inner">
+
+            <div class="inner-shelf one"></div>
+            <div class="inner-shelf two"></div>
+
+            <div class="door left"></div>
+            <div class="door right"></div>
+
+            <div class="handle left"></div>
+            <div class="handle right"></div>
+
+        </div>
+
+        <div class="cabinet-base"></div>
+
+    </div>
+
+</section>
+
+
+
+<!-- MASHED UP -->
+<section class="cabinet-wrap">
+
+    <div class="franchise-label">
+        Mashed-Up
+    </div>
+
+    <div class="cabinet">
+
+        <div class="cabinet-inner">
+
+            <div class="inner-shelf one"></div>
+            <div class="inner-shelf two"></div>
+
+            <div class="door left"></div>
+            <div class="door right"></div>
+
+            <div class="handle left"></div>
+            <div class="handle right"></div>
+
+        </div>
+
+        <div class="cabinet-base"></div>
+
+    </div>
+
+</section>
+
+
+</div>
 
 </main>
 
@@ -714,44 +969,35 @@ body {
 
 <footer class="footer">
 
-    Disney Channel Home EXP Archive
+    Disney Channel Home EXP Archive<br>
+    Preserving the classics. Preserving our home.
 
 </footer>
 
 
 
-<!-- =========================
+<!-- ==============================
      IMAGE VIEWER
-========================== -->
+================================ -->
 
 <div
     class="viewer"
     id="viewer"
+    onclick="closeImage(event)"
 >
 
     <button
         class="close"
-        onclick="closeViewer()"
-        aria-label="Close"
+        onclick="closeImage(event)"
     >
         ×
     </button>
 
-
-    <div class="viewer-content">
-
-        <img
-            id="viewer-image"
-            src=""
-            alt=""
-        >
-
-        <div
-            class="viewer-caption"
-            id="viewer-caption"
-        ></div>
-
-    </div>
+    <img
+        id="viewerImage"
+        src=""
+        alt=""
+    >
 
 </div>
 
@@ -759,25 +1005,20 @@ body {
 
 <script>
 
-function openViewer(item) {
+/* ==============================
+   IMAGE VIEWER
+================================ */
+
+function openImage(item) {
 
     const image =
         item.querySelector("img");
 
     const viewer =
-        document.getElementById(
-            "viewer"
-        );
+        document.getElementById("viewer");
 
     const viewerImage =
-        document.getElementById(
-            "viewer-image"
-        );
-
-    const caption =
-        document.getElementById(
-            "viewer-caption"
-        );
+        document.getElementById("viewerImage");
 
     viewerImage.src =
         image.src;
@@ -785,52 +1026,35 @@ function openViewer(item) {
     viewerImage.alt =
         image.alt;
 
-    caption.textContent =
-        image.alt;
-
-    viewer.classList.add(
-        "active"
-    );
+    viewer.classList.add("active");
 }
 
 
-function closeViewer() {
+function closeImage(event) {
 
-    document
-        .getElementById("viewer")
-        .classList.remove(
-            "active"
-        );
+    if (
+        event.target.id === "viewer" ||
+        event.target.classList.contains("close")
+    ) {
+
+        document
+            .getElementById("viewer")
+            .classList.remove("active");
+
+    }
+
 }
-
-
-document
-    .getElementById("viewer")
-    .addEventListener(
-        "click",
-        function(event) {
-
-            if (
-                event.target === this
-            ) {
-
-                closeViewer();
-
-            }
-
-        }
-    );
 
 
 document.addEventListener(
     "keydown",
     function(event) {
 
-        if (
-            event.key === "Escape"
-        ) {
+        if (event.key === "Escape") {
 
-            closeViewer();
+            document
+                .getElementById("viewer")
+                .classList.remove("active");
 
         }
 
@@ -841,5 +1065,4 @@ document.addEventListener(
 
 
 </body>
-
 </html>
