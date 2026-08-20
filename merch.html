@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,20 +19,27 @@ html {
 
 body {
     margin: 0;
-    color: #fff;
+    min-height: 100vh;
+
     font-family: Arial, Helvetica, sans-serif;
 
-    background:
-        radial-gradient(circle at 50% 20%, rgba(255,255,255,.08), transparent 35%),
-        linear-gradient(#191919, #080808);
+    color: #263b2b;
 
-    min-height: 100vh;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.55),
+            transparent 25%,
+            transparent 75%,
+            rgba(255,255,255,.55)
+        ),
+        #dcebd8;
 }
 
 
-/* =====================================================
-   TOP
-===================================================== */
+/* =========================
+   HEADER
+========================= */
 
 .top {
     padding: 55px 7% 35px;
@@ -49,16 +57,18 @@ body {
 
     text-transform: uppercase;
 
+    color: #25452b;
+
     text-shadow:
-        4px 4px 0 #000;
+        3px 3px 0 rgba(255,255,255,.7);
 }
 
 .top p {
-    margin: 12px auto 0;
-
     max-width: 650px;
 
-    color: #cfcfcf;
+    margin: 12px auto 0;
+
+    color: #45604a;
 
     font-size: 16px;
 
@@ -66,57 +76,52 @@ body {
 }
 
 
-/* =====================================================
+/* =========================
    ROOM
-===================================================== */
+========================= */
 
 .room {
-
     width: min(1500px, 94%);
 
     margin: 20px auto 80px;
 
     padding: 35px 25px 55px;
 
-    position: relative;
-
     border-radius: 20px;
 
     background:
         linear-gradient(
             90deg,
-            rgba(255,255,255,.025),
-            transparent 20%,
-            transparent 80%,
-            rgba(255,255,255,.025)
+            rgba(255,255,255,.22),
+            transparent 50%,
+            rgba(255,255,255,.22)
         ),
-        #242424;
+        #edf5e9;
 
     box-shadow:
-        inset 0 0 80px rgba(0,0,0,.8),
-        0 20px 60px rgba(0,0,0,.6);
+        inset 0 0 80px rgba(90,120,90,.12),
+        0 20px 60px rgba(60,90,60,.20);
 }
 
 
-/* =====================================================
-   SHELF
-===================================================== */
+/* =========================
+   FRANCHISE SECTION
+========================= */
 
 .shelf-section {
-    margin: 0 auto 70px;
-
     max-width: 1300px;
+
+    margin: 0 auto 75px;
 }
 
 .shelf-label {
+    margin: 0 0 14px 10px;
 
-    margin: 0 0 12px 10px;
+    color: #45604a;
 
-    color: #d7d7d7;
+    font-size: 18px;
 
-    font-size: 13px;
-
-    font-weight: bold;
+    font-weight: 800;
 
     letter-spacing: 2px;
 
@@ -124,60 +129,48 @@ body {
 }
 
 
-/* Wooden back */
+/* =========================
+   WOODEN SHELF
+========================= */
 
 .shelf {
-
     position: relative;
 
-    min-height: 240px;
+    min-height: 245px;
 
-    padding:
-        25px
-        25px
-        30px;
+    padding: 30px 25px 35px;
 
     display: flex;
 
     align-items: flex-end;
 
-    gap: 22px;
+    gap: 25px;
 
     flex-wrap: wrap;
 
     background:
-
         linear-gradient(
             90deg,
-            rgba(255,255,255,.04),
+            rgba(255,255,255,.14),
             transparent 50%,
-            rgba(0,0,0,.12)
+            rgba(80,45,20,.08)
         ),
-
-        linear-gradient(
-            #633b20,
-            #472914
-        );
+        #b98250;
 
     border-radius:
         8px 8px 3px 3px;
 
     box-shadow:
-
-        inset 0 8px 0 rgba(255,255,255,.06),
-
-        inset 0 -15px 25px rgba(0,0,0,.3),
-
-        0 14px 0 #2b180d,
-
-        0 18px 25px rgba(0,0,0,.5);
+        inset 0 8px 0 rgba(255,255,255,.12),
+        inset 0 -15px 25px rgba(90,50,20,.18),
+        0 14px 0 #8b5c36,
+        0 18px 25px rgba(50,30,15,.25);
 }
 
 
-/* Shelf surface */
+/* Shelf front */
 
 .shelf::after {
-
     content: "";
 
     position: absolute;
@@ -193,27 +186,26 @@ body {
 
     background:
         linear-gradient(
-            #7b4b29,
-            #4b2b17
+            #c99665,
+            #9d6b43
         );
 
     box-shadow:
-        0 5px 0 #201208,
-        0 10px 15px rgba(0,0,0,.5);
+        0 5px 0 #704729,
+        0 10px 15px rgba(50,30,15,.25);
 }
 
 
-/* =====================================================
+/* =========================
    MERCH ITEM
-===================================================== */
+========================= */
 
 .item {
-
     position: relative;
 
-    width: 125px;
+    width: 135px;
 
-    min-height: 155px;
+    min-height: 170px;
 
     display: flex;
 
@@ -223,16 +215,14 @@ body {
 
     cursor: pointer;
 
+    z-index: 2;
+
     transition:
         transform .2s ease,
         filter .2s ease;
-
-    z-index: 2;
 }
 
-
 .item:hover {
-
     transform:
         translateY(-12px)
         scale(1.04);
@@ -240,18 +230,16 @@ body {
     filter:
         drop-shadow(
             0 12px 12px
-            rgba(0,0,0,.6)
+            rgba(0,0,0,.35)
         );
 }
 
-
 .item img {
-
     display: block;
 
-    max-width: 125px;
+    max-width: 135px;
 
-    max-height: 165px;
+    max-height: 175px;
 
     width: auto;
 
@@ -259,43 +247,39 @@ body {
 
     object-fit: contain;
 
-    border-radius: 4px;
+    border-radius: 5px;
 
     filter:
         drop-shadow(
             0 5px 5px
-            rgba(0,0,0,.5)
+            rgba(0,0,0,.35)
         );
 }
 
 
-/* =====================================================
+/* =========================
    ITEM NUMBER
-===================================================== */
+========================= */
 
 .item-number {
-
     position: absolute;
 
     top: -8px;
-
     left: -5px;
 
-    width: 25px;
-
-    height: 25px;
+    width: 26px;
+    height: 26px;
 
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     border-radius: 50%;
 
-    background: #fff;
+    background: white;
 
-    color: #111;
+    color: #25452b;
 
     font-size: 11px;
 
@@ -306,7 +290,7 @@ body {
     transition: opacity .2s;
 
     box-shadow:
-        0 3px 5px rgba(0,0,0,.4);
+        0 3px 5px rgba(0,0,0,.25);
 }
 
 .item:hover .item-number {
@@ -314,13 +298,12 @@ body {
 }
 
 
-/* =====================================================
+/* =========================
    EMPTY SHELF
-===================================================== */
+========================= */
 
 .empty {
-
-    color: rgba(255,255,255,.4);
+    color: rgba(60,80,60,.55);
 
     font-size: 13px;
 
@@ -330,12 +313,11 @@ body {
 }
 
 
-/* =====================================================
-   VIEWER
-===================================================== */
+/* =========================
+   IMAGE VIEWER
+========================= */
 
 .viewer {
-
     position: fixed;
 
     inset: 0;
@@ -345,26 +327,21 @@ body {
     display: none;
 
     align-items: center;
-
     justify-content: center;
 
     padding: 30px;
 
     background:
-        rgba(0,0,0,.94);
+        rgba(20,35,20,.88);
 
-    backdrop-filter:
-        blur(8px);
+    backdrop-filter: blur(8px);
 }
-
 
 .viewer.active {
     display: flex;
 }
 
-
 .viewer-content {
-
     max-width: 900px;
 
     width: 100%;
@@ -380,9 +357,7 @@ body {
     justify-content: center;
 }
 
-
 .viewer img {
-
     max-width: 90vw;
 
     max-height: 80vh;
@@ -396,79 +371,66 @@ body {
     border-radius: 6px;
 
     box-shadow:
-        0 20px 70px rgba(0,0,0,.8);
+        0 20px 70px rgba(0,0,0,.65);
 }
 
-
 .viewer-caption {
-
     margin-top: 18px;
 
-    color: #ddd;
+    color: white;
 
     font-size: 14px;
 
     text-align: center;
 }
 
-
 .close {
-
     position: fixed;
 
     top: 22px;
-
     right: 28px;
 
     width: 45px;
-
     height: 45px;
 
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
+    border: none;
 
     border-radius: 50%;
 
-    background: rgba(255,255,255,.12);
+    background:
+        rgba(255,255,255,.15);
 
     color: white;
 
     font-size: 30px;
 
     cursor: pointer;
-
-    transition:
-        background .2s;
 }
-
 
 .close:hover {
-    background: rgba(255,255,255,.25);
+    background:
+        rgba(255,255,255,.30);
 }
 
 
-/* =====================================================
+/* =========================
    FOOTER
-===================================================== */
+========================= */
 
 .footer {
-
     padding: 30px;
 
     text-align: center;
 
-    color: #777;
+    color: #58705c;
 
     font-size: 12px;
 }
 
 
-/* =====================================================
+/* =========================
    MOBILE
-===================================================== */
+========================= */
 
 @media (max-width: 650px) {
 
@@ -482,11 +444,18 @@ body {
 
     .room {
         width: 96%;
-        padding: 25px 12px 45px;
+
+        padding:
+            25px
+            12px
+            45px;
     }
 
     .shelf {
-        padding: 20px 12px 25px;
+        padding:
+            20px
+            12px
+            25px;
 
         gap: 14px;
 
@@ -495,28 +464,15 @@ body {
 
     .item {
         width: 90px;
+
         min-height: 130px;
     }
 
     .item img {
         max-width: 90px;
+
         max-height: 135px;
     }
-
-}
-
-
-/* =====================================================
-   REDUCED MOTION
-===================================================== */
-
-@media (prefers-reduced-motion: reduce) {
-
-    * {
-        scroll-behavior: auto !important;
-        transition: none !important;
-    }
-
 }
 
 </style>
@@ -526,10 +482,6 @@ body {
 
 <body>
 
-
-<!-- =====================================================
-     HEADER
-===================================================== -->
 
 <header class="top">
 
@@ -544,124 +496,35 @@ body {
 
 
 
-<!-- =====================================================
-     ARCHIVE ROOM
-===================================================== -->
-
 <main class="room">
 
 
-    <!-- SHELF 1 -->
+    <!-- =========================
+         HANNAH
+    ========================== -->
 
     <section class="shelf-section">
 
         <div class="shelf-label">
-            Collection — 01
+            Hannah Montana
         </div>
 
-        <div class="shelf" id="shelf-1">
+        <div class="shelf">
 
-            <!--
-                PUT YOUR CLOUDINARY IMAGES HERE.
-
-                Duplicate an .item whenever you
-                want to add another object.
-            -->
-
-
-            <div class="item"
-                 onclick="openViewer(this)">
+            <div
+                class="item"
+                onclick="openViewer(this)"
+            >
 
                 <span class="item-number">
                     1
                 </span>
 
                 <img
-                    src="PASTE-CLOUDINARY-URL-HERE"
-                    alt="Disney Channel merchandise"
+                    src="https://drive.google.com/uc?export=view&id=1gTg6pqPIqNWVbEfKsbChUEiEwVk7tr_6"
+                    alt="Hannah Montana merchandise"
                 >
 
-            </div>
-
-
-            <div class="item"
-                 onclick="openViewer(this)">
-
-                <span class="item-number">
-                    2
-                </span>
-
-                <img
-                    src="PASTE-CLOUDINARY-URL-HERE"
-                    alt="Disney Channel merchandise"
-                >
-
-            </div>
-
-
-            <div class="item"
-                 onclick="openViewer(this)">
-
-                <span class="item-number">
-                    3
-                </span>
-
-                <img
-                    src="PASTE-CLOUDINARY-URL-HERE"
-                    alt="Disney Channel merchandise"
-                >
-
-            </div>
-
-
-            <div class="item"
-                 onclick="openViewer(this)">
-
-                <span class="item-number">
-                    4
-                </span>
-
-                <img
-                    src="PASTE-CLOUDINARY-URL-HERE"
-                    alt="Disney Channel merchandise"
-                >
-
-            </div>
-
-
-            <div class="item"
-                 onclick="openViewer(this)">
-
-                <span class="item-number">
-                    5
-                </span>
-
-                <img
-                    src="PASTE-CLOUDINARY-URL-HERE"
-                    alt="Disney Channel merchandise"
-                >
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-
-    <!-- SHELF 2 -->
-
-    <section class="shelf-section">
-
-        <div class="shelf-label">
-            Collection — 02
-        </div>
-
-        <div class="shelf" id="shelf-2">
-
-            <div class="empty">
-                More objects from the collection will be preserved here.
             </div>
 
         </div>
@@ -670,18 +533,174 @@ body {
 
 
 
-    <!-- SHELF 3 -->
+    <!-- =========================
+         KIM
+    ========================== -->
 
     <section class="shelf-section">
 
         <div class="shelf-label">
-            Collection — 03
+            Kim Possible
         </div>
 
-        <div class="shelf" id="shelf-3">
+        <div class="shelf">
 
             <div class="empty">
-                Archive in progress.
+                Collection in progress.
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         RAVEN
+    ========================== -->
+
+    <section class="shelf-section">
+
+        <div class="shelf-label">
+            That's So Raven
+        </div>
+
+        <div class="shelf">
+
+            <div class="empty">
+                Collection in progress.
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         PROUD
+    ========================== -->
+
+    <section class="shelf-section">
+
+        <div class="shelf-label">
+            The Proud Family
+        </div>
+
+        <div class="shelf">
+
+            <div class="empty">
+                Collection in progress.
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         WIZARDS
+    ========================== -->
+
+    <section class="shelf-section">
+
+        <div class="shelf-label">
+            Wizards of Waverly Place
+        </div>
+
+        <div class="shelf">
+
+            <div class="empty">
+                Collection in progress.
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CAMP ROCK
+    ========================== -->
+
+    <section class="shelf-section">
+
+        <div class="shelf-label">
+            Camp Rock
+        </div>
+
+        <div class="shelf">
+
+            <div class="empty">
+                Collection in progress.
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         HSM
+    ========================== -->
+
+    <section class="shelf-section">
+
+        <div class="shelf-label">
+            High School Musical
+        </div>
+
+        <div class="shelf">
+
+            <div class="empty">
+                Collection in progress.
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CHEETAH
+    ========================== -->
+
+    <section class="shelf-section">
+
+        <div class="shelf-label">
+            The Cheetah Girls
+        </div>
+
+        <div class="shelf">
+
+            <div class="empty">
+                Collection in progress.
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         MASHED-UP
+    ========================== -->
+
+    <section class="shelf-section">
+
+        <div class="shelf-label">
+            Mashed-Up
+        </div>
+
+        <div class="shelf">
+
+            <div class="empty">
+                Collection in progress.
             </div>
 
         </div>
@@ -701,9 +720,9 @@ body {
 
 
 
-<!-- =====================================================
+<!-- =========================
      IMAGE VIEWER
-===================================================== -->
+========================== -->
 
 <div
     class="viewer"
@@ -740,10 +759,6 @@ body {
 
 <script>
 
-/* =====================================================
-   IMAGE VIEWER
-===================================================== */
-
 function openViewer(item) {
 
     const image =
@@ -764,23 +779,18 @@ function openViewer(item) {
             "viewer-caption"
         );
 
-
     viewerImage.src =
         image.src;
-
 
     viewerImage.alt =
         image.alt;
 
-
     caption.textContent =
         image.alt;
-
 
     viewer.classList.add(
         "active"
     );
-
 }
 
 
@@ -791,11 +801,8 @@ function closeViewer() {
         .classList.remove(
             "active"
         );
-
 }
 
-
-/* Close when clicking outside */
 
 document
     .getElementById("viewer")
@@ -814,8 +821,6 @@ document
         }
     );
 
-
-/* Escape key */
 
 document.addEventListener(
     "keydown",
@@ -836,4 +841,5 @@ document.addEventListener(
 
 
 </body>
+
 </html>
