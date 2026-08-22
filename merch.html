@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Merchandise — Disney Channel Home EXP Archive</title>
+<title>MERCH ARCHIVE — Disney Channel Home EXP Archive</title>
 
 <style>
 
-/* ==============================
-   BASIC
-================================ */
+/* =========================================================
+   RESET
+========================================================= */
 
 * {
     box-sizing: border-box;
@@ -22,467 +22,452 @@ html {
 
 body {
     margin: 0;
+    background:
+        linear-gradient(
+            90deg,
+            #d9d6b7 0%,
+            #eeecd7 18%,
+            #f4f0d9 50%,
+            #eeecd7 82%,
+            #d9d6b7 100%
+        );
+
+    color: #493c2b;
+
+    font-family:
+        "Trebuchet MS",
+        Arial,
+        sans-serif;
+}
+
+
+/* =========================================================
+   WARM WALL
+========================================================= */
+
+.wall {
     min-height: 100vh;
 
-    font-family: Georgia, "Times New Roman", serif;
-
-    color: #31563b;
-
     background:
+
+        linear-gradient(
+            rgba(255,255,255,.12),
+            rgba(255,255,255,.12)
+        ),
+
         repeating-linear-gradient(
-            0deg,
-            #eee9dc 0px,
-            #eee9dc 24px,
-            #d8d2c4 25px,
-            #f4f0e5 27px
+            90deg,
+            rgba(111,119,78,.08) 0px,
+            rgba(111,119,78,.08) 2px,
+            transparent 2px,
+            transparent 82px
         );
 }
 
 
-/* ==============================
+/* =========================================================
    HEADER
-================================ */
+========================================================= */
 
-.header {
+.site-header {
+
     text-align: center;
 
-    padding: 45px 20px 30px;
-
-    background: rgba(245, 242, 231, 0.94);
-
-    border-bottom:
-        1px solid rgba(90, 80, 60, 0.2);
-}
-
-.header h1 {
-    margin: 0;
-
-    color: #31563b;
-
-    font-size: clamp(42px, 6vw, 76px);
-
-    letter-spacing: 3px;
-
-    text-transform: uppercase;
-
-    font-weight: normal;
-}
-
-.header p {
-    margin: 8px auto 0;
-
-    max-width: 650px;
-
-    color: #526a57;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    font-size: 15px;
-
-    line-height: 1.5;
-}
-
-
-/* ==============================
-   ROOM
-================================ */
-
-.room {
-    width: min(1500px, 94%);
-
-    margin: 0 auto;
-
     padding:
-        40px
-        25px
-        80px;
-
-    background:
-        rgba(247, 244, 234, 0.48);
-
-    min-height: 100vh;
-}
-
-
-/* ==============================
-   CABINET GRID
-================================ */
-
-.cabinet-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap:
-        70px
-        28px;
-
-    max-width: 1350px;
-
-    margin: 0 auto;
-}
-
-
-/* ==============================
-   CABINET SECTION
-================================ */
-
-.cabinet-wrap {
-    position: relative;
-
-    padding-top: 28px;
-}
-
-
-/* ==============================
-   GREEN FRANCHISE LABEL
-================================ */
-
-.franchise-label {
-    position: absolute;
-
-    z-index: 20;
-
-    top: 0;
-
-    left: 50%;
-
-    transform:
-        translateX(-50%);
-
-    width: max-content;
-
-    max-width: 92%;
-
-    padding:
-        9px
+        28px 20px
         20px;
 
-    border-radius:
-        7px
-        7px
-        2px
-        2px;
+    background:
+        linear-gradient(
+            to bottom,
+            #f5efd2,
+            #e6e4c4
+        );
 
-    background: #315f3c;
+    border-bottom:
+        5px solid #b5a46a;
 
-    color: white;
+    box-shadow:
+        0 4px 14px rgba(72,55,28,.18);
+}
 
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
 
-    font-size: 13px;
+.logo-small {
+
+    display: inline-block;
+
+    margin-bottom: 8px;
+
+    padding:
+        5px 14px;
+
+    border-radius: 20px;
+
+    background: #70835a;
+
+    color: #fffbe7;
+
+    font-size: 10px;
 
     font-weight: bold;
 
-    letter-spacing: .5px;
-
-    text-transform: uppercase;
+    letter-spacing: 2px;
 
     box-shadow:
-        0 3px 5px
-        rgba(0,0,0,.18);
+        0 2px 0 #4e603f;
 }
 
 
-/* ==============================
-   CABINET
-================================ */
+.site-header h1 {
 
-.cabinet {
-    position: relative;
+    margin: 0;
 
-    width: 100%;
+    color: #695a38;
 
-    aspect-ratio: 0.72;
+    font-family:
+        "Trebuchet MS",
+        Arial,
+        sans-serif;
+
+    font-size:
+        clamp(30px, 6vw, 62px);
+
+    letter-spacing: 2px;
+
+    text-shadow:
+        2px 2px 0 #f9f3d9;
+}
+
+
+.site-header p {
+
+    margin:
+        7px auto 0;
+
+    max-width: 650px;
+
+    color: #7d7256;
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================================
+   LITTLE Y2K DECORATIONS
+========================================================= */
+
+.sparkle {
+
+    position: absolute;
+
+    color: #b79845;
+
+    font-size: 25px;
+
+    opacity: .75;
+}
+
+.sparkle.one {
+    left: 7%;
+    top: 30px;
+}
+
+.sparkle.two {
+    right: 8%;
+    top: 65px;
+}
+
+.sparkle.three {
+    left: 13%;
+    top: 130px;
+    font-size: 16px;
+}
+
+.sparkle.four {
+    right: 15%;
+    top: 120px;
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   NAV
+========================================================= */
+
+.archive-nav {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 50;
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 7px;
+
+    padding: 10px;
+
+    background:
+        rgba(244,240,217,.96);
+
+    border-bottom:
+        1px solid #c4b98d;
+
+    box-shadow:
+        0 3px 10px rgba(70,50,20,.12);
+}
+
+
+.archive-nav a {
 
     padding:
-        17px;
+        7px 13px;
 
-    background:
-        linear-gradient(
-            90deg,
-            #8f5e31 0%,
-            #bd8550 7%,
-            #a86e3b 50%,
-            #c18a55 93%,
-            #89572e 100%
-        );
+    border-radius: 18px;
 
-    border-radius:
-        4px
-        4px
-        2px
-        2px;
+    background: #e0dfc1;
 
-    box-shadow:
-        inset 0 0 0 3px rgba(92, 55, 28, .55),
-        inset 0 0 25px rgba(70, 40, 18, .3),
-        0 8px 0 #744622,
-        0 14px 25px rgba(50, 35, 20, .28);
+    color: #655b42;
+
+    text-decoration: none;
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    border:
+        1px solid #c5bf94;
+
+    transition:
+        .15s ease;
 }
 
 
-/* ==============================
-   INNER WOOD BACK
-================================ */
+.archive-nav a:hover {
 
-.cabinet-inner {
+    background: #789061;
+
+    color: white;
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =========================================================
+   ROOM
+========================================================= */
+
+.collection-room {
+
+    width:
+        min(1180px, 94vw);
+
+    margin:
+        35px auto 80px;
+
+    padding:
+        30px 25px 45px;
+
+    position: relative;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #e2dfc2,
+            #f2efd9 14%,
+            #f6f2dc 50%,
+            #f2efd9 86%,
+            #e2dfc2
+        );
+
+    border:
+        1px solid #c6bd91;
+
+    box-shadow:
+        0 15px 40px
+        rgba(67,48,24,.20);
+
+}
+
+
+/* =========================================================
+   CABINET
+========================================================= */
+
+.cabinet {
+
     position: relative;
 
     width: 100%;
-    height: 100%;
 
-    overflow: hidden;
-
-    background:
-        repeating-linear-gradient(
-            90deg,
-            rgba(70, 38, 15, .08) 0px,
-            rgba(255,255,255,.03) 4px,
-            rgba(70, 38, 15, .07) 9px
-        ),
-        #8e5d32;
-
-    border:
-        5px solid #6f431f;
-
-    box-shadow:
-        inset 0 0 35px
-        rgba(40,20,8,.4);
-}
-
-
-/* ==============================
-   INTERIOR SHELVES
-================================ */
-
-.inner-shelf {
-    position: absolute;
-
-    left: 7%;
-    right: 7%;
-
-    height: 9px;
+    padding:
+        25px 25px 35px;
 
     background:
-        linear-gradient(
-            #d19a60,
-            #a86f3b
-        );
 
-    box-shadow:
-        0 5px 0 #704421,
-        0 7px 10px rgba(40,20,8,.28);
-}
-
-.inner-shelf.one {
-    top: 34%;
-}
-
-.inner-shelf.two {
-    top: 67%;
-}
-
-
-/* ==============================
-   CABINET DOORS
-================================ */
-
-.door {
-    position: absolute;
-
-    top: 3%;
-    bottom: 3%;
-
-    width: 47%;
-
-    z-index: 10;
-
-    background:
         linear-gradient(
             90deg,
-            rgba(90,52,26,.45),
-            rgba(190,140,90,.13),
-            rgba(70,38,18,.42)
+            #8f6c35 0%,
+            #a77d3c 7%,
+            #b58a49 20%,
+            #a77c3e 50%,
+            #b18a4e 80%,
+            #8c6936 100%
         );
 
     border:
-        4px solid #6c411f;
+        8px solid #76572c;
+
+    border-radius:
+        3px;
 
     box-shadow:
-        inset 0 0 12px rgba(40,20,8,.4);
 
-    pointer-events: none;
+        inset 0 0 0 3px
+        rgba(219,180,102,.45),
+
+        inset 12px 0 20px
+        rgba(61,39,14,.18),
+
+        inset -12px 0 20px
+        rgba(61,39,14,.18),
+
+        0 12px 25px
+        rgba(50,32,13,.28);
+
 }
 
-.door.left {
-    left: 3%;
-}
 
-.door.right {
-    right: 3%;
-}
+/* =========================================================
+   WOOD GRAIN
+========================================================= */
 
+.cabinet::before {
 
-/* Glass effect */
-
-.door::after {
     content: "";
 
     position: absolute;
 
-    inset: 6px;
+    inset: 0;
 
-    border:
-        1px solid
-        rgba(245, 235, 210, .22);
+    pointer-events: none;
+
+    opacity: .22;
+
+    background:
+
+        repeating-linear-gradient(
+            90deg,
+            transparent 0px,
+            transparent 12px,
+            rgba(72,45,17,.20) 13px,
+            transparent 16px,
+            transparent 30px
+        );
+}
+
+
+/* =========================================================
+   CABINET TOP
+========================================================= */
+
+.cabinet-top {
+
+    position: relative;
+
+    z-index: 2;
+
+    height: 18px;
+
+    margin:
+        -25px -25px 25px;
 
     background:
         linear-gradient(
-            120deg,
-            rgba(255,255,255,.12),
-            transparent 25%,
-            transparent 75%,
-            rgba(255,255,255,.04)
+            to bottom,
+            #c19a58,
+            #987039
         );
-}
 
-
-/* ==============================
-   DOOR HANDLES
-================================ */
-
-.handle {
-    position: absolute;
-
-    z-index: 15;
-
-    top: 50%;
-
-    width: 9px;
-    height: 9px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #e7c681,
-            #8a5b29
-        );
+    border-bottom:
+        4px solid #6e4f28;
 
     box-shadow:
-        0 1px 2px rgba(0,0,0,.5);
-}
-
-.handle.left {
-    left: 48.2%;
-}
-
-.handle.right {
-    right: 48.2%;
+        0 4px 7px
+        rgba(47,30,12,.3);
 }
 
 
-/* ==============================
-   MERCH ITEMS
-================================ */
+/* =========================================================
+   FRANCHISE DISPLAY
+========================================================= */
 
-.merch-item {
-    position: absolute;
+.franchise {
 
-    z-index: 7;
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 42px;
+
+}
+
+
+.franchise:last-child {
+    margin-bottom: 0;
+}
+
+
+.franchise-header {
 
     display: flex;
 
-    align-items: flex-end;
+    align-items: center;
 
-    justify-content: center;
+    justify-content: space-between;
 
-    cursor: pointer;
+    gap: 15px;
 
-    transition:
-        transform .2s ease,
-        filter .2s ease;
-}
+    margin:
+        0 4px 12px;
 
-.merch-item:hover {
-    transform:
-        translateY(-8px)
-        scale(1.04);
+    padding:
+        9px 13px;
 
-    filter:
-        drop-shadow(
-            0 8px 8px
-            rgba(0,0,0,.45)
+    border-radius:
+        5px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #f5e9bd,
+            #ddcf98
         );
+
+    border:
+        2px solid #a7884e;
+
+    box-shadow:
+        0 3px 0 #76582c;
 }
 
 
-/* First test object */
+.franchise-name {
 
-.merch-item.hannah-one {
+    margin: 0;
 
-    left: 12%;
+    color: #594526;
 
-    top: 17%;
-
-    width: 28%;
-
-    height: 20%;
-}
-
-.merch-item img {
-
-    max-width: 100%;
-
-    max-height: 100%;
-
-    width: auto;
-
-    height: auto;
-
-    object-fit: contain;
-
-    display: block;
-
-    filter:
-        drop-shadow(
-            0 5px 5px
-            rgba(0,0,0,.45)
-        );
-}
-
-
-/* ==============================
-   EMPTY CABINET MESSAGE
-================================ */
-
-.empty {
-    position: absolute;
-
-    z-index: 6;
-
-    left: 0;
-    right: 0;
-
-    top: 48%;
-
-    text-align: center;
-
-    color:
-        rgba(255,255,255,.22);
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    font-size: 10px;
+    font-size:
+        clamp(18px, 3vw, 28px);
 
     letter-spacing: 1px;
 
@@ -490,153 +475,469 @@ body {
 }
 
 
-/* ==============================
-   CABINET BASE
-================================ */
+.franchise-count {
 
-.cabinet-base {
+    padding:
+        4px 8px;
+
+    border-radius: 12px;
+
+    background: #70865a;
+
+    color: #fffbe8;
+
+    font-size: 9px;
+
+    font-weight: bold;
+
+}
+
+
+/* =========================================================
+   SHELF UNIT
+========================================================= */
+
+.shelf-unit {
+
+    position: relative;
+
+    padding:
+        12px 12px 4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7d5a2d,
+            #a77b3d 12%,
+            #b18a4d 50%,
+            #a77b3d 88%,
+            #7d5a2d
+        );
+
+    border:
+        5px solid #6d4d25;
+
+    box-shadow:
+
+        inset 0 0 0 2px
+        rgba(220,178,98,.3),
+
+        0 8px 15px
+        rgba(48,31,13,.28);
+
+}
+
+
+/* =========================================================
+   SHELF
+========================================================= */
+
+.shelf {
+
+    position: relative;
+
+    min-height: 175px;
+
+    margin-bottom: 18px;
+
+    padding:
+        15px 14px 20px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 18px;
+
+    overflow: hidden;
+
+    background:
+
+        linear-gradient(
+            to bottom,
+            rgba(92,65,30,.18),
+            rgba(139,101,48,.08)
+        );
+
+    border-top:
+        1px solid
+        rgba(72,45,18,.25);
+
+}
+
+
+/* actual wooden shelf plank */
+
+.shelf::after {
+
+    content: "";
+
     position: absolute;
 
-    left: -4px;
-    right: -4px;
+    left: 0;
 
-    bottom: -17px;
+    right: 0;
+
+    bottom: 0;
 
     height: 18px;
 
     background:
+
         linear-gradient(
-            #c28a52,
-            #8d5a30
+            to bottom,
+            #c09651,
+            #a37639
         );
 
-    border-radius:
-        2px
-        2px
-        4px
-        4px;
+    border-top:
+        3px solid #d0a75e;
+
+    border-bottom:
+        4px solid #725027;
 
     box-shadow:
-        0 5px 0 #68401f,
-        0 9px 13px rgba(40,25,10,.25);
+        0 5px 7px
+        rgba(54,34,12,.28);
 }
 
 
-/* ==============================
-   IMAGE VIEWER
-================================ */
+/* =========================================================
+   MERCH ITEM
+========================================================= */
 
-.viewer {
+.merch-item {
+
+    position: relative;
+
+    z-index: 5;
+
+    flex:
+        0 0 auto;
+
+    width:
+        clamp(85px, 13%, 135px);
+
+    min-height: 130px;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: center;
+
+    padding-bottom: 18px;
+
+    cursor: pointer;
+
+    transition:
+        transform .18s ease;
+}
+
+
+.merch-item:hover {
+
+    transform:
+        translateY(-8px)
+        rotate(-1deg);
+
+}
+
+
+/* =========================================================
+   MERCH IMAGE
+========================================================= */
+
+.merch-item img {
+
+    display: block;
+
+    max-width: 100%;
+
+    max-height: 125px;
+
+    width: auto;
+
+    height: auto;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 5px 4px
+            rgba(45,28,10,.38)
+        );
+
+}
+
+
+/* =========================================================
+   MERCH LABEL
+========================================================= */
+
+.merch-label {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: -3px;
+
+    transform:
+        translateX(-50%);
+
+    width:
+        max-content;
+
+    max-width: 125px;
+
+    padding:
+        3px 6px;
+
+    border-radius: 5px;
+
+    background:
+        rgba(247,237,194,.95);
+
+    border:
+        1px solid #ad965b;
+
+    color:
+        #5f5032;
+
+    font-size: 8px;
+
+    text-align: center;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+}
+
+
+/* =========================================================
+   EMPTY ITEM
+========================================================= */
+
+.empty-shelf {
+
+    height: 130px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color:
+        rgba(80,55,25,.45);
+
+    font-size: 10px;
+
+    font-style: italic;
+}
+
+
+/* =========================================================
+   DECORATIVE STAR
+========================================================= */
+
+.shelf-star {
+
+    position: absolute;
+
+    z-index: 4;
+
+    color: #d5b15d;
+
+    font-size: 18px;
+
+    opacity: .8;
+}
+
+.shelf-star.one {
+    right: 18px;
+    top: 12px;
+}
+
+.shelf-star.two {
+    left: 22px;
+    top: 35px;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.archive-footer {
+
+    text-align: center;
+
+    padding:
+        30px 20px 50px;
+
+    color: #766a4d;
+
+    font-size: 11px;
+}
+
+
+.archive-footer strong {
+
+    color: #61754c;
+}
+
+
+/* =========================================================
+   IMAGE LIGHTBOX
+========================================================= */
+
+.lightbox {
+
     position: fixed;
 
     inset: 0;
 
-    z-index: 9999;
+    z-index: 200;
 
     display: none;
 
     align-items: center;
+
     justify-content: center;
 
-    padding: 25px;
+    padding: 30px;
 
     background:
-        rgba(30,40,30,.88);
+        rgba(42,31,18,.82);
 }
 
-.viewer.active {
+
+.lightbox.open {
     display: flex;
 }
 
-.viewer img {
+
+.lightbox-box {
+
+    position: relative;
+
     max-width: 90vw;
 
-    max-height: 85vh;
+    max-height: 90vh;
 
-    object-fit: contain;
+    padding: 18px;
+
+    border:
+        6px solid #a67b3d;
+
+    background:
+        #f5efd2;
 
     box-shadow:
-        0 20px 70px
-        rgba(0,0,0,.6);
+        0 20px 60px
+        rgba(0,0,0,.45);
+
 }
 
-.close {
-    position: fixed;
 
-    right: 25px;
-    top: 20px;
+.lightbox-box img {
 
-    border: none;
+    display: block;
 
-    background: none;
+    max-width: 80vw;
+
+    max-height: 78vh;
+
+    object-fit: contain;
+}
+
+
+.close-lightbox {
+
+    position: absolute;
+
+    right: -17px;
+
+    top: -17px;
+
+    width: 32px;
+
+    height: 32px;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background: #6e8458;
 
     color: white;
 
-    font-size: 45px;
+    font-size: 18px;
 
     cursor: pointer;
 }
 
 
-/* ==============================
-   FOOTER
-================================ */
-
-.footer {
-    padding:
-        45px
-        20px;
-
-    text-align: center;
-
-    background:
-        rgba(247,244,234,.95);
-
-    color: #31563b;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
-    font-size: 13px;
-}
-
-
-/* ==============================
+/* =========================================================
    MOBILE
-================================ */
+========================================================= */
 
-@media (max-width: 850px) {
+@media (max-width: 700px) {
 
-    .cabinet-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
+    .collection-room {
 
-        gap:
-            65px
-            18px;
-    }
+        width: 96vw;
 
-}
-
-@media (max-width: 520px) {
-
-    .room {
         padding:
-            30px
-            8px
-            60px;
+            15px 10px 30px;
     }
 
-    .cabinet-grid {
-        grid-template-columns: 1fr;
 
-        max-width: 380px;
+    .cabinet {
+
+        padding:
+            18px 12px 25px;
     }
 
-    .header h1 {
-        letter-spacing: 1px;
+
+    .cabinet-top {
+
+        margin:
+            -18px -12px 18px;
+    }
+
+
+    .shelf {
+
+        gap: 8px;
+
+        min-height: 145px;
+
+        padding:
+            10px 6px 20px;
+
+        overflow-x: auto;
+    }
+
+
+    .merch-item {
+
+        width: 90px;
+
+        min-width: 90px;
+
+        min-height: 115px;
+    }
+
+
+    .merch-item img {
+
+        max-height: 105px;
     }
 
 }
@@ -648,317 +949,421 @@ body {
 <body>
 
 
-<!-- ==============================
+<div class="wall">
+
+
+<!-- =====================================================
      HEADER
-================================ -->
+===================================================== -->
 
-<header class="header">
+<header class="site-header">
 
-    <h1>Merchandise</h1>
+    <span class="sparkle one">✦</span>
+    <span class="sparkle two">★</span>
+    <span class="sparkle three">✧</span>
+    <span class="sparkle four">✦</span>
+
+
+    <div class="logo-small">
+        DISNEY CHANNEL HOME EXP
+    </div>
+
+
+    <h1>
+        MERCH ARCHIVE
+    </h1>
+
 
     <p>
-        Physical objects preserved in the
-        Disney Channel Home EXP Archive.
+        La colección física del archivo — objetos, ediciones,
+        recuerdos y piezas de la era Disney Channel.
     </p>
 
 </header>
 
 
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
 
-<!-- ==============================
-     ROOM
-================================ -->
+<nav class="archive-nav">
 
-<main class="room">
+    <a href="#hannah">Hannah Montana</a>
 
-<div class="cabinet-grid">
+    <a href="#kim">Kim Possible</a>
+
+    <a href="#raven">Raven</a>
+
+    <a href="#proud">La Familia Proud</a>
+
+    <a href="#wizards">Wizards</a>
+
+    <a href="#camp-rock">Camp Rock</a>
+
+    <a href="#hsm">High School Musical</a>
+
+    <a href="#cheetah">Cheetah Girls</a>
+
+    <a href="#mashed">Mashed-Up</a>
+
+</nav>
 
 
-<!-- HANNAH -->
-<section class="cabinet-wrap">
+<!-- =====================================================
+     COLLECTION ROOM
+===================================================== -->
 
-    <div class="franchise-label">
-        Hannah Montana
-    </div>
-
-    <div class="cabinet">
-
-        <div class="cabinet-inner">
-
-            <div class="inner-shelf one"></div>
-            <div class="inner-shelf two"></div>
+<main class="collection-room">
 
 
-            <!-- HANNAH IMAGE -->
+<div class="cabinet">
 
-            <div
-                class="merch-item hannah-one"
-                onclick="openImage(this)"
-            >
 
-                <img
-                    src="https://drive.google.com/thumbnail?id=1gTg6pqPIqNWVbEfKsbChUEiEwVk7tr_6&sz=w1000"
-                    alt="Hannah Montana merchandise"
-                >
+    <div class="cabinet-top"></div>
+
+
+    <!-- =================================================
+         HANNAH
+    ================================================== -->
+
+    <section
+        class="franchise"
+        id="hannah">
+
+        <div class="franchise-header">
+
+            <h2 class="franchise-name">
+                Hannah Montana
+            </h2>
+
+            <span class="franchise-count">
+                COLECCIÓN
+            </span>
+
+        </div>
+
+
+        <div class="shelf-unit">
+
+
+            <div class="shelf">
+
+                <span class="shelf-star one">✦</span>
+
+                <!--
+                DUPLICA ESTE BLOQUE PARA CADA
+                IMAGEN DE HANNAH
+                -->
+
+                <div class="merch-item">
+
+                    <img
+                        src="REEMPLAZA-CON-TU-URL"
+                        alt="Hannah Montana">
+
+                    <span class="merch-label">
+                        Hannah Montana
+                    </span>
+
+                </div>
+
 
             </div>
 
 
-            <!-- DOORS -->
+            <div class="shelf">
 
-            <div class="door left"></div>
-            <div class="door right"></div>
+                <span class="shelf-star two">✧</span>
 
-            <div class="handle left"></div>
-            <div class="handle right"></div>
+            </div>
+
 
         </div>
 
-        <div class="cabinet-base"></div>
-
-    </div>
-
-</section>
+    </section>
 
 
 
-<!-- KIM -->
-<section class="cabinet-wrap">
+    <!-- =================================================
+         KIM POSSIBLE
+    ================================================== -->
 
-    <div class="franchise-label">
-        Kim Possible
-    </div>
+    <section
+        class="franchise"
+        id="kim">
 
-    <div class="cabinet">
+        <div class="franchise-header">
 
-        <div class="cabinet-inner">
+            <h2 class="franchise-name">
+                Kim Possible
+            </h2>
 
-            <div class="inner-shelf one"></div>
-            <div class="inner-shelf two"></div>
-
-            <div class="door left"></div>
-            <div class="door right"></div>
-
-            <div class="handle left"></div>
-            <div class="handle right"></div>
+            <span class="franchise-count">
+                COLECCIÓN
+            </span>
 
         </div>
 
-        <div class="cabinet-base"></div>
 
-    </div>
+        <div class="shelf-unit">
 
-</section>
-
+            <div class="shelf">
 
 
-<!-- RAVEN -->
-<section class="cabinet-wrap">
+                <div class="empty-shelf">
 
-    <div class="franchise-label">
-        That's So Raven
-    </div>
+                    Tus piezas de Kim Possible aparecerán aquí.
 
-    <div class="cabinet">
+                </div>
 
-        <div class="cabinet-inner">
 
-            <div class="inner-shelf one"></div>
-            <div class="inner-shelf two"></div>
+            </div>
 
-            <div class="door left"></div>
-            <div class="door right"></div>
 
-            <div class="handle left"></div>
-            <div class="handle right"></div>
+            <div class="shelf"></div>
 
         </div>
 
-        <div class="cabinet-base"></div>
-
-    </div>
-
-</section>
+    </section>
 
 
 
-<!-- PROUD -->
-<section class="cabinet-wrap">
+    <!-- =================================================
+         RAVEN
+    ================================================== -->
 
-    <div class="franchise-label">
-        The Proud Family
-    </div>
+    <section
+        class="franchise"
+        id="raven">
 
-    <div class="cabinet">
+        <div class="franchise-header">
 
-        <div class="cabinet-inner">
+            <h2 class="franchise-name">
+                Es Tan Raven
+            </h2>
 
-            <div class="inner-shelf one"></div>
-            <div class="inner-shelf two"></div>
-
-            <div class="door left"></div>
-            <div class="door right"></div>
-
-            <div class="handle left"></div>
-            <div class="handle right"></div>
+            <span class="franchise-count">
+                COLECCIÓN
+            </span>
 
         </div>
 
-        <div class="cabinet-base"></div>
 
-    </div>
+        <div class="shelf-unit">
 
-</section>
+            <div class="shelf">
 
+                <div class="empty-shelf">
 
+                    Colección Raven
 
-<!-- WIZARDS -->
-<section class="cabinet-wrap">
+                </div>
 
-    <div class="franchise-label">
-        Wizards of Waverly Place
-    </div>
+            </div>
 
-    <div class="cabinet">
-
-        <div class="cabinet-inner">
-
-            <div class="inner-shelf one"></div>
-            <div class="inner-shelf two"></div>
-
-            <div class="door left"></div>
-            <div class="door right"></div>
-
-            <div class="handle left"></div>
-            <div class="handle right"></div>
+            <div class="shelf"></div>
 
         </div>
 
-        <div class="cabinet-base"></div>
-
-    </div>
-
-</section>
+    </section>
 
 
 
-<!-- CAMP ROCK -->
-<section class="cabinet-wrap">
+    <!-- =================================================
+         PROUD
+    ================================================== -->
 
-    <div class="franchise-label">
-        Camp Rock
-    </div>
+    <section
+        class="franchise"
+        id="proud">
 
-    <div class="cabinet">
+        <div class="franchise-header">
 
-        <div class="cabinet-inner">
+            <h2 class="franchise-name">
+                La Familia Proud
+            </h2>
 
-            <div class="inner-shelf one"></div>
-            <div class="inner-shelf two"></div>
-
-            <div class="door left"></div>
-            <div class="door right"></div>
-
-            <div class="handle left"></div>
-            <div class="handle right"></div>
+            <span class="franchise-count">
+                COLECCIÓN
+            </span>
 
         </div>
 
-        <div class="cabinet-base"></div>
 
-    </div>
+        <div class="shelf-unit">
 
-</section>
+            <div class="shelf"></div>
 
-
-
-<!-- HSM -->
-<section class="cabinet-wrap">
-
-    <div class="franchise-label">
-        High School Musical
-    </div>
-
-    <div class="cabinet">
-
-        <div class="cabinet-inner">
-
-            <div class="inner-shelf one"></div>
-            <div class="inner-shelf two"></div>
-
-            <div class="door left"></div>
-            <div class="door right"></div>
-
-            <div class="handle left"></div>
-            <div class="handle right"></div>
+            <div class="shelf"></div>
 
         </div>
 
-        <div class="cabinet-base"></div>
-
-    </div>
-
-</section>
+    </section>
 
 
 
-<!-- CHEETAH -->
-<section class="cabinet-wrap">
+    <!-- =================================================
+         WIZARDS
+    ================================================== -->
 
-    <div class="franchise-label">
-        The Cheetah Girls
-    </div>
+    <section
+        class="franchise"
+        id="wizards">
 
-    <div class="cabinet">
+        <div class="franchise-header">
 
-        <div class="cabinet-inner">
+            <h2 class="franchise-name">
+                Wizards
+            </h2>
 
-            <div class="inner-shelf one"></div>
-            <div class="inner-shelf two"></div>
-
-            <div class="door left"></div>
-            <div class="door right"></div>
-
-            <div class="handle left"></div>
-            <div class="handle right"></div>
+            <span class="franchise-count">
+                COLECCIÓN
+            </span>
 
         </div>
 
-        <div class="cabinet-base"></div>
 
-    </div>
+        <div class="shelf-unit">
 
-</section>
+            <div class="shelf"></div>
 
-
-
-<!-- MASHED UP -->
-<section class="cabinet-wrap">
-
-    <div class="franchise-label">
-        Mashed-Up
-    </div>
-
-    <div class="cabinet">
-
-        <div class="cabinet-inner">
-
-            <div class="inner-shelf one"></div>
-            <div class="inner-shelf two"></div>
-
-            <div class="door left"></div>
-            <div class="door right"></div>
-
-            <div class="handle left"></div>
-            <div class="handle right"></div>
+            <div class="shelf"></div>
 
         </div>
 
-        <div class="cabinet-base"></div>
+    </section>
 
-    </div>
 
-</section>
+
+    <!-- =================================================
+         CAMP ROCK
+    ================================================== -->
+
+    <section
+        class="franchise"
+        id="camp-rock">
+
+        <div class="franchise-header">
+
+            <h2 class="franchise-name">
+                Camp Rock
+            </h2>
+
+            <span class="franchise-count">
+                COLECCIÓN
+            </span>
+
+        </div>
+
+
+        <div class="shelf-unit">
+
+            <div class="shelf"></div>
+
+            <div class="shelf"></div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         HIGH SCHOOL MUSICAL
+    ================================================== -->
+
+    <section
+        class="franchise"
+        id="hsm">
+
+        <div class="franchise-header">
+
+            <h2 class="franchise-name">
+                High School Musical
+            </h2>
+
+            <span class="franchise-count">
+                COLECCIÓN
+            </span>
+
+        </div>
+
+
+        <div class="shelf-unit">
+
+            <div class="shelf"></div>
+
+            <div class="shelf"></div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         CHEETAH GIRLS
+    ================================================== -->
+
+    <section
+        class="franchise"
+        id="cheetah">
+
+        <div class="franchise-header">
+
+            <h2 class="franchise-name">
+                Cheetah Girls
+            </h2>
+
+            <span class="franchise-count">
+                COLECCIÓN
+            </span>
+
+        </div>
+
+
+        <div class="shelf-unit">
+
+            <div class="shelf"></div>
+
+            <div class="shelf"></div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         MASHED-UP
+    ================================================== -->
+
+    <section
+        class="franchise"
+        id="mashed">
+
+        <div class="franchise-header">
+
+            <h2 class="franchise-name">
+                Mashed-Up
+            </h2>
+
+            <span class="franchise-count">
+                COLECCIÓN
+            </span>
+
+        </div>
+
+
+        <div class="shelf-unit">
+
+            <div class="shelf"></div>
+
+            <div class="shelf"></div>
+
+        </div>
+
+    </section>
 
 
 </div>
@@ -966,100 +1371,109 @@ body {
 </main>
 
 
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
-<footer class="footer">
+<footer class="archive-footer">
 
-    Disney Channel Home EXP Archive<br>
-    Preserving the classics. Preserving our home.
+    <strong>Disney Channel Home EXP Archive</strong>
+
+    <br><br>
+
+    Una colección construida para preservar
+    la memoria física de Disney Channel.
 
 </footer>
 
 
+</div>
 
-<!-- ==============================
-     IMAGE VIEWER
-================================ -->
+
+<!-- =====================================================
+     LIGHTBOX
+===================================================== -->
 
 <div
-    class="viewer"
-    id="viewer"
-    onclick="closeImage(event)"
->
+    class="lightbox"
+    id="lightbox">
 
-    <button
-        class="close"
-        onclick="closeImage(event)"
-    >
-        ×
-    </button>
+    <div class="lightbox-box">
 
-    <img
-        id="viewerImage"
-        src=""
-        alt=""
-    >
+        <button
+            class="close-lightbox"
+            onclick="closeLightbox()">
+
+            ×
+
+        </button>
+
+
+        <img
+            id="lightboxImage"
+            src=""
+            alt="Merchandise">
+
+    </div>
 
 </div>
 
 
-
 <script>
 
-/* ==============================
-   IMAGE VIEWER
-================================ */
+/* =========================================================
+   MERCH IMAGE CLICK / LIGHTBOX
+========================================================= */
 
-function openImage(item) {
+document
+    .querySelectorAll(".merch-item img")
+    .forEach(function(image) {
 
-    const image =
-        item.querySelector("img");
+        image.addEventListener(
+            "click",
+            function() {
 
-    const viewer =
-        document.getElementById("viewer");
+                document
+                    .getElementById("lightboxImage")
+                    .src = this.src;
 
-    const viewerImage =
-        document.getElementById("viewerImage");
+                document
+                    .getElementById("lightbox")
+                    .classList
+                    .add("open");
 
-    viewerImage.src =
-        image.src;
+            }
+        );
 
-    viewerImage.alt =
-        image.alt;
-
-    viewer.classList.add("active");
-}
+    });
 
 
-function closeImage(event) {
+function closeLightbox() {
 
-    if (
-        event.target.id === "viewer" ||
-        event.target.classList.contains("close")
-    ) {
-
-        document
-            .getElementById("viewer")
-            .classList.remove("active");
-
-    }
+    document
+        .getElementById("lightbox")
+        .classList
+        .remove("open");
 
 }
 
 
-document.addEventListener(
-    "keydown",
-    function(event) {
+document
+    .getElementById("lightbox")
+    .addEventListener(
+        "click",
+        function(event) {
 
-        if (event.key === "Escape") {
+            if (
+                event.target === this
+            ) {
 
-            document
-                .getElementById("viewer")
-                .classList.remove("active");
+                closeLightbox();
+
+            }
 
         }
-
-    }
-);
+    );
 
 </script>
 
