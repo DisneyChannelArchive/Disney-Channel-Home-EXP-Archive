@@ -1,147 +1,1312 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Broadcast Archive — Disney Channel Home EXP Archive</title>
+
+<title>HR Broadcast — Disney Channel Home EXP Archive</title>
 
 <style>
+
+* {
+    box-sizing: border-box;
+}
+
+html,
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f4f1e8;
-    color: #222;
-}
-
-header {
-    background: #111;
-    color: white;
-    padding: 35px 7%;
-}
-
-main {
-    max-width: 1200px;
-    margin: auto;
-    padding: 40px 7%;
-}
-
-.search {
+    padding: 0;
     width: 100%;
-    padding: 15px;
-    font-size: 17px;
-    border: 1px solid #bbb;
-    border-radius: 8px;
+    min-height: 100%;
+}
+
+body {
+    background: #000;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    overflow-x: hidden;
+}
+
+
+/* =====================================================
+   TV ROOM
+===================================================== */
+
+.tv-room {
+
+    position: relative;
+
+    width: min(1188px, 100vw);
+
+    margin: 0 auto;
+
+    aspect-ratio: 1188 / 600;
+
+    background-image:
+        url("TV.png");
+
+    background-size:
+        100% 100%;
+
+    background-repeat:
+        no-repeat;
+}
+
+
+/* =====================================================
+   TV SCREEN
+===================================================== */
+
+.tv-screen {
+
+    position: absolute;
+
+    left: 13.45%;
+    top: 20.45%;
+
+    width: 74.25%;
+    height: 58.5%;
+
+    overflow: hidden;
+
+    background: #101010;
+
+    color: white;
+}
+
+
+/* =====================================================
+   CONTENT INSIDE TV
+===================================================== */
+
+.screen-content {
+
+    position: absolute;
+
+    inset: 0;
+
+    overflow-y: auto;
+
+    overflow-x: hidden;
+
+    padding:
+        20px
+        30px
+        35px;
+
+    scrollbar-width: thin;
+
+    scrollbar-color:
+        #78905f
+        #171717;
+}
+
+
+.screen-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.screen-content::-webkit-scrollbar-track {
+    background: #171717;
+}
+
+.screen-content::-webkit-scrollbar-thumb {
+    background: #78905f;
+
+    border-radius: 10px;
+}
+
+
+/* =====================================================
+   HEADER INSIDE TV
+===================================================== */
+
+.broadcast-header {
+
+    position: relative;
+
+    padding-bottom: 14px;
+
+    margin-bottom: 18px;
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.18);
+}
+
+
+.broadcast-header h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(22px, 3vw, 38px);
+
+    letter-spacing: 1px;
+
+    color: #e8f0d9;
+
+    text-transform: uppercase;
+}
+
+
+.broadcast-header p {
+
+    margin:
+        5px 0 0;
+
+    color: #aeb9a5;
+
+    font-size: 11px;
+
+    line-height: 1.4;
+}
+
+
+/* =====================================================
+   LANGUAGE BUTTON
+===================================================== */
+
+.language-button {
+
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    border:
+        1px solid
+        rgba(255,255,255,.3);
+
+    background: #30452c;
+
+    color: white;
+
+    padding:
+        7px 11px;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    font-size: 10px;
+
+    text-transform: uppercase;
+}
+
+
+.language-button:hover {
+
+    background:
+        #496541;
+}
+
+
+/* =====================================================
+   SECTIONS
+===================================================== */
+
+.archive-section {
+
     margin-bottom: 25px;
 }
 
-.grid {
+
+.section-title {
+
+    margin:
+        0 0 10px;
+
+    padding-bottom: 5px;
+
+    color: #dfead0;
+
+    font-size: 14px;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+
+    border-bottom:
+        2px solid
+        #596e49;
+}
+
+
+/* =====================================================
+   PROGRAM GRID
+===================================================== */
+
+.program-grid {
+
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+
+    gap: 8px;
 }
 
-.item {
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 22px;
+
+/* =====================================================
+   PROGRAM CARD
+===================================================== */
+
+.program {
+
+    display: block;
+
+    min-height: 57px;
+
+    padding:
+        9px 10px;
+
+    text-decoration: none;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #222,
+            #171717
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    border-left:
+        3px solid
+        #70865a;
+
+    transition:
+        transform .15s ease,
+        background .15s ease,
+        border-color .15s ease;
 }
 
-.item h2 {
-    margin-top: 0;
+
+.program:hover {
+
+    transform:
+        translateY(-2px);
+
+    background:
+        #293128;
+
+    border-color:
+        #9ab57a;
 }
 
-.meta {
-    color: #666;
-    line-height: 1.6;
+
+.program-type {
+
+    display: block;
+
+    margin-bottom: 4px;
+
+    color:
+        #8fa57b;
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
 }
+
+
+.program-title {
+
+    display: block;
+
+    color:
+        #f1f3ec;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    line-height: 1.25;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.broadcast-footer {
+
+    margin-top: 25px;
+
+    padding-top: 12px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.12);
+
+    text-align: center;
+
+    color:
+        #77816f;
+
+    font-size: 9px;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 700px) {
+
+    .tv-room {
+
+        width: 100vw;
+    }
+
+
+    .tv-screen {
+
+        left: 13.45%;
+        top: 20.45%;
+
+        width: 74.25%;
+        height: 58.5%;
+    }
+
+
+    .screen-content {
+
+        padding:
+            12px
+            15px
+            20px;
+    }
+
+
+    .program-grid {
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+
+    .broadcast-header h1 {
+
+        font-size: 19px;
+    }
+
+
+    .broadcast-header p {
+
+        font-size: 9px;
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .program-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .language-button {
+
+        position: static;
+
+        margin-top: 8px;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
-<header>
-    <h1>Broadcast Archive</h1>
-    <p>Videos, recordings, commercials, promos, bumpers and IDs.</p>
-</header>
 
-<main>
+<!-- =====================================================
+     TV / ROOM
+===================================================== -->
 
-<input
-    id="search"
-    class="search"
-    type="search"
-    placeholder="Search the broadcast archive..."
->
+<div class="tv-room">
 
-<div id="results" class="grid"></div>
 
-</main>
+    <!-- =================================================
+         TV SCREEN
+    ================================================== -->
+
+    <div class="tv-screen">
+
+
+        <div class="screen-content">
+
+
+            <!-- =========================================
+                 HEADER
+            ========================================== -->
+
+            <header class="broadcast-header">
+
+
+                <button
+                    class="language-button"
+                    id="languageButton"
+                    onclick="toggleLanguage()">
+
+                    ENGLISH
+
+                </button>
+
+
+                <h1 id="pageTitle">
+
+                    HR Broadcast
+
+                </h1>
+
+
+                <p id="pageSubtitle">
+
+                    Archivo de series y películas de Disney Channel
+
+                </p>
+
+
+            </header>
+
+
+
+            <!-- =========================================
+                 PELÍCULAS
+            ========================================== -->
+
+            <section class="archive-section">
+
+
+                <h2
+                    class="section-title"
+                    id="moviesTitle">
+
+                    Películas
+
+                </h2>
+
+
+                <div class="program-grid">
+
+
+                    <a
+                        class="program"
+                        href="broadcast/halloweentown.html">
+
+                        <span class="program-type">
+                            Película
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Halloweentown"
+                            data-en="Halloweentown">
+
+                            Halloweentown
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/mano-a-mano.html">
+
+                        <span class="program-type">
+                            Película
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Mano a Mano"
+                            data-en="Stuck in the Suburbs">
+
+                            Mano a Mano
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/halloweentown-ii.html">
+
+                        <span class="program-type">
+                            Película
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Halloweentown II"
+                            data-en="Halloweentown II">
+
+                            Halloweentown II
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/halloweentown-high.html">
+
+                        <span class="program-type">
+                            Película
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Halloweentown High"
+                            data-en="Halloweentown High">
+
+                            Halloweentown High
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/high-school-musical.html">
+
+                        <span class="program-type">
+                            Película
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="High School Musical"
+                            data-en="High School Musical">
+
+                            High School Musical
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/cheetah-girls-2.html">
+
+                        <span class="program-type">
+                            Película
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Cheetah Girls 2"
+                            data-en="The Cheetah Girls 2">
+
+                            Cheetah Girls 2
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/high-school-musical-2.html">
+
+                        <span class="program-type">
+                            Película
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="High School Musical 2"
+                            data-en="High School Musical 2">
+
+                            High School Musical 2
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/halloweentown-4.html">
+
+                        <span class="program-type">
+                            Película
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Halloweentown 4"
+                            data-en="Return to Halloweentown">
+
+                            Halloweentown 4
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/camp-rock.html">
+
+                        <span class="program-type">
+                            Película
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Camp Rock"
+                            data-en="Camp Rock">
+
+                            Camp Rock
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/cheetah-girls-un-mundo.html">
+
+                        <span class="program-type">
+                            Película
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Cheetah Girls: Un Mundo"
+                            data-en="The Cheetah Girls: One World">
+
+                            Cheetah Girls: Un Mundo
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/camp-rock-2.html">
+
+                        <span class="program-type">
+                            Película
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Camp Rock 2"
+                            data-en="Camp Rock 2: The Final Jam">
+
+                            Camp Rock 2
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/camp-rock-3.html">
+
+                        <span class="program-type">
+                            Película
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Camp Rock 3"
+                            data-en="Camp Rock 3">
+
+                            Camp Rock 3
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/brujillizas.html">
+
+                        <span class="program-type">
+                            Película
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Brujillizas"
+                            data-en="Twitches">
+
+                            Brujillizas
+
+                        </span>
+
+                    </a>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================================
+                 SERIES
+            ========================================== -->
+
+            <section class="archive-section">
+
+
+                <h2
+                    class="section-title"
+                    id="seriesTitle">
+
+                    Series
+
+                </h2>
+
+
+                <div class="program-grid">
+
+
+                    <a
+                        class="program"
+                        href="broadcast/lizzie-mcguire.html">
+
+                        <span class="program-type">
+                            Serie
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Lizzie McGuire"
+                            data-en="Lizzie McGuire">
+
+                            Lizzie McGuire
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/la-familia-proud.html">
+
+                        <span class="program-type">
+                            Serie
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="La Familia Proud"
+                            data-en="The Proud Family">
+
+                            La Familia Proud
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/kim-possible.html">
+
+                        <span class="program-type">
+                            Serie
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Kim Possible"
+                            data-en="Kim Possible">
+
+                            Kim Possible
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/es-tan-raven.html">
+
+                        <span class="program-type">
+                            Serie
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Es Tan Raven"
+                            data-en="That's So Raven">
+
+                            Es Tan Raven
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/cheetah-girls-serie.html">
+
+                        <span class="program-type">
+                            Serie
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Cheetah Girls"
+                            data-en="The Cheetah Girls">
+
+                            Cheetah Girls
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/lilo-stitch.html">
+
+                        <span class="program-type">
+                            Serie
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Lilo y Stitch: La Serie"
+                            data-en="Lilo & Stitch: The Series">
+
+                            Lilo y Stitch: La Serie
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/phil-del-futuro.html">
+
+                        <span class="program-type">
+                            Serie
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Phil del Futuro"
+                            data-en="Phil of the Future">
+
+                            Phil del Futuro
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/brandy-senor-bigotes.html">
+
+                        <span class="program-type">
+                            Serie
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Brandy y el Señor Bigotes"
+                            data-en="Brandy & Mr. Whiskers">
+
+                            Brandy y el Señor Bigotes
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/jake-long.html">
+
+                        <span class="program-type">
+                            Serie
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Jake Long: El Dragón Occidental"
+                            data-en="American Dragon: Jake Long">
+
+                            Jake Long: El Dragón Occidental
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/zack-cody-gemelos-accion.html">
+
+                        <span class="program-type">
+                            Serie
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Zack y Cody: Gemelos en Acción"
+                            data-en="The Suite Life of Zack & Cody">
+
+                            Zack y Cody: Gemelos en Acción
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/las-nuevas-locuras.html">
+
+                        <span class="program-type">
+                            Serie
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Las Nuevas Locuras del Emperador"
+                            data-en="The Emperor's New School">
+
+                            Las Nuevas Locuras del Emperador
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/los-sustitutos.html">
+
+                        <span class="program-type">
+                            Serie
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Los Sustitutos"
+                            data-en="The Replacements">
+
+                            Los Sustitutos
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/cory-casa-blanca.html">
+
+                        <span class="program-type">
+                            Serie
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Cory en La Casa Blanca"
+                            data-en="Cory in the House">
+
+                            Cory en La Casa Blanca
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/phineas-ferb.html">
+
+                        <span class="program-type">
+                            Serie
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Phineas y Ferb"
+                            data-en="Phineas and Ferb">
+
+                            Phineas y Ferb
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/hechiceros.html">
+
+                        <span class="program-type">
+                            Serie
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Los Hechiceros de Waverly Place"
+                            data-en="Wizards of Waverly Place">
+
+                            Los Hechiceros de Waverly Place
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/zack-cody-gemelos-abordo.html">
+
+                        <span class="program-type">
+                            Serie
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Zack y Cody: Gemelos a Bordo"
+                            data-en="The Suite Life on Deck">
+
+                            Zack y Cody: Gemelos a Bordo
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/sunny-entre-estrellas.html">
+
+                        <span class="program-type">
+                            Serie
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Sunny Entre Estrellas"
+                            data-en="Sonny with a Chance">
+
+                            Sunny Entre Estrellas
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/jonas.html">
+
+                        <span class="program-type">
+                            Serie
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="JONAS"
+                            data-en="JONAS">
+
+                            JONAS
+
+                        </span>
+
+                    </a>
+
+
+
+                    <a
+                        class="program"
+                        href="broadcast/la-casa-de-raven.html">
+
+                        <span class="program-type">
+                            Serie
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="La Casa de Raven"
+                            data-en="Raven's Home">
+
+                            La Casa de Raven
+
+                        </span>
+
+                    </a>
+
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =========================================
+                 FOOTER
+            ========================================== -->
+
+            <div class="broadcast-footer">
+
+                Disney Channel Home EXP Archive
+                · HR Broadcast
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
 
 <script>
 
-let records = [];
+/* =====================================================
+   LANGUAGE SWITCH
+===================================================== */
 
-async function loadArchive() {
+let english = false;
 
-    const response = await fetch("data/broadcast.json");
 
-    records = await response.json();
+function toggleLanguage() {
 
-    displayRecords(records);
-}
+    english = !english;
 
-function displayRecords(items) {
 
-    const results = document.getElementById("results");
+    const elements =
+        document.querySelectorAll(
+            "[data-es]"
+        );
 
-    results.innerHTML = "";
 
-    if (items.length === 0) {
-        results.innerHTML = "<p>No records found.</p>";
-        return;
-    }
+    elements.forEach(
+        function(element) {
 
-    items.forEach(item => {
+            element.textContent =
+                english
+                    ? element.dataset.en
+                    : element.dataset.es;
 
-        const card = document.createElement("article");
-
-        card.className = "item";
-
-        card.innerHTML = `
-            <h2>${item.type || "Broadcast Record"}</h2>
-
-            <div class="meta">
-                <strong>Archive ID:</strong> ${item.id}<br>
-                <strong>Date:</strong> ${item.date || ""}<br>
-                <strong>Year:</strong> ${item.year || ""}<br>
-                <strong>Franchise:</strong> ${item.franchise || ""}<br>
-                <strong>Season / Movie:</strong> ${item.seasonOrMovie || ""}
-            </div>
-
-            <p>${item.description || ""}</p>
-        `;
-
-        results.appendChild(card);
-
-    });
-}
-
-document.getElementById("search").addEventListener("input", function() {
-
-    const query = this.value.toLowerCase();
-
-    const filtered = records.filter(item =>
-        JSON.stringify(item).toLowerCase().includes(query)
+        }
     );
 
-    displayRecords(filtered);
 
-});
+    document.documentElement.lang =
+        english
+            ? "en"
+            : "es";
 
-loadArchive();
+
+    document.getElementById(
+        "languageButton"
+    ).textContent =
+        english
+            ? "ESPAÑOL"
+            : "ENGLISH";
+
+
+    document.getElementById(
+        "moviesTitle"
+    ).textContent =
+        english
+            ? "Movies"
+            : "Películas";
+
+
+    document.getElementById(
+        "seriesTitle"
+    ).textContent =
+        english
+            ? "Series"
+            : "Series";
+
+
+    document.getElementById(
+        "pageSubtitle"
+    ).textContent =
+        english
+            ? "Disney Channel series and movie archive"
+            : "Archivo de series y películas de Disney Channel";
+
+}
 
 </script>
+
 
 </body>
 </html>
