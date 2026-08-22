@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>HR Broadcast — Disney Channel Home EXP Archive</title>
+<title>BROADCAST ARCHIVE — Disney Channel Home EXP Archive</title>
 
 <style>
 
@@ -22,12 +22,7 @@ body {
 
 body {
     background: #000;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
+    font-family: Arial, Helvetica, sans-serif;
     overflow-x: hidden;
 }
 
@@ -37,7 +32,6 @@ body {
 ===================================================== */
 
 .tv-room {
-
     position: relative;
 
     width: min(1188px, 100vw);
@@ -46,14 +40,11 @@ body {
 
     aspect-ratio: 1188 / 600;
 
-    background-image:
-        url("TV.png");
+    background-image: url("TV.png");
 
-    background-size:
-        100% 100%;
+    background-size: 100% 100%;
 
-    background-repeat:
-        no-repeat;
+    background-repeat: no-repeat;
 }
 
 
@@ -62,7 +53,6 @@ body {
 ===================================================== */
 
 .tv-screen {
-
     position: absolute;
 
     left: 13.45%;
@@ -84,19 +74,14 @@ body {
 ===================================================== */
 
 .screen-content {
-
     position: absolute;
 
     inset: 0;
 
     overflow-y: auto;
-
     overflow-x: hidden;
 
-    padding:
-        20px
-        30px
-        35px;
+    padding: 20px 30px 35px;
 
     scrollbar-width: thin;
 
@@ -116,17 +101,15 @@ body {
 
 .screen-content::-webkit-scrollbar-thumb {
     background: #78905f;
-
     border-radius: 10px;
 }
 
 
 /* =====================================================
-   HEADER INSIDE TV
+   HEADER
 ===================================================== */
 
 .broadcast-header {
-
     position: relative;
 
     padding-bottom: 14px;
@@ -140,7 +123,6 @@ body {
 
 
 .broadcast-header h1 {
-
     margin: 0;
 
     font-size:
@@ -155,9 +137,7 @@ body {
 
 
 .broadcast-header p {
-
-    margin:
-        5px 0 0;
+    margin: 5px 0 0;
 
     color: #aeb9a5;
 
@@ -172,7 +152,6 @@ body {
 ===================================================== */
 
 .language-button {
-
     position: absolute;
 
     top: 0;
@@ -186,8 +165,7 @@ body {
 
     color: white;
 
-    padding:
-        7px 11px;
+    padding: 7px 11px;
 
     border-radius: 4px;
 
@@ -200,9 +178,7 @@ body {
 
 
 .language-button:hover {
-
-    background:
-        #496541;
+    background: #496541;
 }
 
 
@@ -211,15 +187,12 @@ body {
 ===================================================== */
 
 .archive-section {
-
     margin-bottom: 25px;
 }
 
 
 .section-title {
-
-    margin:
-        0 0 10px;
+    margin: 0 0 10px;
 
     padding-bottom: 5px;
 
@@ -242,14 +215,10 @@ body {
 ===================================================== */
 
 .program-grid {
-
     display: grid;
 
     grid-template-columns:
-        repeat(
-            3,
-            minmax(0, 1fr)
-        );
+        repeat(3, minmax(0, 1fr));
 
     gap: 8px;
 }
@@ -260,13 +229,11 @@ body {
 ===================================================== */
 
 .program {
-
     display: block;
 
     min-height: 57px;
 
-    padding:
-        9px 10px;
+    padding: 9px 10px;
 
     text-decoration: none;
 
@@ -295,26 +262,20 @@ body {
 
 
 .program:hover {
+    transform: translateY(-2px);
 
-    transform:
-        translateY(-2px);
+    background: #293128;
 
-    background:
-        #293128;
-
-    border-color:
-        #9ab57a;
+    border-color: #9ab57a;
 }
 
 
 .program-type {
-
     display: block;
 
     margin-bottom: 4px;
 
-    color:
-        #8fa57b;
+    color: #8fa57b;
 
     font-size: 8px;
 
@@ -325,11 +286,9 @@ body {
 
 
 .program-title {
-
     display: block;
 
-    color:
-        #f1f3ec;
+    color: #f1f3ec;
 
     font-size: 11px;
 
@@ -344,7 +303,6 @@ body {
 ===================================================== */
 
 .broadcast-footer {
-
     margin-top: 25px;
 
     padding-top: 12px;
@@ -355,8 +313,7 @@ body {
 
     text-align: center;
 
-    color:
-        #77816f;
+    color: #77816f;
 
     font-size: 9px;
 }
@@ -369,13 +326,10 @@ body {
 @media (max-width: 700px) {
 
     .tv-room {
-
         width: 100vw;
     }
 
-
     .tv-screen {
-
         left: 13.45%;
         top: 20.45%;
 
@@ -383,34 +337,23 @@ body {
         height: 58.5%;
     }
 
-
     .screen-content {
-
         padding:
             12px
             15px
             20px;
     }
 
-
     .program-grid {
-
         grid-template-columns:
-            repeat(
-                2,
-                minmax(0, 1fr)
-            );
+            repeat(2, minmax(0, 1fr));
     }
 
-
     .broadcast-header h1 {
-
         font-size: 19px;
     }
 
-
     .broadcast-header p {
-
         font-size: 9px;
     }
 
@@ -420,14 +363,10 @@ body {
 @media (max-width: 450px) {
 
     .program-grid {
-
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
     }
 
-
     .language-button {
-
         position: static;
 
         margin-top: 8px;
@@ -443,7 +382,7 @@ body {
 
 
 <!-- =====================================================
-     TV / ROOM
+     TV ROOM
 ===================================================== -->
 
 <div class="tv-room">
@@ -478,7 +417,7 @@ body {
 
                 <h1 id="pageTitle">
 
-                    HR Broadcast
+                    BROADCAST ARCHIVE
 
                 </h1>
 
@@ -513,11 +452,15 @@ body {
                 <div class="program-grid">
 
 
+                    <!-- HALLOWEENTOWN -->
+
                     <a
                         class="program"
                         href="broadcast/halloweentown.html">
 
-                        <span class="program-type">
+                        <span class="program-type"
+                              data-type-es="Película"
+                              data-type-en="Movie">
                             Película
                         </span>
 
@@ -533,33 +476,15 @@ body {
                     </a>
 
 
-
-                    <a
-                        class="program"
-                        href="broadcast/mano-a-mano.html">
-
-                        <span class="program-type">
-                            Película
-                        </span>
-
-                        <span
-                            class="program-title"
-                            data-es="Mano a Mano"
-                            data-en="Stuck in the Suburbs">
-
-                            Mano a Mano
-
-                        </span>
-
-                    </a>
-
-
+                    <!-- HALLOWEENTOWN II -->
 
                     <a
                         class="program"
                         href="broadcast/halloweentown-ii.html">
 
-                        <span class="program-type">
+                        <span class="program-type"
+                              data-type-es="Película"
+                              data-type-en="Movie">
                             Película
                         </span>
 
@@ -575,12 +500,15 @@ body {
                     </a>
 
 
+                    <!-- HALLOWEENTOWN HIGH -->
 
                     <a
                         class="program"
                         href="broadcast/halloweentown-high.html">
 
-                        <span class="program-type">
+                        <span class="program-type"
+                              data-type-es="Película"
+                              data-type-en="Movie">
                             Película
                         </span>
 
@@ -596,75 +524,15 @@ body {
                     </a>
 
 
-
-                    <a
-                        class="program"
-                        href="broadcast/high-school-musical.html">
-
-                        <span class="program-type">
-                            Película
-                        </span>
-
-                        <span
-                            class="program-title"
-                            data-es="High School Musical"
-                            data-en="High School Musical">
-
-                            High School Musical
-
-                        </span>
-
-                    </a>
-
-
-
-                    <a
-                        class="program"
-                        href="broadcast/cheetah-girls-2.html">
-
-                        <span class="program-type">
-                            Película
-                        </span>
-
-                        <span
-                            class="program-title"
-                            data-es="Cheetah Girls 2"
-                            data-en="The Cheetah Girls 2">
-
-                            Cheetah Girls 2
-
-                        </span>
-
-                    </a>
-
-
-
-                    <a
-                        class="program"
-                        href="broadcast/high-school-musical-2.html">
-
-                        <span class="program-type">
-                            Película
-                        </span>
-
-                        <span
-                            class="program-title"
-                            data-es="High School Musical 2"
-                            data-en="High School Musical 2">
-
-                            High School Musical 2
-
-                        </span>
-
-                    </a>
-
-
+                    <!-- HALLOWEENTOWN 4 -->
 
                     <a
                         class="program"
                         href="broadcast/halloweentown-4.html">
 
-                        <span class="program-type">
+                        <span class="program-type"
+                              data-type-es="Película"
+                              data-type-en="Movie">
                             Película
                         </span>
 
@@ -680,33 +548,87 @@ body {
                     </a>
 
 
+                    <!-- HIGH SCHOOL MUSICAL -->
 
                     <a
                         class="program"
-                        href="broadcast/camp-rock.html">
+                        href="broadcast/high-school-musical.html">
 
-                        <span class="program-type">
+                        <span class="program-type"
+                              data-type-es="Película"
+                              data-type-en="Movie">
                             Película
                         </span>
 
                         <span
                             class="program-title"
-                            data-es="Camp Rock"
-                            data-en="Camp Rock">
+                            data-es="High School Musical"
+                            data-en="High School Musical">
 
-                            Camp Rock
+                            High School Musical
 
                         </span>
 
                     </a>
 
 
+                    <!-- CHEETAH GIRLS -->
+
+                    <a
+                        class="program"
+                        href="broadcast/cheetah-girls.html">
+
+                        <span class="program-type"
+                              data-type-es="Película"
+                              data-type-en="Movie">
+                            Película
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Cheetah Girls"
+                            data-en="The Cheetah Girls">
+
+                            Cheetah Girls
+
+                        </span>
+
+                    </a>
+
+
+                    <!-- CHEETAH GIRLS 2 -->
+
+                    <a
+                        class="program"
+                        href="broadcast/cheetah-girls-2.html">
+
+                        <span class="program-type"
+                              data-type-es="Película"
+                              data-type-en="Movie">
+                            Película
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Cheetah Girls 2"
+                            data-en="The Cheetah Girls 2">
+
+                            Cheetah Girls 2
+
+                        </span>
+
+                    </a>
+
+
+                    <!-- CHEETAH GIRLS UN MUNDO -->
 
                     <a
                         class="program"
                         href="broadcast/cheetah-girls-un-mundo.html">
 
-                        <span class="program-type">
+                        <span class="program-type"
+                              data-type-es="Película"
+                              data-type-en="Movie">
                             Película
                         </span>
 
@@ -722,12 +644,63 @@ body {
                     </a>
 
 
+                    <!-- HIGH SCHOOL MUSICAL 2 -->
+
+                    <a
+                        class="program"
+                        href="broadcast/high-school-musical-2.html">
+
+                        <span class="program-type"
+                              data-type-es="Película"
+                              data-type-en="Movie">
+                            Película
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="High School Musical 2"
+                            data-en="High School Musical 2">
+
+                            High School Musical 2
+
+                        </span>
+
+                    </a>
+
+
+                    <!-- CAMP ROCK -->
+
+                    <a
+                        class="program"
+                        href="broadcast/camp-rock.html">
+
+                        <span class="program-type"
+                              data-type-es="Película"
+                              data-type-en="Movie">
+                            Película
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Camp Rock"
+                            data-en="Camp Rock">
+
+                            Camp Rock
+
+                        </span>
+
+                    </a>
+
+
+                    <!-- CAMP ROCK 2 -->
 
                     <a
                         class="program"
                         href="broadcast/camp-rock-2.html">
 
-                        <span class="program-type">
+                        <span class="program-type"
+                              data-type-es="Película"
+                              data-type-en="Movie">
                             Película
                         </span>
 
@@ -743,12 +716,15 @@ body {
                     </a>
 
 
+                    <!-- CAMP ROCK 3 -->
 
                     <a
                         class="program"
                         href="broadcast/camp-rock-3.html">
 
-                        <span class="program-type">
+                        <span class="program-type"
+                              data-type-es="Película"
+                              data-type-en="Movie">
                             Película
                         </span>
 
@@ -764,12 +740,15 @@ body {
                     </a>
 
 
+                    <!-- BRUJILLIZAS -->
 
                     <a
                         class="program"
                         href="broadcast/brujillizas.html">
 
-                        <span class="program-type">
+                        <span class="program-type"
+                              data-type-es="Película"
+                              data-type-en="Movie">
                             Película
                         </span>
 
@@ -810,11 +789,39 @@ body {
                 <div class="program-grid">
 
 
+                    <!-- MANO A MANO -->
+
+                    <a
+                        class="program"
+                        href="broadcast/mano-a-mano.html">
+
+                        <span class="program-type"
+                              data-type-es="Serie"
+                              data-type-en="Series">
+                            Serie
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Mano a Mano"
+                            data-en="Stuck in the Suburbs">
+
+                            Mano a Mano
+
+                        </span>
+
+                    </a>
+
+
+                    <!-- LIZZIE -->
+
                     <a
                         class="program"
                         href="broadcast/lizzie-mcguire.html">
 
-                        <span class="program-type">
+                        <span class="program-type"
+                              data-type-es="Serie"
+                              data-type-en="Series">
                             Serie
                         </span>
 
@@ -830,12 +837,15 @@ body {
                     </a>
 
 
+                    <!-- PROUD FAMILY -->
 
                     <a
                         class="program"
                         href="broadcast/la-familia-proud.html">
 
-                        <span class="program-type">
+                        <span class="program-type"
+                              data-type-es="Serie"
+                              data-type-en="Series">
                             Serie
                         </span>
 
@@ -851,12 +861,15 @@ body {
                     </a>
 
 
+                    <!-- KIM POSSIBLE -->
 
                     <a
                         class="program"
                         href="broadcast/kim-possible.html">
 
-                        <span class="program-type">
+                        <span class="program-type"
+                              data-type-es="Serie"
+                              data-type-en="Series">
                             Serie
                         </span>
 
@@ -872,12 +885,15 @@ body {
                     </a>
 
 
+                    <!-- ES TAN RAVEN -->
 
                     <a
                         class="program"
                         href="broadcast/es-tan-raven.html">
 
-                        <span class="program-type">
+                        <span class="program-type"
+                              data-type-es="Serie"
+                              data-type-en="Series">
                             Serie
                         </span>
 
@@ -893,33 +909,15 @@ body {
                     </a>
 
 
-
-                    <a
-                        class="program"
-                        href="broadcast/cheetah-girls-serie.html">
-
-                        <span class="program-type">
-                            Serie
-                        </span>
-
-                        <span
-                            class="program-title"
-                            data-es="Cheetah Girls"
-                            data-en="The Cheetah Girls">
-
-                            Cheetah Girls
-
-                        </span>
-
-                    </a>
-
-
+                    <!-- LILO -->
 
                     <a
                         class="program"
                         href="broadcast/lilo-stitch.html">
 
-                        <span class="program-type">
+                        <span class="program-type"
+                              data-type-es="Serie"
+                              data-type-en="Series">
                             Serie
                         </span>
 
@@ -935,12 +933,15 @@ body {
                     </a>
 
 
+                    <!-- PHIL -->
 
                     <a
                         class="program"
                         href="broadcast/phil-del-futuro.html">
 
-                        <span class="program-type">
+                        <span class="program-type"
+                              data-type-es="Serie"
+                              data-type-en="Series">
                             Serie
                         </span>
 
@@ -956,12 +957,15 @@ body {
                     </a>
 
 
+                    <!-- BRANDY -->
 
                     <a
                         class="program"
                         href="broadcast/brandy-senor-bigotes.html">
 
-                        <span class="program-type">
+                        <span class="program-type"
+                              data-type-es="Serie"
+                              data-type-en="Series">
                             Serie
                         </span>
 
@@ -977,12 +981,15 @@ body {
                     </a>
 
 
+                    <!-- JAKE LONG -->
 
                     <a
                         class="program"
                         href="broadcast/jake-long.html">
 
-                        <span class="program-type">
+                        <span class="program-type"
+                              data-type-es="Serie"
+                              data-type-en="Series">
                             Serie
                         </span>
 
@@ -998,12 +1005,15 @@ body {
                     </a>
 
 
+                    <!-- ZACK CODY -->
 
                     <a
                         class="program"
                         href="broadcast/zack-cody-gemelos-accion.html">
 
-                        <span class="program-type">
+                        <span class="program-type"
+                              data-type-es="Serie"
+                              data-type-en="Series">
                             Serie
                         </span>
 
@@ -1019,12 +1029,15 @@ body {
                     </a>
 
 
+                    <!-- LAS NUEVAS LOCURAS -->
 
                     <a
                         class="program"
                         href="broadcast/las-nuevas-locuras.html">
 
-                        <span class="program-type">
+                        <span class="program-type"
+                              data-type-es="Serie"
+                              data-type-en="Series">
                             Serie
                         </span>
 
@@ -1040,12 +1053,15 @@ body {
                     </a>
 
 
+                    <!-- LOS SUSTITUTOS -->
 
                     <a
                         class="program"
                         href="broadcast/los-sustitutos.html">
 
-                        <span class="program-type">
+                        <span class="program-type"
+                              data-type-es="Serie"
+                              data-type-en="Series">
                             Serie
                         </span>
 
@@ -1061,12 +1077,15 @@ body {
                     </a>
 
 
+                    <!-- CORY -->
 
                     <a
                         class="program"
                         href="broadcast/cory-casa-blanca.html">
 
-                        <span class="program-type">
+                        <span class="program-type"
+                              data-type-es="Serie"
+                              data-type-en="Series">
                             Serie
                         </span>
 
@@ -1082,12 +1101,15 @@ body {
                     </a>
 
 
+                    <!-- PHINEAS -->
 
                     <a
                         class="program"
                         href="broadcast/phineas-ferb.html">
 
-                        <span class="program-type">
+                        <span class="program-type"
+                              data-type-es="Serie"
+                              data-type-en="Series">
                             Serie
                         </span>
 
@@ -1103,12 +1125,15 @@ body {
                     </a>
 
 
+                    <!-- HECHICEROS -->
 
                     <a
                         class="program"
                         href="broadcast/hechiceros.html">
 
-                        <span class="program-type">
+                        <span class="program-type"
+                              data-type-es="Serie"
+                              data-type-en="Series">
                             Serie
                         </span>
 
@@ -1124,12 +1149,15 @@ body {
                     </a>
 
 
+                    <!-- ZACK CODY A BORDO -->
 
                     <a
                         class="program"
                         href="broadcast/zack-cody-gemelos-abordo.html">
 
-                        <span class="program-type">
+                        <span class="program-type"
+                              data-type-es="Serie"
+                              data-type-en="Series">
                             Serie
                         </span>
 
@@ -1145,12 +1173,15 @@ body {
                     </a>
 
 
+                    <!-- SUNNY -->
 
                     <a
                         class="program"
                         href="broadcast/sunny-entre-estrellas.html">
 
-                        <span class="program-type">
+                        <span class="program-type"
+                              data-type-es="Serie"
+                              data-type-en="Series">
                             Serie
                         </span>
 
@@ -1166,12 +1197,15 @@ body {
                     </a>
 
 
+                    <!-- JONAS -->
 
                     <a
                         class="program"
                         href="broadcast/jonas.html">
 
-                        <span class="program-type">
+                        <span class="program-type"
+                              data-type-es="Serie"
+                              data-type-en="Series">
                             Serie
                         </span>
 
@@ -1187,12 +1221,39 @@ body {
                     </a>
 
 
+                    <!-- HANNAH MONTANA -->
+
+                    <a
+                        class="program"
+                        href="broadcast/hannah-montana.html">
+
+                        <span class="program-type"
+                              data-type-es="Serie"
+                              data-type-en="Series">
+                            Serie
+                        </span>
+
+                        <span
+                            class="program-title"
+                            data-es="Hannah Montana"
+                            data-en="Hannah Montana">
+
+                            Hannah Montana
+
+                        </span>
+
+                    </a>
+
+
+                    <!-- LA CASA DE RAVEN -->
 
                     <a
                         class="program"
                         href="broadcast/la-casa-de-raven.html">
 
-                        <span class="program-type">
+                        <span class="program-type"
+                              data-type-es="Serie"
+                              data-type-en="Series">
                             Serie
                         </span>
 
@@ -1221,7 +1282,7 @@ body {
             <div class="broadcast-footer">
 
                 Disney Channel Home EXP Archive
-                · HR Broadcast
+                · BROADCAST ARCHIVE
 
             </div>
 
@@ -1248,13 +1309,15 @@ function toggleLanguage() {
     english = !english;
 
 
-    const elements =
+    /* PROGRAM TITLES */
+
+    const titles =
         document.querySelectorAll(
             "[data-es]"
         );
 
 
-    elements.forEach(
+    titles.forEach(
         function(element) {
 
             element.textContent =
@@ -1266,11 +1329,35 @@ function toggleLanguage() {
     );
 
 
+    /* MOVIE / SERIES LABELS */
+
+    const types =
+        document.querySelectorAll(
+            ".program-type"
+        );
+
+
+    types.forEach(
+        function(element) {
+
+            element.textContent =
+                english
+                    ? element.dataset.typeEn
+                    : element.dataset.typeEs;
+
+        }
+    );
+
+
+    /* PAGE LANGUAGE */
+
     document.documentElement.lang =
         english
             ? "en"
             : "es";
 
+
+    /* BUTTON */
 
     document.getElementById(
         "languageButton"
@@ -1279,6 +1366,8 @@ function toggleLanguage() {
             ? "ESPAÑOL"
             : "ENGLISH";
 
+
+    /* SECTION TITLES */
 
     document.getElementById(
         "moviesTitle"
@@ -1295,6 +1384,8 @@ function toggleLanguage() {
             ? "Series"
             : "Series";
 
+
+    /* SUBTITLE */
 
     document.getElementById(
         "pageSubtitle"
