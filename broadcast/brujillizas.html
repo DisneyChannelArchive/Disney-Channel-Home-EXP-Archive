@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Twitches — Broadcast Archive</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;width:100%;min-height:100%}
+body{background:#000;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+.tv-room{position:relative;width:min(1188px,100vw);margin:0 auto;aspect-ratio:1188/600;background-image:url("../TV.png");background-size:100% 100%;background-repeat:no-repeat}
+.tv-screen{position:absolute;left:13.45%;top:20.45%;width:74.25%;height:58.5%;overflow:hidden;background:#101010;color:white}
+.screen-content{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;padding:20px 30px 35px;scrollbar-width:thin;scrollbar-color:#78905f #171717}
+.screen-content::-webkit-scrollbar{width:8px}
+.screen-content::-webkit-scrollbar-track{background:#171717}
+.screen-content::-webkit-scrollbar-thumb{background:#78905f;border-radius:10px}
+.broadcast-header{position:relative;padding-bottom:14px;margin-bottom:18px;border-bottom:1px solid rgba(255,255,255,.18)}
+.broadcast-header h1{margin:0;font-size:clamp(22px,3vw,38px);letter-spacing:1px;color:#e8f0d9;text-transform:uppercase}
+.broadcast-header p{margin:5px 0 0;color:#aeb9a5;font-size:11px;line-height:1.4}
+.language-button{position:absolute;top:0;right:0;border:1px solid rgba(255,255,255,.3);background:#30452c;color:white;padding:7px 11px;border-radius:4px;cursor:pointer;font-size:10px;text-transform:uppercase}
+.language-button:hover{background:#496541}
+.archive-section{margin-bottom:25px}
+.section-title{margin:0 0 10px;padding-bottom:5px;color:#dfead0;font-size:14px;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid #596e49}
+.history-block{margin-bottom:17px}
+.history-block h3{margin:0 0 8px;color:#b9cba9;font-size:13px;letter-spacing:.5px;text-transform:uppercase}
+.history-block p{margin:5px 0;color:#dedede;font-size:12px;line-height:1.6}
+.history-block strong{color:#e8f0d9}
+.video-container{position:relative;width:100%;aspect-ratio:16/9;background:#000;overflow:hidden}
+.video-container iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.broadcast-footer{margin-top:25px;padding-top:10px;border-top:1px solid rgba(255,255,255,.15);color:#899582;font-size:10px;text-align:center}
+@media(max-width:600px){.screen-content{padding:12px 15px 25px}.broadcast-header h1{font-size:21px;padding-right:65px}.language-button{padding:6px 8px;font-size:9px}.section-title{font-size:12px}.history-block p{font-size:11px}}
+</style>
+</head>
+<body>
+<div class="tv-room">
+<div class="tv-screen">
+<div class="screen-content">
+
+<header class="broadcast-header">
+<button class="language-button" onclick="toggleLanguage()">Español</button>
+<h1>Twitches</h1>
+<p id="subtitle">DISNEY CHANNEL HOME EXP ARCHIVE</p>
+</header>
+
+<section class="archive-section">
+<h2 class="section-title" id="history-title">Broadcast History</h2>
+
+<div class="history-block">
+<h3 id="latam-title">Latin America</h3>
+<p><strong id="latam-first-label">First airing:</strong> January 12, 2006</p>
+<p><strong id="latam-last-label">Last airing:</strong> October 2026</p>
+</div>
+
+<div class="history-block">
+<h3 id="usa-title">United States</h3>
+<p><strong id="usa-first-label">First airing:</strong> October 14, 2005</p>
+<p><strong id="usa-last-label">Last airing:</strong> October 17, 2020</p>
+</div>
+</section>
+
+<section class="archive-section">
+<h2 class="section-title" id="videos-title">Videos</h2>
+<div class="video-container">
+<iframe
+src="https://www.youtube-nocookie.com/embed/mN5mxy1cFX8"
+title="Twitches Broadcast Archive"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen>
+</iframe>
+</div>
+</section>
+
+<footer class="broadcast-footer" id="footer">DISNEY CHANNEL HOME EXP ARCHIVE</footer>
+
+</div>
+</div>
+</div>
+
+<script>
+let isSpanish=false;
+function toggleLanguage(){
+const fields=[
+["subtitle","DISNEY CHANNEL HOME EXP ARCHIVE","ARCHIVO DISNEY CHANNEL HOME EXP"],
+["history-title","Broadcast History","Historial de transmisiones"],
+["latam-title","Latin America","Latinoamérica"],
+["latam-first-label","First airing:","Primera transmisión:"],
+["latam-last-label","Last airing:","Última transmisión:"],
+["usa-title","United States","Estados Unidos"],
+["usa-first-label","First airing:","Primera transmisión:"],
+["usa-last-label","Last airing:","Última transmisión:"],
+["videos-title","Videos","Videos"],
+["footer","DISNEY CHANNEL HOME EXP ARCHIVE","ARCHIVO DISNEY CHANNEL HOME EXP"]
+];
+fields.forEach(([id,en,es])=>document.getElementById(id).textContent=isSpanish?en:es);
+const blocks=document.querySelectorAll(".history-block");
+blocks[0].querySelectorAll("p")[0].innerHTML=isSpanish?'<strong>First airing:</strong> January 12, 2006':'<strong>Primera transmisión:</strong> 12 de enero de 2006';
+blocks[0].querySelectorAll("p")[1].innerHTML=isSpanish?'<strong>Last airing:</strong> October 2026':'<strong>Última transmisión:</strong> Octubre de 2026';
+blocks[1].querySelectorAll("p")[0].innerHTML=isSpanish?'<strong>First airing:</strong> October 14, 2005':'<strong>Primera transmisión:</strong> 14 de octubre de 2005';
+blocks[1].querySelectorAll("p")[1].innerHTML=isSpanish?'<strong>Last airing:</strong> October 17, 2020':'<strong>Última transmisión:</strong> 17 de octubre de 2020';
+document.documentElement.lang=isSpanish?"en":"es";
+document.querySelector(".language-button").textContent=isSpanish?"Español":"English";
+isSpanish=!isSpanish;
+}
+</script>
+</body>
+</html>
