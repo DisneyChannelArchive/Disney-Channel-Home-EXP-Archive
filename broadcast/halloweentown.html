@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Halloweentown — Broadcast Archive</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;width:100%;min-height:100%}
+body{background:#000;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+.tv-room{position:relative;width:min(1188px,100vw);margin:0 auto;aspect-ratio:1188/600;background-image:url("../TV.png");background-size:100% 100%;background-repeat:no-repeat}
+.tv-screen{position:absolute;left:13.45%;top:20.45%;width:74.25%;height:58.5%;overflow:hidden;background:#101010;color:white}
+.screen-content{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;padding:20px 30px 35px;scrollbar-width:thin;scrollbar-color:#78905f #171717}
+.screen-content::-webkit-scrollbar{width:8px}
+.screen-content::-webkit-scrollbar-track{background:#171717}
+.screen-content::-webkit-scrollbar-thumb{background:#78905f;border-radius:10px}
+.broadcast-header{position:relative;padding-bottom:14px;margin-bottom:18px;border-bottom:1px solid rgba(255,255,255,.18)}
+.broadcast-header h1{margin:0;font-size:clamp(22px,3vw,38px);letter-spacing:1px;color:#e8f0d9;text-transform:uppercase}
+.broadcast-header p{margin:5px 0 0;color:#aeb9a5;font-size:11px;line-height:1.4}
+.language-button{position:absolute;top:0;right:0;border:1px solid rgba(255,255,255,.3);background:#30452c;color:white;padding:7px 11px;border-radius:4px;cursor:pointer;font-size:10px;text-transform:uppercase}
+.language-button:hover{background:#496541}
+.archive-section{margin-bottom:25px}
+.section-title{margin:0 0 10px;padding-bottom:5px;color:#dfead0;font-size:14px;letter-spacing:1px;text-transform:uppercase;border-bottom:2px solid #596e49}
+.history-block{margin-bottom:17px}
+.history-block h3{margin:0 0 8px;color:#b9cba9;font-size:13px;letter-spacing:.5px;text-transform:uppercase}
+.history-block p{margin:5px 0;color:#dedede;font-size:12px;line-height:1.6}
+.history-block strong{color:#e8f0d9}
+.video-container{position:relative;width:100%;aspect-ratio:16/9;background:#000;overflow:hidden}
+.video-container iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.broadcast-footer{margin-top:25px;padding-top:10px;border-top:1px solid rgba(255,255,255,.15);color:#899582;font-size:10px;text-align:center}
+@media(max-width:600px){.screen-content{padding:12px 15px 25px}.broadcast-header h1{font-size:21px;padding-right:65px}.language-button{padding:6px 8px;font-size:9px}.section-title{font-size:12px}.history-block p{font-size:11px}}
+</style>
+</head>
+<body>
+<div class="tv-room">
+<div class="tv-screen">
+<div class="screen-content">
+
+<header class="broadcast-header">
+<button class="language-button" onclick="toggleLanguage()">Español</button>
+<h1 id="page-title">Halloweentown</h1>
+<p id="page-subtitle">DISNEY CHANNEL HOME EXP ARCHIVE</p>
+</header>
+
+<section class="archive-section">
+<h2 class="section-title" id="history-title">Broadcast History</h2>
+
+<div class="history-block">
+<h3 id="latam-title">Latin America</h3>
+<p><strong id="latam-first-label">First airing:</strong> 2001 or 2002 (exact date unknown)</p>
+<p><strong id="latam-last-label">Last airing:</strong> October 2026</p>
+</div>
+
+<div class="history-block">
+<h3 id="usa-title">United States</h3>
+<p><strong id="usa-first-label">First airing:</strong> October 17, 1998</p>
+<p><strong id="usa-last-label">Last airing:</strong> October 31, 2026</p>
+</div>
+</section>
+
+<section class="archive-section">
+<h2 class="section-title" id="videos-title">Videos</h2>
+<div class="video-container">
+<iframe src="https://www.youtube-nocookie.com/embed/_C8rZSfMC2o" title="Halloweentown Broadcast Archive" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div>
+</section>
+
+<footer class="broadcast-footer" id="footer">DISNEY CHANNEL HOME EXP ARCHIVE</footer>
+
+</div>
+</div>
+</div>
+
+<script>
+let isSpanish=false;
+function toggleLanguage(){
+const button=document.querySelector(".language-button");
+const labels={
+en:["DISNEY CHANNEL HOME EXP ARCHIVE","Broadcast History","Latin America","First airing:","Last airing:","United States","First airing:","Last airing:","Videos","DISNEY CHANNEL HOME EXP ARCHIVE"],
+es:["ARCHIVO DISNEY CHANNEL HOME EXP","Historial de transmisiones","Latinoamérica","Primera transmisión:","Última transmisión:","Estados Unidos","Primera transmisión:","Última transmisión:","Videos","ARCHIVO DISNEY CHANNEL HOME EXP"]
+};
+const l=isSpanish?labels.en:labels.es;
+document.documentElement.lang=isSpanish?"en":"es";
+document.getElementById("page-subtitle").textContent=l[0];
+document.getElementById("history-title").textContent=l[1];
+document.getElementById("latam-title").textContent=l[2];
+document.getElementById("latam-first-label").textContent=l[3];
+document.getElementById("latam-last-label").textContent=l[4];
+document.getElementById("usa-title").textContent=l[5];
+document.getElementById("usa-first-label").textContent=l[6];
+document.getElementById("usa-last-label").textContent=l[7];
+document.getElementById("videos-title").textContent=l[8];
+document.getElementById("footer").textContent=l[9];
+if(!isSpanish){
+document.querySelector(".history-block p").innerHTML='<strong id="latam-first-label">Primera transmisión:</strong> 2001 o 2002 (fecha exacta desconocida)';
+document.querySelectorAll(".history-block")[0].querySelectorAll("p")[1].innerHTML='<strong id="latam-last-label">Última transmisión:</strong> Octubre de 2026';
+document.querySelectorAll(".history-block")[1].querySelectorAll("p")[0].innerHTML='<strong id="usa-first-label">Primera transmisión:</strong> 17 de octubre de 1998';
+document.querySelectorAll(".history-block")[1].querySelectorAll("p")[1].innerHTML='<strong id="usa-last-label">Última transmisión:</strong> 31 de octubre de 2026';
+button.textContent="English";
+}else{
+document.querySelector(".history-block p").innerHTML='<strong id="latam-first-label">First airing:</strong> 2001 or 2002 (exact date unknown)';
+document.querySelectorAll(".history-block")[0].querySelectorAll("p")[1].innerHTML='<strong id="latam-last-label">Last airing:</strong> October 2026';
+document.querySelectorAll(".history-block")[1].querySelectorAll("p")[0].innerHTML='<strong id="usa-first-label">First airing:</strong> October 17, 1998';
+document.querySelectorAll(".history-block")[1].querySelectorAll("p")[1].innerHTML='<strong id="usa-last-label">Last airing:</strong> October 31, 2026';
+button.textContent="Español";
+}
+isSpanish=!isSpanish;
+}
+</script>
+</body>
+</html>
