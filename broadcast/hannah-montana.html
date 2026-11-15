@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>HANNAH MONTANA — Broadcast Archive</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    background: #000;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+/* TV ROOM */
+
+.tv-room {
+    position: relative;
+    width: min(1188px, 100vw);
+    margin: 0 auto;
+    aspect-ratio: 1188 / 600;
+    background-image: url("../TV.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+/* TV SCREEN */
+
+.tv-screen {
+    position: absolute;
+    left: 13.45%;
+    top: 20.45%;
+    width: 74.25%;
+    height: 58.5%;
+    overflow: hidden;
+    background: #101010;
+    color: white;
+}
+
+/* CONTENT */
+
+.screen-content {
+    position: absolute;
+    inset: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 20px 30px 35px;
+    scrollbar-width: thin;
+    scrollbar-color: #78905f #171717;
+}
+
+.screen-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.screen-content::-webkit-scrollbar-track {
+    background: #171717;
+}
+
+.screen-content::-webkit-scrollbar-thumb {
+    background: #78905f;
+    border-radius: 10px;
+}
+
+/* HEADER */
+
+.broadcast-header {
+    position: relative;
+    padding-bottom: 14px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid rgba(255,255,255,.18);
+}
+
+.broadcast-header h1 {
+    margin: 0;
+    font-size: clamp(22px, 3vw, 38px);
+    letter-spacing: 1px;
+    color: #e8f0d9;
+    text-transform: uppercase;
+}
+
+.broadcast-header p {
+    margin: 5px 0 0;
+    color: #aeb9a5;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+/* LANGUAGE BUTTON */
+
+.language-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 1px solid rgba(255,255,255,.3);
+    background: #30452c;
+    color: white;
+    padding: 7px 11px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+.language-button:hover {
+    background: #496541;
+}
+
+/* SECTIONS */
+
+.archive-section {
+    margin-bottom: 25px;
+}
+
+.section-title {
+    margin: 0 0 10px;
+    padding-bottom: 5px;
+    color: #dfead0;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #596e49;
+}
+
+/* BROADCAST HISTORY */
+
+.history-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.history-card {
+    padding: 12px;
+    background: linear-gradient(135deg, #222, #171717);
+    border: 1px solid rgba(255,255,255,.12);
+    border-left: 3px solid #70865a;
+}
+
+.history-card h3 {
+    margin: 0 0 12px;
+    color: #e8f0d9;
+    font-size: 13px;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+}
+
+.history-card p {
+    margin: 8px 0;
+    color: #d5d9cf;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.history-card strong {
+    color: #9caf83;
+}
+
+.schedule {
+    margin: 5px 0 10px;
+    padding-left: 17px;
+    color: #d5d9cf;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+/* VIDEOS */
+
+.video-container {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border: 1px solid rgba(255,255,255,.15);
+}
+
+.video-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.playlist-link {
+    display: inline-block;
+    margin-top: 9px;
+    color: #aebf98;
+    font-size: 10px;
+    text-decoration: none;
+}
+
+.playlist-link:hover {
+    color: #e8f0d9;
+    text-decoration: underline;
+}
+
+/* FOOTER */
+
+.broadcast-footer {
+    margin-top: 25px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255,255,255,.12);
+    text-align: center;
+    color: #77816f;
+    font-size: 9px;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .tv-room {
+        width: 100vw;
+    }
+
+    .tv-screen {
+        left: 13.45%;
+        top: 20.45%;
+        width: 74.25%;
+        height: 58.5%;
+    }
+
+    .screen-content {
+        padding: 12px 15px 20px;
+    }
+
+    .broadcast-header h1 {
+        font-size: 19px;
+    }
+
+    .broadcast-header p {
+        font-size: 9px;
+    }
+
+    .history-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 450px) {
+
+    .language-button {
+        position: static;
+        margin-top: 8px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="tv-room">
+
+    <div class="tv-screen">
+
+        <div class="screen-content">
+
+            <!-- HEADER -->
+
+            <header class="broadcast-header">
+
+                <button
+                    class="language-button"
+                    id="languageButton"
+                    onclick="toggleLanguage()">
+                    ESPAÑOL
+                </button>
+
+                <h1 id="pageTitle">HANNAH MONTANA</h1>
+
+                <p id="pageSubtitle">
+                    Disney Channel Broadcast History
+                </p>
+
+            </header>
+
+
+            <!-- BROADCAST HISTORY -->
+
+            <section class="archive-section">
+
+                <h2 class="section-title" id="historyTitle">
+                    Broadcast History
+                </h2>
+
+                <div class="history-grid">
+
+                    <!-- LATIN AMERICA -->
+
+                    <div class="history-card">
+
+                        <h3 id="latamTitle">
+                            Latin America
+                        </h3>
+
+                        <p>
+                            <strong id="latamFirstLabel">
+                                First Transmission:
+                            </strong>
+                            <br>
+                            November 11, 2006
+                        </p>
+
+                        <p>
+                            <strong id="latamStatus">
+                                Still Airing on Disney Channel
+                            </strong>
+                        </p>
+
+                        <p>
+                            <strong id="scheduleLabel">
+                                Broadcast Schedule:
+                            </strong>
+                        </p>
+
+                        <ul class="schedule">
+                            <li id="mondaySchedule">
+                                Monday–Thursday: 9:30 PM
+                            </li>
+
+                            <li id="fridaySchedule">
+                                Friday: 1:00 PM
+                            </li>
+
+                            <li id="sundaySchedule">
+                                Sunday: 2:00 PM
+                            </li>
+                        </ul>
+
+                        <p id="timeZones">
+                            Times: Argentina (ARG), Chile (CHL),
+                            and Mexico (MEX).
+                        </p>
+
+                    </div>
+
+
+                    <!-- UNITED STATES -->
+
+                    <div class="history-card">
+
+                        <h3 id="usaTitle">
+                            United States
+                        </h3>
+
+                        <p>
+                            <strong id="usaFirstLabel">
+                                First Transmission:
+                            </strong>
+                            <br>
+                            March 24, 2006
+                        </p>
+
+                        <p>
+                            <strong id="usaLastLabel">
+                                Last Aired on Disney Channel:
+                            </strong>
+                            <br>
+                            June 2, 2026
+                        </p>
+
+                        <p>
+                            <strong id="usaStatus">
+                                Still Airing on Disney XD:
+                            </strong>
+                            <br>
+                            <span id="usaSchedule">
+                                Fridays: 7:00 PM – 6:00 AM
+                            </span>
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- VIDEOS -->
+
+            <section class="archive-section">
+
+                <h2 class="section-title" id="videosTitle">
+                    Videos
+                </h2>
+
+                <div class="video-container">
+
+                    <iframe
+                        src="https://www.youtube-nocookie.com/embed/videoseries?list=PLJw4UIbazcHg"
+                        title="Hannah Montana — Broadcasts and Credit Rolls"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allowfullscreen>
+                    </iframe>
+
+                </div>
+
+                <a
+                    class="playlist-link"
+                    href="https://www.youtube.com/playlist?list=PLJw4UIbazcHg"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    id="playlistLink">
+
+                    Open playlist on YouTube ↗
+
+                </a>
+
+            </section>
+
+
+            <!-- FOOTER -->
+
+            <div class="broadcast-footer">
+                Disney Channel Home EXP Archive
+                · HANNAH MONTANA
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* LANGUAGE SWITCH */
+
+let english = true;
+
+function toggleLanguage() {
+
+    english = !english;
+
+    document.documentElement.lang =
+        english ? "en" : "es";
+
+    document.getElementById("languageButton").textContent =
+        english ? "ESPAÑOL" : "ENGLISH";
+
+    document.getElementById("pageSubtitle").textContent =
+        english
+        ? "Disney Channel Broadcast History"
+        : "Historial de transmisiones de Disney Channel";
+
+    document.getElementById("historyTitle").textContent =
+        english ? "Broadcast History" : "Historial de transmisiones";
+
+    document.getElementById("latamTitle").textContent =
+        english ? "Latin America" : "Latinoamérica";
+
+    document.getElementById("usaTitle").textContent =
+        english ? "United States" : "Estados Unidos";
+
+    document.getElementById("latamFirstLabel").textContent =
+        english ? "First Transmission:" : "Primera transmisión:";
+
+    document.getElementById("latamStatus").textContent =
+        english ? "Still Airing on Disney Channel" : "Continúa emitiéndose en Disney Channel";
+
+    document.getElementById("scheduleLabel").textContent =
+        english ? "Broadcast Schedule:" : "Horario de transmisión:";
+
+    document.getElementById("mondaySchedule").textContent =
+        english ? "Monday–Thursday: 9:30 PM" : "Lunes–jueves: 9:30 PM";
+
+    document.getElementById("fridaySchedule").textContent =
+        english ? "Friday: 1:00 PM" : "Viernes: 1:00 PM";
+
+    document.getElementById("sundaySchedule").textContent =
+        english ? "Sunday: 2:00 PM" : "Domingo: 2:00 PM";
+
+    document.getElementById("timeZones").textContent =
+        english
+        ? "Times: Argentina (ARG), Chile (CHL), and Mexico (MEX)."
+        : "Horarios: Argentina (ARG), Chile (CHL) y México (MEX).";
+
+    document.getElementById("usaFirstLabel").textContent =
+        english ? "First Transmission:" : "Primera transmisión:";
+
+    document.getElementById("usaLastLabel").textContent =
+        english ? "Last Aired on Disney Channel:" : "Última emisión en Disney Channel:";
+
+    document.getElementById("usaStatus").textContent =
+        english ? "Still Airing on Disney XD:" : "Continúa emitiéndose en Disney XD:";
+
+    document.getElementById("usaSchedule").textContent =
+        english ? "Fridays: 7:00 PM – 6:00 AM" : "Viernes: 7:00 PM – 6:00 AM";
+
+    document.getElementById("videosTitle").textContent =
+        english ? "Videos" : "Videos";
+
+    document.getElementById("playlistLink").textContent =
+        english
+        ? "Open playlist on YouTube ↗"
+        : "Abrir lista de reproducción en YouTube ↗";
+}
+
+</script>
+
+</body>
+</html>
