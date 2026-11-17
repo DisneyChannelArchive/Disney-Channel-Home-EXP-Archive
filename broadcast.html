@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Disney Channel Broadcast Archive</title>
 
 <style>
@@ -23,6 +24,7 @@ body {
     overflow-x: hidden;
 }
 
+/* TV ROOM */
 .tv-room {
     position: relative;
     width: min(1188px, 100vw);
@@ -33,6 +35,7 @@ body {
     background-repeat: no-repeat;
 }
 
+/* TV SCREEN */
 .tv-screen {
     position: absolute;
     left: 13.45%;
@@ -44,6 +47,7 @@ body {
     color: white;
 }
 
+/* SCREEN CONTENT */
 .screen-content {
     position: absolute;
     inset: 0;
@@ -67,6 +71,7 @@ body {
     border-radius: 10px;
 }
 
+/* HEADER */
 .broadcast-header {
     position: relative;
     padding-bottom: 14px;
@@ -76,35 +81,14 @@ body {
 
 .broadcast-header h1 {
     margin: 0;
+    padding-right: 90px;
     font-size: clamp(22px, 3vw, 38px);
     letter-spacing: 1px;
     color: #e8f0d9;
-    text-transform: none;
+    text-transform: uppercase;
 }
 
-.archive-search {
-    display: block;
-    width: min(420px, 100%);
-    margin-top: 10px;
-    padding: 9px 12px;
-    border: 1px solid rgba(255,255,255,.25);
-    border-left: 3px solid #70865a;
-    border-radius: 3px;
-    outline: none;
-    background: #171717;
-    color: #f1f3ec;
-    font-size: 11px;
-}
-
-.archive-search::placeholder {
-    color: #aeb9a5;
-}
-
-.archive-search:focus {
-    border-color: #9ab57a;
-    background: #20251e;
-}
-
+/* LANGUAGE BUTTON */
 .language-button {
     position: absolute;
     top: 0;
@@ -123,6 +107,32 @@ body {
     background: #496541;
 }
 
+/* SEARCH BAR */
+.search-container {
+    margin-top: 13px;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 10px 12px;
+    background: #1b1b1b;
+    border: 1px solid #596e49;
+    border-left: 3px solid #78905f;
+    border-radius: 3px;
+    color: white;
+    font-size: 11px;
+    outline: none;
+}
+
+.search-bar:focus {
+    border-color: #9ab57a;
+}
+
+.search-bar::placeholder {
+    color: #9ba591;
+}
+
+/* SECTIONS */
 .archive-section {
     margin-bottom: 25px;
 }
@@ -137,12 +147,14 @@ body {
     border-bottom: 2px solid #596e49;
 }
 
+/* PROGRAM GRID */
 .program-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 8px;
 }
 
+/* PROGRAM CARDS */
 .program {
     display: block;
     min-height: 57px;
@@ -178,25 +190,48 @@ body {
     line-height: 1.25;
 }
 
+/* FOOTER */
 .broadcast-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
     margin-top: 25px;
     padding-top: 12px;
     border-top: 1px solid rgba(255,255,255,.12);
-    text-align: center;
     color: #77816f;
     font-size: 9px;
 }
 
+.return-button {
+    display: inline-block;
+    padding: 8px 11px;
+    background: #30452c;
+    border: 1px solid rgba(255,255,255,.2);
+    border-left: 3px solid #78905f;
+    border-radius: 3px;
+    color: #e8f0d9;
+    text-decoration: none;
+    font-size: 9px;
+    font-weight: bold;
+    transition: background .15s ease;
+}
+
+.return-button:hover {
+    background: #496541;
+}
+
+.footer-brand {
+    text-align: right;
+    color: #77816f;
+    font-size: 9px;
+    line-height: 1.4;
+}
+
+/* MOBILE */
 @media (max-width: 700px) {
     .tv-room {
         width: 100vw;
-    }
-
-    .tv-screen {
-        left: 13.45%;
-        top: 20.45%;
-        width: 74.25%;
-        height: 58.5%;
     }
 
     .screen-content {
@@ -210,10 +245,6 @@ body {
     .broadcast-header h1 {
         font-size: 19px;
     }
-
-    .archive-search {
-        font-size: 10px;
-    }
 }
 
 @media (max-width: 450px) {
@@ -225,16 +256,32 @@ body {
         position: static;
         margin-top: 8px;
     }
+
+    .broadcast-header h1 {
+        padding-right: 0;
+    }
+
+    .broadcast-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-brand {
+        text-align: left;
+    }
 }
 </style>
 </head>
 
 <body>
+
 <div class="tv-room">
     <div class="tv-screen">
         <div class="screen-content">
 
+            <!-- HEADER -->
             <header class="broadcast-header">
+
                 <button
                     class="language-button"
                     id="languageButton"
@@ -242,19 +289,28 @@ body {
                     ENGLISH
                 </button>
 
-                <h1 id="pageTitle">Disney Channel Broadcast Archive</h1>
+                <h1 id="pageTitle">
+                    Disney Channel Broadcast Archive
+                </h1>
 
-                <input
-                    class="archive-search"
-                    id="archiveSearch"
-                    type="search"
-                    placeholder="Buscar en el archivo..."
-                    aria-label="Buscar en el archivo"
-                    oninput="searchArchive()">
+                <!-- SEARCH BAR -->
+                <div class="search-container">
+                    <input
+                        type="search"
+                        class="search-bar"
+                        id="archiveSearch"
+                        placeholder="Buscar en el archivo..."
+                        oninput="searchArchive()">
+                </div>
+
             </header>
 
+            <!-- MOVIES -->
             <section class="archive-section">
-                <h2 class="section-title" id="moviesTitle">Películas</h2>
+
+                <h2 class="section-title" id="moviesTitle">
+                    Películas
+                </h2>
 
                 <div class="program-grid">
 
@@ -331,8 +387,12 @@ body {
                 </div>
             </section>
 
+            <!-- SERIES -->
             <section class="archive-section">
-                <h2 class="section-title" id="seriesTitle">Series</h2>
+
+                <h2 class="section-title" id="seriesTitle">
+                    Series
+                </h2>
 
                 <div class="program-grid">
 
@@ -391,6 +451,7 @@ body {
                         <span class="program-title" data-es="Las Nuevas Locuras del Emperador" data-en="The Emperor's New School">Las Nuevas Locuras del Emperador</span>
                     </a>
 
+                    <!-- HANNAH MONTANA: BETWEEN EMPEROR'S NEW SCHOOL AND THE REPLACEMENTS -->
                     <a class="program" href="broadcast/hannah-montana.html">
                         <span class="program-type" data-type-es="Serie" data-type-en="Series">Serie</span>
                         <span class="program-title" data-es="Hannah Montana" data-en="Hannah Montana">Hannah Montana</span>
@@ -439,8 +500,20 @@ body {
                 </div>
             </section>
 
+            <!-- FOOTER -->
             <div class="broadcast-footer">
-                Disney Channel Home EXP Archive · BROADCAST ARCHIVE
+
+                <a
+                    class="return-button"
+                    id="returnButton"
+                    href="https://disneyrocklover.itch.io/disneychannelhomeexparchive">
+                    Click aca para volver al living
+                </a>
+
+                <span class="footer-brand" id="footerBrand">
+                    La Casa EXP Disney Channel: El Archivo
+                </span>
+
             </div>
 
         </div>
@@ -448,67 +521,80 @@ body {
 </div>
 
 <script>
+
+/* LANGUAGE SWITCH */
 let english = false;
 
 function toggleLanguage() {
     english = !english;
 
-    const titles = document.querySelectorAll("[data-es]");
-
-    titles.forEach(function(element) {
+    /* PROGRAM TITLES */
+    document.querySelectorAll("[data-es]").forEach(function(element) {
         element.textContent = english
             ? element.dataset.en
             : element.dataset.es;
     });
 
-    const types = document.querySelectorAll(".program-type");
-
-    types.forEach(function(element) {
+    /* MOVIE / SERIES LABELS */
+    document.querySelectorAll(".program-type").forEach(function(element) {
         element.textContent = english
             ? element.dataset.typeEn
             : element.dataset.typeEs;
     });
 
+    /* PAGE LANGUAGE */
     document.documentElement.lang = english ? "en" : "es";
 
+    /* LANGUAGE BUTTON */
     document.getElementById("languageButton").textContent =
         english ? "ESPAÑOL" : "ENGLISH";
 
-    document.getElementById("archiveSearch").placeholder =
-        english ? "Search the archive..." : "Buscar en el archivo...";
-
-    document.getElementById("archiveSearch").setAttribute(
-        "aria-label",
-        english ? "Search the archive" : "Buscar en el archivo"
-    );
-
+    /* SECTION TITLES */
     document.getElementById("moviesTitle").textContent =
         english ? "Movies" : "Películas";
 
-    document.getElementById("seriesTitle").textContent = "Series";
+    document.getElementById("seriesTitle").textContent =
+        english ? "Series" : "Series";
+
+    /* SEARCH PLACEHOLDER */
+    document.getElementById("archiveSearch").placeholder =
+        english ? "Search the archive..." : "Buscar en el archivo...";
+
+    /* RETURN BUTTON */
+    document.getElementById("returnButton").textContent =
+        english
+            ? "Click here to go back to the living room"
+            : "Click aca para volver al living";
+
+    /* FOOTER BRAND */
+    document.getElementById("footerBrand").textContent =
+        english
+            ? "Disney Channel Home EXP Archive"
+            : "La Casa EXP Disney Channel: El Archivo";
 }
 
+/* SEARCH FUNCTION */
 function searchArchive() {
-    const query = document.getElementById("archiveSearch").value.toLowerCase().trim();
-    const sections = document.querySelectorAll(".archive-section");
+    const searchTerm = document
+        .getElementById("archiveSearch")
+        .value
+        .toLowerCase()
+        .trim();
 
-    sections.forEach(function(section) {
-        const programs = section.querySelectorAll(".program");
-        let visiblePrograms = 0;
+    document.querySelectorAll(".program").forEach(function(program) {
+        const searchableText = program.textContent.toLowerCase();
+        const spanishTitle = program.querySelector("[data-es]")?.dataset.es?.toLowerCase() || "";
+        const englishTitle = program.querySelector("[data-en]")?.dataset.en?.toLowerCase() || "";
 
-        programs.forEach(function(program) {
-            const matches = program.textContent.toLowerCase().includes(query);
+        const matches =
+            searchableText.includes(searchTerm) ||
+            spanishTitle.includes(searchTerm) ||
+            englishTitle.includes(searchTerm);
 
-            program.style.display = matches ? "block" : "none";
-
-            if (matches) {
-                visiblePrograms++;
-            }
-        });
-
-        section.style.display = visiblePrograms > 0 ? "block" : "none";
+        program.style.display = matches ? "block" : "none";
     });
 }
+
 </script>
 
 </body>
