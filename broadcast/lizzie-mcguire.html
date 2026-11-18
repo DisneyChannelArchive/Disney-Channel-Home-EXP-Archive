@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Coming Soon | Disney Channel Broadcast Archive</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    background: #000;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* TV ROOM */
+.tv-room {
+    position: relative;
+    width: min(1188px, 100vw);
+    margin: 0 auto;
+    aspect-ratio: 1188 / 600;
+    background-image: url("../TV.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+/* TV SCREEN */
+.tv-screen {
+    position: absolute;
+    left: 13.45%;
+    top: 20.45%;
+    width: 74.25%;
+    height: 58.5%;
+    overflow: hidden;
+    background: #101010;
+    color: white;
+}
+
+/* REAL TELEVISION STATIC */
+.tv-screen::before {
+    content: "";
+    position: absolute;
+    inset: -15%;
+    z-index: 0;
+    pointer-events: none;
+
+    background-image: url("../images.jfif");
+    background-repeat: repeat;
+    background-size: 596px 335px;
+
+    opacity: 0.75;
+
+    animation: staticMovement 0.15s steps(3) infinite;
+}
+
+@keyframes staticMovement {
+    0% {
+        transform: translate(0, 0);
+        background-position: 0 0;
+    }
+
+    25% {
+        transform: translate(-2%, 1%);
+        background-position: 17px -11px;
+    }
+
+    50% {
+        transform: translate(1%, -2%);
+        background-position: -13px 19px;
+    }
+
+    75% {
+        transform: translate(2%, 1%);
+        background-position: 21px 13px;
+    }
+
+    100% {
+        transform: translate(-1%, -1%);
+        background-position: -9px -17px;
+    }
+}
+
+/* SCREEN CONTENT */
+.screen-content {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+    text-align: center;
+
+    background: rgba(0, 0, 0, 0.38);
+}
+
+/* LANGUAGE BUTTON */
+.language-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    padding: 7px 11px;
+    background: #30452c;
+    border: 1px solid rgba(255,255,255,.3);
+    border-radius: 4px;
+
+    color: white;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.language-button:hover {
+    background: #496541;
+}
+
+/* COMING SOON MESSAGE */
+.coming-soon {
+    max-width: 550px;
+    text-shadow: 1px 1px 4px #000;
+}
+
+.archive-label {
+    margin-bottom: 18px;
+    color: #a3bb89;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.coming-soon h1 {
+    margin: 0 0 18px;
+    color: #e8f0d9;
+    font-size: clamp(22px, 3.5vw, 36px);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.coming-soon p {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(12px, 1.5vw, 16px);
+    line-height: 1.7;
+}
+
+/* SIGNAL INDICATOR */
+.signal {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 25px;
+}
+
+.signal span {
+    display: block;
+    width: 7px;
+    height: 7px;
+    background: #a3bb89;
+    border-radius: 50%;
+    animation: blink 1.4s infinite ease-in-out;
+}
+
+.signal span:nth-child(2) {
+    animation-delay: .2s;
+}
+
+.signal span:nth-child(3) {
+    animation-delay: .4s;
+}
+
+@keyframes blink {
+    0%, 80%, 100% {
+        opacity: .25;
+    }
+
+    40% {
+        opacity: 1;
+    }
+}
+
+/* BACK BUTTON */
+.back-link {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 9px 13px;
+
+    background: #30452c;
+    border: 1px solid rgba(255,255,255,.2);
+    border-left: 3px solid #78905f;
+    border-radius: 3px;
+
+    color: #e8f0d9;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: bold;
+    text-shadow: none;
+}
+
+.back-link:hover {
+    background: #496541;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .screen-content {
+        padding: 12px;
+    }
+
+    .archive-label {
+        margin-bottom: 8px;
+        font-size: 8px;
+    }
+
+    .coming-soon h1 {
+        margin-bottom: 8px;
+    }
+
+    .signal {
+        margin-top: 12px;
+    }
+
+    .back-link {
+        margin-top: 12px;
+        padding: 6px 9px;
+        font-size: 8px;
+    }
+
+    .language-button {
+        top: 6px;
+        right: 6px;
+        padding: 5px 7px;
+        font-size: 8px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="tv-room">
+
+    <div class="tv-screen">
+
+        <div class="screen-content">
+
+            <button
+                class="language-button"
+                id="languageButton"
+                onclick="toggleLanguage()">
+                ESPAÑOL
+            </button>
+
+            <main class="coming-soon">
+
+                <div class="archive-label" id="archiveLabel">
+                    DISNEY CHANNEL BROADCAST ARCHIVE
+                </div>
+
+                <h1 id="pageTitle">
+                    COMING SOON
+                </h1>
+
+                <p id="message">
+                    This show is not on transmission yet, but it'll be soon.
+                </p>
+
+                <div class="signal">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <a
+                    class="back-link"
+                    id="backLink"
+                    href="../broadcast.html">
+                    BACK TO BROADCAST ARCHIVES
+                </a>
+
+            </main>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+let english = true;
+
+function toggleLanguage() {
+
+    english = !english;
+
+    document.documentElement.lang = english ? "en" : "es";
+
+    document.getElementById("languageButton").textContent =
+        english ? "ESPAÑOL" : "ENGLISH";
+
+    document.getElementById("archiveLabel").textContent =
+        english
+        ? "DISNEY CHANNEL BROADCAST ARCHIVE"
+        : "ARCHIVO DE TRANSMISIONES DISNEY CHANNEL";
+
+    document.getElementById("pageTitle").textContent =
+        english ? "COMING SOON" : "PRÓXIMAMENTE";
+
+    document.getElementById("message").textContent =
+        english
+        ? "This show is not on transmission yet, but it'll be soon."
+        : "Esta serie aún no está en transmisión, pero pronto lo estará.";
+
+    document.getElementById("backLink").textContent =
+        english
+        ? "BACK TO BROADCAST ARCHIVES"
+        : "VOLVER AL ARCHIVO DE TRANSMISIONES";
+}
+
+</script>
+
+</body>
+</html>
