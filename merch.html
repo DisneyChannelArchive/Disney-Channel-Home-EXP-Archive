@@ -25,7 +25,6 @@ body {
     overflow-x: hidden;
 }
 
-/* MAIN PAGE */
 .page {
     width: 100%;
     min-height: 100vh;
@@ -66,7 +65,7 @@ body {
     background: #496541;
 }
 
-/* SEARCH */
+/* MAIN SEARCH */
 .search-container {
     width: min(650px, 100%);
     margin: 17px auto 0;
@@ -84,11 +83,13 @@ body {
     outline: none;
 }
 
-.search-bar:focus {
+.search-bar:focus,
+.collection-search:focus {
     border-color: #a3bb89;
 }
 
-.search-bar::placeholder {
+.search-bar::placeholder,
+.collection-search::placeholder {
     color: #9ba591;
 }
 
@@ -103,7 +104,7 @@ body {
     background-repeat: no-repeat;
 }
 
-/* INVISIBLE CLICKABLE AREAS */
+/* INVISIBLE CLICKABLE SHELVES */
 .shelf-hotspot {
     position: absolute;
     top: 2%;
@@ -131,7 +132,7 @@ body {
     width: 22%;
 }
 
-/* FOOTER */
+/* RETURN BUTTON */
 .main-footer {
     max-width: 1400px;
     margin: 28px auto 0;
@@ -182,7 +183,6 @@ body {
     box-shadow: 0 0 35px rgba(0,0,0,.8);
 }
 
-/* MODAL HEADER */
 .modal-header {
     display: flex;
     align-items: center;
@@ -217,7 +217,6 @@ body {
     background: #496541;
 }
 
-/* DESCRIPTIONS */
 .modal-description {
     margin: 0 0 18px;
     color: #b9c3ae;
@@ -225,7 +224,7 @@ body {
     line-height: 1.7;
 }
 
-/* NAVIGATION BUTTONS */
+/* ADVERTISING MENU */
 .archive-buttons {
     display: grid;
     grid-template-columns: repeat(2, minmax(0,1fr));
@@ -243,6 +242,7 @@ body {
     cursor: pointer;
     font-size: 13px;
     font-weight: bold;
+    text-decoration: none;
     transition: background .2s;
 }
 
@@ -259,7 +259,7 @@ body {
     line-height: 1.5;
 }
 
-/* CATEGORY SECTIONS */
+/* COLLECTION SECTIONS */
 .category-section {
     margin-bottom: 25px;
 }
@@ -314,10 +314,6 @@ body {
     outline: none;
 }
 
-.collection-search::placeholder {
-    color: #9ba591;
-}
-
 /* GALLERY */
 .gallery-grid {
     display: grid;
@@ -334,7 +330,7 @@ body {
 .gallery-card img {
     display: block;
     width: 100%;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 4;
     object-fit: contain;
     background: #111;
 }
@@ -343,6 +339,15 @@ body {
     padding: 10px;
     color: #e8f0d9;
     font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.gallery-description {
+    padding: 0 12px 13px;
+    color: #b9c3ae;
+    font-size: 10px;
+    line-height: 1.6;
     text-align: center;
 }
 
@@ -364,39 +369,6 @@ body {
     display: block;
     margin-bottom: 8px;
     color: #a3bb89;
-}
-
-/* YOUTUBE PLAYER */
-.video-container {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #000;
-    margin-top: 15px;
-}
-
-.video-container iframe {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
-
-.playlist-link {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 13px;
-    background: #30452c;
-    border-left: 3px solid #78905f;
-    color: #e8f0d9;
-    text-decoration: none;
-    font-size: 10px;
-    font-weight: bold;
-}
-
-.playlist-link:hover {
-    background: #496541;
 }
 
 /* MODAL FOOTER */
@@ -450,10 +422,7 @@ body {
 
 @media (max-width: 380px) {
 
-    .archive-buttons {
-        grid-template-columns: 1fr;
-    }
-
+    .archive-buttons,
     .gallery-grid {
         grid-template-columns: 1fr;
     }
@@ -497,14 +466,14 @@ body {
 
         <div class="cabinet-stage">
 
-            <!-- LEFT SIDE -->
+            <!-- LEFT SHELF: ADVERTISING -->
             <button
                 class="shelf-hotspot ads-hotspot"
                 onclick="openAdsMenu()"
-                aria-label="Open advertising and lost media archive">
+                aria-label="Open advertising archive">
             </button>
 
-            <!-- RIGHT SIDE -->
+            <!-- RIGHT SHELF: MERCHANDISE -->
             <button
                 class="shelf-hotspot merch-hotspot"
                 onclick="openMerchMenu()"
@@ -531,7 +500,7 @@ body {
 </div>
 
 
-<!-- ARCHIVE MODAL -->
+<!-- ARCHIVE WINDOW -->
 <div class="modal" id="archiveModal">
 
     <div class="modal-window">
@@ -559,36 +528,40 @@ body {
 <script>
 
 /* =========================================
-   ARCHIVE CONFIGURATION
+   ARCHIVE CONTENT
 ========================================= */
 
 /* PHYSICAL ADVERTISEMENTS */
 
 const physicalAds = [
 
-    // ADD SCANNED ADVERTISEMENTS HERE.
-    // Example:
-    // {
-    //     src: "merch/ads/hannah-ad.jpg",
-    //     title: "Hannah Montana Magazine Advertisement"
-    // }
+    {
+        src: "merch/ads/hannah-japan-magazine-nov-2026.jpg",
+
+        title: {
+            en: "Hannah Montana Ad",
+            es: "Anuncio de Hannah Montana"
+        },
+
+        description: {
+            en: "Featured in a Japanese magazine on November 2026 to promote the comeback of Hannah Montana to Disney Channel Japan on December 2026.",
+            es: "Publicado en una revista japonesa en noviembre de 2026 para promocionar el regreso de Hannah Montana a Disney Channel Japón en diciembre de 2026."
+        }
+    }
 
 ];
 
 
-/* LOST MEDIA YOUTUBE PLAYLIST */
+/* LOST MEDIA PLAYLIST */
 
 const lostMediaPlaylist =
     "https://www.youtube.com/playlist?list=PLWpcZxU5Jq5s";
 
-const lostMediaEmbed =
-    "https://www.youtube-nocookie.com/embed/videoseries?list=PLWpcZxU5Jq5s";
-
 
 /* MERCHANDISE COLLECTIONS
 
-   Add images and descriptions to the relevant collection.
-   Each collection has its own search bar.
+   Add the archived products and images here.
+   Each show and movie has its own collection.
 
 */
 
@@ -646,11 +619,9 @@ const translations = {
         lost: "LOST MEDIA",
 
         lostDescription:
-            "Explore recovered and archived Disney Channel commercials and promotional recordings.",
+            "Explore the recovered and archived Disney Channel commercials and promotional recordings.",
 
         physicalTitle: "PHYSICAL ADVERTISEMENTS",
-
-        lostTitle: "LOST MEDIA ARCHIVE",
 
         merchTitle: "MERCHANDISE COLLECTIONS",
 
@@ -661,8 +632,7 @@ const translations = {
 
         movies: "MOVIES",
 
-        collectionSearch:
-            "Search this collection...",
+        collectionSearch: "Search this collection...",
 
         emptyTitle: "COLLECTION UNDER CONSTRUCTION",
 
@@ -675,14 +645,7 @@ const translations = {
         noResults:
             "No matching items were found.",
 
-        playlistDescription:
-            "Browse and play the archived videos directly below. Use the YouTube playlist controls to explore the available recordings.",
-
-        playlistButton:
-            "OPEN PLAYLIST ON YOUTUBE",
-
-        itemCount:
-            "ARCHIVED ITEMS"
+        itemCount: "ARCHIVED ITEMS"
 
     },
 
@@ -711,11 +674,9 @@ const translations = {
         lost: "LOST MEDIA",
 
         lostDescription:
-            "Explora comerciales y grabaciones promocionales recuperadas y archivadas de Disney Channel.",
+            "Explora los comerciales y las grabaciones promocionales recuperadas y archivadas de Disney Channel.",
 
         physicalTitle: "ANUNCIOS FÍSICOS",
-
-        lostTitle: "ARCHIVO DE LOST MEDIA",
 
         merchTitle: "COLECCIONES DE MERCHANDISING",
 
@@ -726,8 +687,7 @@ const translations = {
 
         movies: "PELÍCULAS",
 
-        collectionSearch:
-            "Buscar en esta colección...",
+        collectionSearch: "Buscar en esta colección...",
 
         emptyTitle: "COLECCIÓN EN CONSTRUCCIÓN",
 
@@ -740,14 +700,7 @@ const translations = {
         noResults:
             "No se encontraron artículos.",
 
-        playlistDescription:
-            "Explora y reproduce los videos archivados directamente aquí. Utiliza los controles de YouTube para recorrer las grabaciones disponibles.",
-
-        playlistButton:
-            "ABRIR LISTA EN YOUTUBE",
-
-        itemCount:
-            "ARTÍCULOS ARCHIVADOS"
+        itemCount: "ARTÍCULOS ARCHIVADOS"
 
     }
 
@@ -784,7 +737,7 @@ const showNames = {
 
 
 /* =========================================
-   LANGUAGE SWITCHING
+   LANGUAGE
 ========================================= */
 
 let english = true;
@@ -832,7 +785,7 @@ function toggleLanguage() {
 
 
 /* =========================================
-   MODAL
+   MODAL CONTROLS
 ========================================= */
 
 function openModal() {
@@ -873,9 +826,11 @@ function globalSearch() {
         .toLowerCase();
 
     if (query.length === 0) {
+
         if (currentView === "global-search") {
             closeModal();
         }
+
         return;
     }
 
@@ -888,7 +843,7 @@ function globalSearch() {
 
 
 /* =========================================
-   LEFT SHELF: ADVERTISING
+   LEFT SHELF
 ========================================= */
 
 function openAdsMenu() {
@@ -908,17 +863,9 @@ function openPhysicalAds() {
 
 }
 
-function openLostMedia() {
-
-    currentView = "lost";
-
-    renderCurrentView();
-
-}
-
 
 /* =========================================
-   RIGHT SHELF: MERCHANDISE
+   RIGHT SHELF
 ========================================= */
 
 function openMerchMenu() {
@@ -943,7 +890,7 @@ function openCollection(section, show) {
 
 
 /* =========================================
-   SAFE HTML TEXT
+   SAFE HTML
 ========================================= */
 
 function escapeHTML(value) {
@@ -987,21 +934,39 @@ function renderGallery(items, emptyMessage) {
 
             ${items.map(function(item) {
 
+                const title = item.title
+                    ? (typeof item.title === "object"
+                        ? item.title[english ? "en" : "es"]
+                        : item.title)
+                    : "";
+
+                const description = item.description
+                    ? (typeof item.description === "object"
+                        ? item.description[english ? "en" : "es"]
+                        : item.description)
+                    : "";
+
                 return `
                     <div
                         class="gallery-card"
                         data-search="${escapeHTML(
-                            (item.title || "") + " " + (item.description || "")
+                            title + " " + description
                         ).toLowerCase()}">
 
                         <img
                             src="${escapeHTML(item.src)}"
-                            alt="${escapeHTML(item.title || "Archived item")}"
+                            alt="${escapeHTML(title || "Archived item")}"
                             loading="lazy">
 
                         <div class="gallery-caption">
-                            ${escapeHTML(item.title || "")}
+                            ${escapeHTML(title)}
                         </div>
+
+                        ${description ? `
+                            <div class="gallery-description">
+                                ${escapeHTML(description)}
+                            </div>
+                        ` : ""}
 
                     </div>
                 `;
@@ -1070,8 +1035,7 @@ function filterCollection() {
 function goBack() {
 
     if (
-        currentView === "physical" ||
-        currentView === "lost"
+        currentView === "physical"
     ) {
 
         currentView = "ads";
@@ -1093,7 +1057,7 @@ function goBack() {
 
 
 /* =========================================
-   RENDER CURRENT PAGE
+   RENDER ARCHIVE
 ========================================= */
 
 function renderCurrentView() {
@@ -1101,6 +1065,9 @@ function renderCurrentView() {
     const t = getT();
 
     const content = document.getElementById("modalContent");
+
+
+    /* ADVERTISING MENU */
 
     if (currentView === "ads") {
 
@@ -1124,21 +1091,26 @@ function renderCurrentView() {
 
                 </button>
 
-                <button
+                <a
                     class="archive-button"
-                    onclick="openLostMedia()">
+                    href="${lostMediaPlaylist}"
+                    target="_blank"
+                    rel="noopener">
 
                     ${t.lost}
 
                     <small>${t.lostDescription}</small>
 
-                </button>
+                </a>
 
             </div>
 
         `;
 
     }
+
+
+    /* PHYSICAL ADVERTISEMENTS */
 
     else if (currentView === "physical") {
 
@@ -1164,47 +1136,8 @@ function renderCurrentView() {
 
     }
 
-    else if (currentView === "lost") {
 
-        setTitle(t.lostTitle);
-
-        content.innerHTML = `
-
-            <p class="modal-description">
-                ${t.playlistDescription}
-            </p>
-
-            <div class="video-container">
-
-                <iframe
-                    src="${lostMediaEmbed}"
-                    title="Disney Channel Lost Media Playlist"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen
-                    loading="lazy">
-                </iframe>
-
-            </div>
-
-            <a
-                class="playlist-link"
-                href="${lostMediaPlaylist}"
-                target="_blank"
-                rel="noopener">
-                ${t.playlistButton}
-            </a>
-
-            <div class="modal-footer">
-
-                <button class="back-button" onclick="goBack()">
-                    ← ${t.back}
-                </button>
-
-            </div>
-
-        `;
-
-    }
+    /* MERCHANDISE MENU */
 
     else if (currentView === "merch") {
 
@@ -1284,9 +1217,13 @@ function renderCurrentView() {
 
     }
 
+
+    /* INDIVIDUAL MERCHANDISE COLLECTION */
+
     else if (currentView === "collection") {
 
-        const items = merchCollections[selectedSection][selectedShow] || [];
+        const items =
+            merchCollections[selectedSection][selectedShow] || [];
 
         const translatedName =
             showNames[english ? "en" : "es"][selectedShow] || selectedShow;
@@ -1325,6 +1262,9 @@ function renderCurrentView() {
         `;
 
     }
+
+
+    /* MAIN SEARCH RESULTS */
 
     else if (currentView === "global-search") {
 
@@ -1416,7 +1356,7 @@ document.addEventListener("keydown", function(event) {
 });
 
 
-/* INITIALIZE HOME LINK */
+/* INITIAL HOME LINK */
 
 document.getElementById("homeButton").href =
     "https://disneyrocklover.itch.io/disneychannelhomeexparchive";
