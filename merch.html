@@ -21,19 +21,24 @@ html, body {
     color: white;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 /* MAIN PAGE */
 .page {
     width: 100%;
     min-height: 100vh;
-    padding: 25px 15px 35px;
+    padding: 25px 12px 35px;
 }
 
 /* HEADER */
 .archive-header {
-    max-width: 1280px;
-    margin: 0 auto 20px;
+    width: min(1450px, 100%);
+    margin: 0 auto 22px;
     position: relative;
     text-align: center;
+    padding: 0 100px;
 }
 
 .archive-header h1 {
@@ -42,13 +47,6 @@ html, body {
     font-size: clamp(22px, 4vw, 38px);
     letter-spacing: 2px;
     text-transform: uppercase;
-}
-
-.archive-header p {
-    margin: 9px 0 0;
-    color: #a3bb89;
-    font-size: 11px;
-    letter-spacing: 2px;
 }
 
 .language-button {
@@ -68,10 +66,36 @@ html, body {
     background: #496541;
 }
 
+/* SEARCH */
+.search-container {
+    width: min(650px, 100%);
+    margin: 17px auto 0;
+}
+
+.search-bar {
+    width: 100%;
+    padding: 12px 15px;
+    background: #1b1b1b;
+    border: 1px solid #596e49;
+    border-left: 3px solid #78905f;
+    border-radius: 3px;
+    color: white;
+    font-size: 12px;
+    outline: none;
+}
+
+.search-bar:focus {
+    border-color: #a3bb89;
+}
+
+.search-bar::placeholder {
+    color: #9ba591;
+}
+
 /* CABINET BACKGROUND */
 .cabinet-stage {
     position: relative;
-    width: min(1280px, 100%);
+    width: min(1600px, 100%);
     aspect-ratio: 1280 / 270;
     margin: 0 auto;
     background-image: url("merchandise%20and%20archives.png");
@@ -79,59 +103,38 @@ html, body {
     background-repeat: no-repeat;
 }
 
-/* INVISIBLE CLICKABLE SHELVES */
+/* INVISIBLE CLICKABLE AREAS */
 .shelf-hotspot {
     position: absolute;
-    top: 3%;
-    height: 94%;
+    top: 2%;
+    height: 96%;
     border: 2px solid transparent;
     background: transparent;
     cursor: pointer;
     transition: background .2s, border .2s;
 }
 
-.shelf-hotspot:hover {
-    background: rgba(120, 144, 95, .13);
-    border: 2px solid rgba(180, 205, 145, .65);
+.shelf-hotspot:hover,
+.shelf-hotspot:focus-visible {
+    background: rgba(120,144,95,.13);
+    border: 2px solid rgba(180,205,145,.65);
+    outline: none;
 }
 
-/* LEFT SIDE: ADS AND COMMERCIALS */
 .ads-hotspot {
     left: 12%;
     width: 22%;
 }
 
-/* RIGHT SIDE: MERCHANDISE */
 .merch-hotspot {
     left: 65%;
     width: 22%;
 }
 
-/* LABELS UNDER CABINET */
-.shelf-labels {
-    width: min(1280px, 100%);
-    margin: 15px auto 0;
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.shelf-label {
-    width: 50%;
-    padding: 12px;
-    text-align: center;
-    color: #e8f0d9;
-    background: #1b1b1b;
-    border-bottom: 2px solid #78905f;
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 2px;
-}
-
-/* BACK BUTTON */
+/* FOOTER */
 .main-footer {
-    max-width: 1280px;
-    margin: 25px auto 0;
+    max-width: 1400px;
+    margin: 28px auto 0;
     text-align: center;
 }
 
@@ -151,27 +154,26 @@ html, body {
     background: #496541;
 }
 
-/* MODAL BACKGROUND */
+/* MODAL */
 .modal {
     display: none;
     position: fixed;
     inset: 0;
     z-index: 1000;
-    padding: 20px;
+    padding: 18px;
     align-items: center;
     justify-content: center;
-    background: rgba(0,0,0,.88);
+    background: rgba(0,0,0,.90);
 }
 
 .modal.active {
     display: flex;
 }
 
-/* MODAL WINDOW */
 .modal-window {
     position: relative;
-    width: min(900px, 100%);
-    max-height: 88vh;
+    width: min(1000px, 100%);
+    max-height: 90vh;
     overflow-y: auto;
     padding: 25px;
     background: #151515;
@@ -199,37 +201,47 @@ html, body {
     text-transform: uppercase;
 }
 
-.close-button {
-    border: 1px solid rgba(255,255,255,.2);
-    background: #30452c;
-    color: white;
+.close-button,
+.back-button {
     padding: 8px 11px;
-    cursor: pointer;
+    background: #30452c;
+    border: 1px solid rgba(255,255,255,.2);
+    color: white;
     border-radius: 3px;
     font-size: 10px;
+    cursor: pointer;
 }
 
-.close-button:hover {
+.close-button:hover,
+.back-button:hover {
     background: #496541;
+}
+
+/* DESCRIPTIONS */
+.modal-description {
+    margin: 0 0 18px;
+    color: #b9c3ae;
+    font-size: 12px;
+    line-height: 1.7;
 }
 
 /* NAVIGATION BUTTONS */
 .archive-buttons {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0,1fr));
     gap: 12px;
 }
 
 .archive-button {
     display: block;
-    padding: 18px 12px;
-    text-align: center;
+    padding: 22px 15px;
+    text-align: left;
     background: #222;
     border: 1px solid rgba(255,255,255,.12);
     border-left: 4px solid #78905f;
     color: #e8f0d9;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: bold;
     transition: background .2s;
 }
@@ -240,21 +252,36 @@ html, body {
 
 .archive-button small {
     display: block;
-    margin-top: 6px;
+    margin-top: 8px;
     color: #a3bb89;
-    font-size: 9px;
+    font-size: 10px;
     font-weight: normal;
+    line-height: 1.5;
 }
 
-/* SHOW BUTTONS */
+/* CATEGORY SECTIONS */
+.category-section {
+    margin-bottom: 25px;
+}
+
+.category-title {
+    margin: 0 0 12px;
+    padding-bottom: 7px;
+    color: #a3bb89;
+    font-size: 13px;
+    letter-spacing: 2px;
+    border-bottom: 1px solid #596e49;
+}
+
 .show-buttons {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0,1fr));
     gap: 10px;
 }
 
 .show-button {
-    padding: 15px 8px;
+    min-height: 48px;
+    padding: 12px 8px;
     background: #222;
     border: 1px solid rgba(255,255,255,.12);
     border-left: 3px solid #78905f;
@@ -262,16 +289,39 @@ html, body {
     font-size: 11px;
     font-weight: bold;
     cursor: pointer;
+    transition: background .2s;
 }
 
 .show-button:hover {
     background: #30452c;
 }
 
+.show-button.hidden {
+    display: none;
+}
+
+/* COLLECTION SEARCH */
+.collection-search {
+    width: 100%;
+    margin: 0 0 18px;
+    padding: 11px 13px;
+    background: #1b1b1b;
+    border: 1px solid #596e49;
+    border-left: 3px solid #78905f;
+    border-radius: 3px;
+    color: white;
+    font-size: 12px;
+    outline: none;
+}
+
+.collection-search::placeholder {
+    color: #9ba591;
+}
+
 /* GALLERY */
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0,1fr));
     gap: 14px;
 }
 
@@ -296,6 +346,10 @@ html, body {
     text-align: center;
 }
 
+.gallery-card.hidden {
+    display: none;
+}
+
 .gallery-empty {
     padding: 30px 15px;
     color: #b9c3ae;
@@ -312,35 +366,48 @@ html, body {
     color: #a3bb89;
 }
 
-/* MODAL DESCRIPTION */
-.modal-description {
-    margin: 0 0 18px;
-    color: #b9c3ae;
-    font-size: 12px;
-    line-height: 1.7;
+/* YOUTUBE PLAYER */
+.video-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    margin-top: 15px;
 }
 
+.video-container iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.playlist-link {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 13px;
+    background: #30452c;
+    border-left: 3px solid #78905f;
+    color: #e8f0d9;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.playlist-link:hover {
+    background: #496541;
+}
+
+/* MODAL FOOTER */
 .modal-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 12px;
     margin-top: 22px;
     padding-top: 12px;
     border-top: 1px solid rgba(255,255,255,.12);
-}
-
-.back-button {
-    padding: 8px 12px;
-    color: white;
-    background: #30452c;
-    border: 1px solid rgba(255,255,255,.2);
-    cursor: pointer;
-    border-radius: 3px;
-    font-size: 10px;
-}
-
-.back-button:hover {
-    background: #496541;
 }
 
 .archive-count {
@@ -348,14 +415,15 @@ html, body {
     font-size: 9px;
 }
 
-/* RESPONSIVE */
+/* MOBILE */
 @media (max-width: 650px) {
+
     .page {
-        padding: 20px 8px;
+        padding: 18px 8px 25px;
     }
 
     .archive-header {
-        padding-top: 38px;
+        padding: 42px 0 0;
     }
 
     .language-button {
@@ -363,9 +431,8 @@ html, body {
         right: 0;
     }
 
-    .shelf-label {
-        font-size: 8px;
-        letter-spacing: 1px;
+    .cabinet-stage {
+        width: 100%;
     }
 
     .modal-window {
@@ -373,15 +440,16 @@ html, body {
     }
 
     .show-buttons {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0,1fr));
     }
 
     .gallery-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0,1fr));
     }
 }
 
 @media (max-width: 380px) {
+
     .archive-buttons {
         grid-template-columns: 1fr;
     }
@@ -389,6 +457,7 @@ html, body {
     .gallery-grid {
         grid-template-columns: 1fr;
     }
+
 }
 </style>
 </head>
@@ -397,7 +466,7 @@ html, body {
 
 <div class="page">
 
-    <!-- PAGE TITLE -->
+    <!-- HEADER -->
     <header class="archive-header">
 
         <button
@@ -411,58 +480,58 @@ html, body {
             Disney Channel Merchandise Archive
         </h1>
 
-        <p id="pageSubtitle">
-            A COLLECTION OF DISNEY CHANNEL MERCHANDISE AND ADVERTISING
-        </p>
+        <div class="search-container">
+            <input
+                type="search"
+                class="search-bar"
+                id="archiveSearch"
+                placeholder="Search the merchandise archive..."
+                oninput="globalSearch()">
+        </div>
 
     </header>
 
-    <!-- CABINET BACKGROUND -->
+
+    <!-- CABINET -->
     <main>
 
         <div class="cabinet-stage">
 
-            <!-- LEFT SHELF -->
+            <!-- LEFT SIDE -->
             <button
                 class="shelf-hotspot ads-hotspot"
                 onclick="openAdsMenu()"
-                aria-label="Advertising archive">
+                aria-label="Open advertising and lost media archive">
             </button>
 
-            <!-- RIGHT SHELF -->
+            <!-- RIGHT SIDE -->
             <button
                 class="shelf-hotspot merch-hotspot"
                 onclick="openMerchMenu()"
-                aria-label="Merchandise collections">
+                aria-label="Open merchandise collections">
             </button>
-
-        </div>
-
-        <div class="shelf-labels">
-
-            <div class="shelf-label" id="adsLabel">
-                ADVERTISEMENTS & COMMERCIALS
-            </div>
-
-            <div class="shelf-label" id="merchLabel">
-                MERCHANDISE COLLECTIONS
-            </div>
 
         </div>
 
     </main>
 
-    <!-- RETURN HOME -->
+
+    <!-- RETURN TO LIVING ROOM -->
     <footer class="main-footer">
-        <a class="back-home" id="homeButton" href="index.html">
+
+        <a
+            class="back-home"
+            id="homeButton"
+            href="https://disneyrocklover.itch.io/disneychannelhomeexparchive">
             BACK TO THE LIVING ROOM
         </a>
+
     </footer>
 
 </div>
 
 
-<!-- INTERACTIVE ARCHIVE WINDOW -->
+<!-- ARCHIVE MODAL -->
 <div class="modal" id="archiveModal">
 
     <div class="modal-window">
@@ -473,8 +542,8 @@ html, body {
 
             <button
                 class="close-button"
-                onclick="closeModal()"
-                id="closeButton">
+                id="closeButton"
+                onclick="closeModal()">
                 CLOSE ✕
             </button>
 
@@ -490,209 +559,270 @@ html, body {
 <script>
 
 /* =========================================
-   ARCHIVE CONTENT CONFIGURATION
-   ADD YOUR IMAGES AND PLAYLISTS HERE
+   ARCHIVE CONFIGURATION
 ========================================= */
 
-
-/* PHYSICAL ADVERTISEMENTS
-
-   Add image files to your repository.
-   Example:
-   { src: "merch/ads/hannah-ad-01.jpg",
-     title: "Hannah Montana Magazine Advertisement" }
-
-*/
+/* PHYSICAL ADVERTISEMENTS */
 
 const physicalAds = [
 
-    // ADD YOUR SCANNED ADVERTISEMENTS HERE
+    // ADD SCANNED ADVERTISEMENTS HERE.
+    // Example:
+    // {
+    //     src: "merch/ads/hannah-ad.jpg",
+    //     title: "Hannah Montana Magazine Advertisement"
+    // }
 
 ];
 
 
-/* COMMERCIALS YOUTUBE PLAYLIST
+/* LOST MEDIA YOUTUBE PLAYLIST */
 
-   Paste your YouTube playlist URL between the quotes.
-*/
+const lostMediaPlaylist =
+    "https://www.youtube.com/playlist?list=PLWpcZxU5Jq5s";
 
-const commercialPlaylist = "";
+const lostMediaEmbed =
+    "https://www.youtube-nocookie.com/embed/videoseries?list=PLWpcZxU5Jq5s";
 
 
 /* MERCHANDISE COLLECTIONS
 
-   Each show has its own image gallery.
-
-   Example:
-   "Hannah Montana": [
-       {
-           src: "merch/hannah/doll.jpg",
-           title: "Hannah Montana Doll"
-       }
-   ]
+   Add images and descriptions to the relevant collection.
+   Each collection has its own search bar.
 
 */
 
 const merchCollections = {
 
-    "Hannah Montana": [
+    series: {
 
-        // ADD HANNAH MONTANA MERCHANDISE HERE
+        "Hannah Montana": [],
+        "That's So Raven": [],
+        "Kim Possible": [],
+        "Wizards of Waverly Place": [],
+        "The Proud Family": []
 
-    ],
-
-    "That's So Raven": [
-
-        // ADD THAT'S SO RAVEN MERCHANDISE HERE
-
-    ],
-
-    "Kim Possible": [
-
-        // ADD KIM POSSIBLE MERCHANDISE HERE
-
-    ],
-
-    "Wizards of Waverly Place": [
-
-        // ADD WIZARDS MERCHANDISE HERE
-
-    ],
-
-    "The Proud Family": [
-
-        // ADD PROUD FAMILY MERCHANDISE HERE
-
-    ],
-
-    "Camp Rock": [
-
-        // ADD CAMP ROCK MERCHANDISE HERE
-
-    ],
-
-    "High School Musical": [
-
-        // ADD HIGH SCHOOL MUSICAL MERCHANDISE HERE
-
-    ],
-
-    "The Cheetah Girls": [
-
-        // ADD CHEETAH GIRLS MERCHANDISE HERE
-
-    ]
-
-};
-
-
-/* =========================================
-   LANGUAGE SETTINGS
-========================================= */
-
-let english = true;
-let currentView = "home";
-let selectedShow = "";
-
-
-/* TRANSLATIONS */
-
-const translations = {
-
-    en: {
-        title: "Disney Channel Merchandise Archive",
-        subtitle: "A COLLECTION OF DISNEY CHANNEL MERCHANDISE AND ADVERTISING",
-        ads: "ADVERTISEMENTS & COMMERCIALS",
-        merch: "MERCHANDISE COLLECTIONS",
-        home: "BACK TO THE LIVING ROOM",
-        close: "CLOSE ✕",
-        back: "BACK",
-        adsTitle: "ADVERTISEMENTS & COMMERCIALS",
-        adsDescription: "Explore scanned physical advertisements and original Disney Channel commercials.",
-        physical: "PHYSICAL ADVERTISEMENTS",
-        physicalDescription: "Scanned magazines, catalogs, promotional materials and printed advertisements.",
-        commercials: "TELEVISION COMMERCIALS",
-        commercialsDescription: "Watch archived Disney Channel commercials and promotional spots.",
-        merchTitle: "MERCHANDISE COLLECTIONS",
-        merchDescription: "Explore merchandise collections organized by Disney Channel show.",
-        emptyTitle: "COLLECTION UNDER CONSTRUCTION",
-        emptyText: "This section is waiting for its archived materials. New items will be added soon.",
-        emptyAds: "No scanned advertisements have been added yet.",
-        emptyCommercials: "The YouTube playlist has not been connected yet.",
-        playlist: "OPEN YOUTUBE PLAYLIST",
-        playlistMissing: "Add your YouTube playlist URL in the configuration section of this code.",
-        itemCount: "ARCHIVED ITEMS",
-        shows: {
-            "Hannah Montana": "HANNAH MONTANA",
-            "That's So Raven": "THAT'S SO RAVEN",
-            "Kim Possible": "KIM POSSIBLE",
-            "Wizards of Waverly Place": "WIZARDS OF WAVERLY PLACE",
-            "The Proud Family": "THE PROUD FAMILY",
-            "Camp Rock": "CAMP ROCK",
-            "High School Musical": "HIGH SCHOOL MUSICAL",
-            "The Cheetah Girls": "THE CHEETAH GIRLS"
-        }
     },
 
-    es: {
-        title: "Archivo de Merchandising de Disney Channel",
-        subtitle: "UNA COLECCIÓN DE PRODUCTOS Y PUBLICIDAD DE DISNEY CHANNEL",
-        ads: "ANUNCIOS Y COMERCIALES",
-        merch: "COLECCIONES DE MERCHANDISING",
-        home: "VOLVER AL LIVING",
-        close: "CERRAR ✕",
-        back: "VOLVER",
-        adsTitle: "ANUNCIOS Y COMERCIALES",
-        adsDescription: "Explora anuncios físicos digitalizados y comerciales originales de Disney Channel.",
-        physical: "ANUNCIOS FÍSICOS",
-        physicalDescription: "Revistas, catálogos, material promocional y anuncios impresos digitalizados.",
-        commercials: "COMERCIALES DE TELEVISIÓN",
-        commercialsDescription: "Mira comerciales y promociones archivados de Disney Channel.",
-        merchTitle: "COLECCIONES DE MERCHANDISING",
-        merchDescription: "Explora colecciones de productos organizadas por serie o película de Disney Channel.",
-        emptyTitle: "COLECCIÓN EN CONSTRUCCIÓN",
-        emptyText: "Esta sección está esperando sus materiales de archivo. Pronto se agregarán nuevos artículos.",
-        emptyAds: "Todavía no se han agregado anuncios digitalizados.",
-        emptyCommercials: "La lista de reproducción de YouTube aún no está conectada.",
-        playlist: "ABRIR LISTA DE YOUTUBE",
-        playlistMissing: "Agrega el enlace de tu lista de YouTube en la sección de configuración de este código.",
-        itemCount: "ARTÍCULOS ARCHIVADOS",
-        shows: {
-            "Hannah Montana": "HANNAH MONTANA",
-            "That's So Raven": "ES TAN RAVEN",
-            "Kim Possible": "KIM POSSIBLE",
-            "Wizards of Waverly Place": "LOS HECHICEROS DE WAVERLY PLACE",
-            "The Proud Family": "LA FAMILIA PROUD",
-            "Camp Rock": "CAMP ROCK",
-            "High School Musical": "HIGH SCHOOL MUSICAL",
-            "The Cheetah Girls": "LAS CHEETAH GIRLS"
-        }
+    movies: {
+
+        "Camp Rock": [],
+        "High School Musical": [],
+        "The Cheetah Girls": []
+
     }
 
 };
 
 
 /* =========================================
-   LANGUAGE SWITCHER
+   TRANSLATIONS
 ========================================= */
+
+const translations = {
+
+    en: {
+
+        title: "Disney Channel Merchandise Archive",
+
+        search: "Search the merchandise archive...",
+
+        home: "BACK TO THE LIVING ROOM",
+
+        close: "CLOSE ✕",
+
+        back: "BACK",
+
+        adsTitle: "ADVERTISING ARCHIVE",
+
+        adsDescription:
+            "Explore the advertising and promotional materials preserved in the archive.",
+
+        physical: "PHYSICAL ADS",
+
+        physicalDescription:
+            "Scanned printed advertisements, magazines, catalogs and promotional materials.",
+
+        lost: "LOST MEDIA",
+
+        lostDescription:
+            "Explore recovered and archived Disney Channel commercials and promotional recordings.",
+
+        physicalTitle: "PHYSICAL ADVERTISEMENTS",
+
+        lostTitle: "LOST MEDIA ARCHIVE",
+
+        merchTitle: "MERCHANDISE COLLECTIONS",
+
+        merchDescription:
+            "Explore the archived merchandise collections.",
+
+        series: "TELEVISION SERIES",
+
+        movies: "MOVIES",
+
+        collectionSearch:
+            "Search this collection...",
+
+        emptyTitle: "COLLECTION UNDER CONSTRUCTION",
+
+        emptyText:
+            "No merchandise has been added to this collection yet.",
+
+        emptyAds:
+            "No scanned advertisements have been added yet.",
+
+        noResults:
+            "No matching items were found.",
+
+        playlistDescription:
+            "Browse and play the archived videos directly below. Use the YouTube playlist controls to explore the available recordings.",
+
+        playlistButton:
+            "OPEN PLAYLIST ON YOUTUBE",
+
+        itemCount:
+            "ARCHIVED ITEMS"
+
+    },
+
+    es: {
+
+        title: "Archivo de Merchandising de Disney Channel",
+
+        search: "Buscar en el archivo de merchandising...",
+
+        home: "VOLVER AL LIVING",
+
+        close: "CERRAR ✕",
+
+        back: "VOLVER",
+
+        adsTitle: "ARCHIVO DE PUBLICIDAD",
+
+        adsDescription:
+            "Explora los materiales publicitarios y promocionales preservados en el archivo.",
+
+        physical: "ANUNCIOS FÍSICOS",
+
+        physicalDescription:
+            "Anuncios impresos digitalizados, revistas, catálogos y materiales promocionales.",
+
+        lost: "LOST MEDIA",
+
+        lostDescription:
+            "Explora comerciales y grabaciones promocionales recuperadas y archivadas de Disney Channel.",
+
+        physicalTitle: "ANUNCIOS FÍSICOS",
+
+        lostTitle: "ARCHIVO DE LOST MEDIA",
+
+        merchTitle: "COLECCIONES DE MERCHANDISING",
+
+        merchDescription:
+            "Explora las colecciones de productos archivados.",
+
+        series: "SERIES DE TELEVISIÓN",
+
+        movies: "PELÍCULAS",
+
+        collectionSearch:
+            "Buscar en esta colección...",
+
+        emptyTitle: "COLECCIÓN EN CONSTRUCCIÓN",
+
+        emptyText:
+            "Todavía no se han agregado productos a esta colección.",
+
+        emptyAds:
+            "Todavía no se han agregado anuncios digitalizados.",
+
+        noResults:
+            "No se encontraron artículos.",
+
+        playlistDescription:
+            "Explora y reproduce los videos archivados directamente aquí. Utiliza los controles de YouTube para recorrer las grabaciones disponibles.",
+
+        playlistButton:
+            "ABRIR LISTA EN YOUTUBE",
+
+        itemCount:
+            "ARTÍCULOS ARCHIVADOS"
+
+    }
+
+};
+
+
+/* SHOW NAME TRANSLATIONS */
+
+const showNames = {
+
+    en: {
+        "Hannah Montana": "Hannah Montana",
+        "That's So Raven": "That's So Raven",
+        "Kim Possible": "Kim Possible",
+        "Wizards of Waverly Place": "Wizards of Waverly Place",
+        "The Proud Family": "The Proud Family",
+        "Camp Rock": "Camp Rock",
+        "High School Musical": "High School Musical",
+        "The Cheetah Girls": "The Cheetah Girls"
+    },
+
+    es: {
+        "Hannah Montana": "Hannah Montana",
+        "That's So Raven": "Es Tan Raven",
+        "Kim Possible": "Kim Possible",
+        "Wizards of Waverly Place": "Los Hechiceros de Waverly Place",
+        "The Proud Family": "La Familia Proud",
+        "Camp Rock": "Camp Rock",
+        "High School Musical": "High School Musical",
+        "The Cheetah Girls": "Las Cheetah Girls"
+    }
+
+};
+
+
+/* =========================================
+   LANGUAGE SWITCHING
+========================================= */
+
+let english = true;
+let currentView = "home";
+let selectedSection = "";
+let selectedShow = "";
+
+function getT() {
+    return english ? translations.en : translations.es;
+}
 
 function toggleLanguage() {
 
     english = !english;
 
-    const t = english ? translations.en : translations.es;
+    const t = getT();
 
     document.documentElement.lang = english ? "en" : "es";
 
     document.getElementById("languageButton").textContent =
         english ? "ESPAÑOL" : "ENGLISH";
 
-    document.getElementById("pageTitle").textContent = t.title;
-    document.getElementById("pageSubtitle").textContent = t.subtitle;
-    document.getElementById("adsLabel").textContent = t.ads;
-    document.getElementById("merchLabel").textContent = t.merch;
-    document.getElementById("homeButton").textContent = t.home;
-    document.getElementById("closeButton").textContent = t.close;
+    document.getElementById("pageTitle").textContent =
+        t.title;
+
+    document.getElementById("archiveSearch").placeholder =
+        t.search;
+
+    document.getElementById("homeButton").textContent =
+        t.home;
+
+    document.getElementById("homeButton").href =
+        english
+        ? "https://disneyrocklover.itch.io/disneychannelhomeexparchive"
+        : "https://disneyrocklover.itch.io/lacasaexpdisneychannelarchivo";
+
+    document.getElementById("closeButton").textContent =
+        t.close;
 
     if (currentView !== "home") {
         renderCurrentView();
@@ -702,30 +832,69 @@ function toggleLanguage() {
 
 
 /* =========================================
-   MODAL FUNCTIONS
+   MODAL
 ========================================= */
 
 function openModal() {
-    document.getElementById("archiveModal").classList.add("active");
+
+    document
+        .getElementById("archiveModal")
+        .classList.add("active");
+
 }
 
 function closeModal() {
-    document.getElementById("archiveModal").classList.remove("active");
+
+    document
+        .getElementById("archiveModal")
+        .classList.remove("active");
+
     currentView = "home";
+
 }
 
-function getTranslations() {
-    return english ? translations.en : translations.es;
+function setTitle(title) {
+
+    document.getElementById("modalTitle").textContent = title;
+
 }
 
 
 /* =========================================
-   LEFT SIDE: ADVERTISEMENTS
+   GLOBAL SEARCH
+========================================= */
+
+function globalSearch() {
+
+    const query = document
+        .getElementById("archiveSearch")
+        .value
+        .trim()
+        .toLowerCase();
+
+    if (query.length === 0) {
+        if (currentView === "global-search") {
+            closeModal();
+        }
+        return;
+    }
+
+    currentView = "global-search";
+
+    openModal();
+    renderCurrentView();
+
+}
+
+
+/* =========================================
+   LEFT SHELF: ADVERTISING
 ========================================= */
 
 function openAdsMenu() {
 
     currentView = "ads";
+
     openModal();
     renderCurrentView();
 
@@ -734,54 +903,53 @@ function openAdsMenu() {
 function openPhysicalAds() {
 
     currentView = "physical";
+
     renderCurrentView();
 
 }
 
-function openCommercials() {
+function openLostMedia() {
 
-    if (commercialPlaylist.trim()) {
+    currentView = "lost";
 
-        window.open(commercialPlaylist, "_blank", "noopener");
-
-    } else {
-
-        currentView = "commercials";
-        renderCurrentView();
-
-    }
+    renderCurrentView();
 
 }
 
 
 /* =========================================
-   RIGHT SIDE: MERCHANDISE
+   RIGHT SHELF: MERCHANDISE
 ========================================= */
 
 function openMerchMenu() {
 
     currentView = "merch";
+
     openModal();
     renderCurrentView();
 
 }
 
-function openShow(show) {
+function openCollection(section, show) {
 
+    selectedSection = section;
     selectedShow = show;
-    currentView = "show";
+
+    currentView = "collection";
+
     renderCurrentView();
 
 }
 
 
 /* =========================================
-   GALLERY RENDERING
+   SAFE HTML TEXT
 ========================================= */
 
 function escapeHTML(value) {
 
     return String(value).replace(/[&<>"']/g, function(char) {
+
         return {
             "&": "&amp;",
             "<": "&lt;",
@@ -789,17 +957,25 @@ function escapeHTML(value) {
             '"': "&quot;",
             "'": "&#39;"
         }[char];
+
     });
 
 }
 
+
+/* =========================================
+   GALLERY
+========================================= */
+
 function renderGallery(items, emptyMessage) {
+
+    const t = getT();
 
     if (!items || items.length === 0) {
 
         return `
             <div class="gallery-empty">
-                <strong>${getTranslations().emptyTitle}</strong>
+                <strong>${t.emptyTitle}</strong>
                 ${emptyMessage}
             </div>
         `;
@@ -807,15 +983,20 @@ function renderGallery(items, emptyMessage) {
     }
 
     return `
-        <div class="gallery-grid">
+        <div class="gallery-grid" id="galleryGrid">
+
             ${items.map(function(item) {
 
                 return `
-                    <div class="gallery-card">
+                    <div
+                        class="gallery-card"
+                        data-search="${escapeHTML(
+                            (item.title || "") + " " + (item.description || "")
+                        ).toLowerCase()}">
 
                         <img
                             src="${escapeHTML(item.src)}"
-                            alt="${escapeHTML(item.title || "Archived merchandise")}"
+                            alt="${escapeHTML(item.title || "Archived item")}"
                             loading="lazy">
 
                         <div class="gallery-caption">
@@ -826,28 +1007,84 @@ function renderGallery(items, emptyMessage) {
                 `;
 
             }).join("")}
+
         </div>
     `;
 
 }
 
 
+/* FILTER CURRENT COLLECTION */
+
+function filterCollection() {
+
+    const input = document.getElementById("collectionSearch");
+
+    if (!input) return;
+
+    const query = input.value.toLowerCase().trim();
+
+    const cards = document.querySelectorAll(".gallery-card");
+
+    let visible = 0;
+
+    cards.forEach(function(card) {
+
+        const matches = card.dataset.search.includes(query);
+
+        card.classList.toggle("hidden", !matches);
+
+        if (matches) visible++;
+
+    });
+
+    let noResults = document.getElementById("noResults");
+
+    if (!noResults && cards.length > 0) {
+
+        noResults = document.createElement("div");
+
+        noResults.id = "noResults";
+        noResults.className = "gallery-empty";
+
+        document.getElementById("galleryGrid").after(noResults);
+
+    }
+
+    if (noResults) {
+
+        noResults.textContent = getT().noResults;
+
+        noResults.style.display =
+            visible === 0 ? "block" : "none";
+
+    }
+
+}
+
+
 /* =========================================
-   VIEW NAVIGATION
+   BACK NAVIGATION
 ========================================= */
 
 function goBack() {
 
-    if (currentView === "physical" || currentView === "commercials") {
+    if (
+        currentView === "physical" ||
+        currentView === "lost"
+    ) {
+
         currentView = "ads";
 
-    } else if (currentView === "show") {
+    } else if (currentView === "collection") {
+
         currentView = "merch";
 
     } else {
-        currentView = "home";
+
         closeModal();
         return;
+
     }
 
     renderCurrentView();
@@ -856,19 +1093,18 @@ function goBack() {
 
 
 /* =========================================
-   DISPLAY CURRENT VIEW
+   RENDER CURRENT PAGE
 ========================================= */
 
 function renderCurrentView() {
 
-    const t = getTranslations();
+    const t = getT();
 
-    const title = document.getElementById("modalTitle");
     const content = document.getElementById("modalContent");
 
     if (currentView === "ads") {
 
-        title.textContent = t.adsTitle;
+        setTitle(t.adsTitle);
 
         content.innerHTML = `
 
@@ -881,15 +1117,21 @@ function renderCurrentView() {
                 <button
                     class="archive-button"
                     onclick="openPhysicalAds()">
+
                     ${t.physical}
+
                     <small>${t.physicalDescription}</small>
+
                 </button>
 
                 <button
                     class="archive-button"
-                    onclick="openCommercials()">
-                    ${t.commercials}
-                    <small>${t.commercialsDescription}</small>
+                    onclick="openLostMedia()">
+
+                    ${t.lost}
+
+                    <small>${t.lostDescription}</small>
+
                 </button>
 
             </div>
@@ -900,17 +1142,14 @@ function renderCurrentView() {
 
     else if (currentView === "physical") {
 
-        title.textContent = t.physical;
+        setTitle(t.physicalTitle);
 
         content.innerHTML = `
-
-            <p class="modal-description">
-                ${t.physicalDescription}
-            </p>
 
             ${renderGallery(physicalAds, t.emptyAds)}
 
             <div class="modal-footer">
+
                 <button class="back-button" onclick="goBack()">
                     ← ${t.back}
                 </button>
@@ -918,27 +1157,49 @@ function renderCurrentView() {
                 <span class="archive-count">
                     ${physicalAds.length} ${t.itemCount}
                 </span>
+
             </div>
 
         `;
 
     }
 
-    else if (currentView === "commercials") {
+    else if (currentView === "lost") {
 
-        title.textContent = t.commercials;
+        setTitle(t.lostTitle);
 
         content.innerHTML = `
 
-            <div class="gallery-empty">
-                <strong>${t.emptyTitle}</strong>
-                ${t.playlistMissing}
+            <p class="modal-description">
+                ${t.playlistDescription}
+            </p>
+
+            <div class="video-container">
+
+                <iframe
+                    src="${lostMediaEmbed}"
+                    title="Disney Channel Lost Media Playlist"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                    loading="lazy">
+                </iframe>
+
             </div>
 
+            <a
+                class="playlist-link"
+                href="${lostMediaPlaylist}"
+                target="_blank"
+                rel="noopener">
+                ${t.playlistButton}
+            </a>
+
             <div class="modal-footer">
+
                 <button class="back-button" onclick="goBack()">
                     ← ${t.back}
                 </button>
+
             </div>
 
         `;
@@ -947,7 +1208,13 @@ function renderCurrentView() {
 
     else if (currentView === "merch") {
 
-        title.textContent = t.merchTitle;
+        setTitle(t.merchTitle);
+
+        const query = document
+            .getElementById("archiveSearch")
+            .value
+            .toLowerCase()
+            .trim();
 
         content.innerHTML = `
 
@@ -955,31 +1222,76 @@ function renderCurrentView() {
                 ${t.merchDescription}
             </p>
 
-            <div class="show-buttons">
+            <section class="category-section">
 
-                ${Object.keys(merchCollections).map(function(show) {
+                <h3 class="category-title">
+                    ${t.series}
+                </h3>
 
-                    return `
-                        <button
-                            class="show-button"
-                            onclick="openShow('${escapeHTML(show)}')">
-                            ${t.shows[show] || escapeHTML(show)}
-                        </button>
-                    `;
+                <div class="show-buttons">
 
-                }).join("")}
+                    ${Object.keys(merchCollections.series).map(function(show) {
 
-            </div>
+                        const name = showNames[english ? "en" : "es"][show];
+
+                        const matches =
+                            (show + " " + name).toLowerCase().includes(query);
+
+                        return `
+                            <button
+                                class="show-button ${matches ? "" : "hidden"}"
+                                onclick="openCollection('series','${escapeHTML(show)}')">
+                                ${escapeHTML(name)}
+                            </button>
+                        `;
+
+                    }).join("")}
+
+                </div>
+
+            </section>
+
+            <section class="category-section">
+
+                <h3 class="category-title">
+                    ${t.movies}
+                </h3>
+
+                <div class="show-buttons">
+
+                    ${Object.keys(merchCollections.movies).map(function(show) {
+
+                        const name = showNames[english ? "en" : "es"][show];
+
+                        const matches =
+                            (show + " " + name).toLowerCase().includes(query);
+
+                        return `
+                            <button
+                                class="show-button ${matches ? "" : "hidden"}"
+                                onclick="openCollection('movies','${escapeHTML(show)}')">
+                                ${escapeHTML(name)}
+                            </button>
+                        `;
+
+                    }).join("")}
+
+                </div>
+
+            </section>
 
         `;
 
     }
 
-    else if (currentView === "show") {
+    else if (currentView === "collection") {
 
-        title.textContent = t.shows[selectedShow] || selectedShow;
+        const items = merchCollections[selectedSection][selectedShow] || [];
 
-        const items = merchCollections[selectedShow] || [];
+        const translatedName =
+            showNames[english ? "en" : "es"][selectedShow] || selectedShow;
+
+        setTitle(translatedName);
 
         content.innerHTML = `
 
@@ -987,7 +1299,16 @@ function renderCurrentView() {
                 ${t.merchDescription}
             </p>
 
-            ${renderGallery(items, t.emptyText)}
+            <input
+                type="search"
+                class="collection-search"
+                id="collectionSearch"
+                placeholder="${t.collectionSearch}"
+                oninput="filterCollection()">
+
+            <div id="collectionGallery">
+                ${renderGallery(items, t.emptyText)}
+            </div>
 
             <div class="modal-footer">
 
@@ -1005,21 +1326,86 @@ function renderCurrentView() {
 
     }
 
+    else if (currentView === "global-search") {
+
+        setTitle(t.merchTitle);
+
+        const query = document
+            .getElementById("archiveSearch")
+            .value
+            .toLowerCase()
+            .trim();
+
+        const allShows = [
+            ...Object.keys(merchCollections.series),
+            ...Object.keys(merchCollections.movies)
+        ];
+
+        const results = allShows.filter(function(show) {
+
+            const translated =
+                showNames[english ? "en" : "es"][show] || show;
+
+            return (show + " " + translated)
+                .toLowerCase()
+                .includes(query);
+
+        });
+
+        content.innerHTML = `
+
+            <p class="modal-description">
+                ${t.merchDescription}
+            </p>
+
+            <div class="show-buttons">
+
+                ${results.map(function(show) {
+
+                    const section =
+                        merchCollections.series[show] !== undefined
+                        ? "series"
+                        : "movies";
+
+                    const translated =
+                        showNames[english ? "en" : "es"][show] || show;
+
+                    return `
+                        <button
+                            class="show-button"
+                            onclick="openCollection('${section}','${escapeHTML(show)}')">
+                            ${escapeHTML(translated)}
+                        </button>
+                    `;
+
+                }).join("")}
+
+            </div>
+
+            ${results.length === 0
+                ? `<div class="gallery-empty">${t.noResults}</div>`
+                : ""}
+
+        `;
+
+    }
+
 }
 
 
-/* CLOSE MODAL WHEN CLICKING OUTSIDE */
+/* =========================================
+   CLOSE MODAL
+========================================= */
 
-document.getElementById("archiveModal").addEventListener("click", function(event) {
+document
+    .getElementById("archiveModal")
+    .addEventListener("click", function(event) {
 
-    if (event.target === this) {
-        closeModal();
-    }
+        if (event.target === this) {
+            closeModal();
+        }
 
-});
-
-
-/* ESCAPE KEY */
+    });
 
 document.addEventListener("keydown", function(event) {
 
@@ -1028,6 +1414,12 @@ document.addEventListener("keydown", function(event) {
     }
 
 });
+
+
+/* INITIALIZE HOME LINK */
+
+document.getElementById("homeButton").href =
+    "https://disneyrocklover.itch.io/disneychannelhomeexparchive";
 
 </script>
 
