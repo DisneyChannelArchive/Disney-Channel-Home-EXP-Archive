@@ -4,10 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Disney Channel Merchandise Archive</title>
-
 <style>
 * { box-sizing: border-box; }
-
 html, body {
     margin: 0;
     padding: 0;
@@ -16,15 +14,12 @@ html, body {
     font-family: Arial, Helvetica, sans-serif;
     color: white;
 }
-
 body { overflow-x: hidden; }
-
 .page {
     width: 100%;
     min-height: 100vh;
     padding: 25px 12px 35px;
 }
-
 .archive-header {
     width: min(1450px, 100%);
     margin: 0 auto 22px;
@@ -32,7 +27,6 @@ body { overflow-x: hidden; }
     text-align: center;
     padding: 0 100px;
 }
-
 .archive-header h1 {
     margin: 0;
     color: #e8f0d9;
@@ -40,7 +34,6 @@ body { overflow-x: hidden; }
     letter-spacing: 2px;
     text-transform: uppercase;
 }
-
 .language-button {
     position: absolute;
     top: 0;
@@ -53,7 +46,6 @@ body { overflow-x: hidden; }
     font-size: 10px;
     cursor: pointer;
 }
-
 .language-button:hover,
 .back-home:hover,
 .archive-button:hover,
@@ -62,12 +54,10 @@ body { overflow-x: hidden; }
 .back-button:hover {
     background: #496541;
 }
-
 .search-container {
     width: min(650px, 100%);
     margin: 17px auto 0;
 }
-
 .search-bar, .collection-search {
     width: 100%;
     padding: 12px 15px;
@@ -79,15 +69,12 @@ body { overflow-x: hidden; }
     font-size: 12px;
     outline: none;
 }
-
 .search-bar:focus, .collection-search:focus {
     border-color: #a3bb89;
 }
-
 .search-bar::placeholder, .collection-search::placeholder {
     color: #9ba591;
 }
-
 /* CABINET BACKGROUND */
 .cabinet-stage {
     position: relative;
@@ -98,7 +85,6 @@ body { overflow-x: hidden; }
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
-
 .shelf-hotspot {
     position: absolute;
     top: 2%;
@@ -108,30 +94,25 @@ body { overflow-x: hidden; }
     cursor: pointer;
     transition: background .2s, border .2s;
 }
-
 .shelf-hotspot:hover,
 .shelf-hotspot:focus-visible {
     background: rgba(120,144,95,.13);
     border: 2px solid rgba(180,205,145,.65);
     outline: none;
 }
-
 .ads-hotspot {
     left: 12%;
     width: 22%;
 }
-
 .merch-hotspot {
     left: 65%;
     width: 22%;
 }
-
 .main-footer {
     max-width: 1400px;
     margin: 28px auto 0;
     text-align: center;
 }
-
 .back-home {
     display: inline-block;
     padding: 10px 15px;
@@ -143,7 +124,6 @@ body { overflow-x: hidden; }
     font-size: 10px;
     font-weight: bold;
 }
-
 /* MODAL */
 .modal {
     display: none;
@@ -155,9 +135,7 @@ body { overflow-x: hidden; }
     justify-content: center;
     background: rgba(0,0,0,.90);
 }
-
 .modal.active { display: flex; }
-
 .modal-window {
     position: relative;
     width: min(1000px, 100%);
@@ -169,7 +147,6 @@ body { overflow-x: hidden; }
     border-top: 4px solid #78905f;
     box-shadow: 0 0 35px rgba(0,0,0,.8);
 }
-
 .modal-header {
     display: flex;
     align-items: center;
@@ -179,7 +156,6 @@ body { overflow-x: hidden; }
     margin-bottom: 20px;
     border-bottom: 1px solid rgba(255,255,255,.15);
 }
-
 .modal-header h2 {
     margin: 0;
     color: #e8f0d9;
@@ -187,7 +163,6 @@ body { overflow-x: hidden; }
     letter-spacing: 1px;
     text-transform: uppercase;
 }
-
 .close-button, .back-button {
     padding: 8px 11px;
     background: #30452c;
@@ -197,20 +172,17 @@ body { overflow-x: hidden; }
     font-size: 10px;
     cursor: pointer;
 }
-
 .modal-description {
     margin: 0 0 18px;
     color: #b9c3ae;
     font-size: 12px;
     line-height: 1.7;
 }
-
 .archive-buttons {
     display: grid;
     grid-template-columns: repeat(2, minmax(0,1fr));
     gap: 12px;
 }
-
 .archive-button {
     display: block;
     padding: 22px 15px;
@@ -225,7 +197,6 @@ body { overflow-x: hidden; }
     text-decoration: none;
     transition: background .2s;
 }
-
 .archive-button small {
     display: block;
     margin-top: 8px;
@@ -234,9 +205,7 @@ body { overflow-x: hidden; }
     font-weight: normal;
     line-height: 1.5;
 }
-
 .category-section { margin-bottom: 25px; }
-
 .category-title {
     margin: 0 0 12px;
     padding-bottom: 7px;
@@ -245,13 +214,11 @@ body { overflow-x: hidden; }
     letter-spacing: 2px;
     border-bottom: 1px solid #596e49;
 }
-
 .show-buttons {
     display: grid;
     grid-template-columns: repeat(3, minmax(0,1fr));
     gap: 10px;
 }
-
 .show-button {
     min-height: 48px;
     padding: 12px 8px;
@@ -264,24 +231,19 @@ body { overflow-x: hidden; }
     cursor: pointer;
     transition: background .2s;
 }
-
 .show-button.hidden { display: none; }
-
 .collection-search { margin: 0 0 18px; }
-
 /* GALLERY */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0,1fr));
     gap: 14px;
 }
-
 .gallery-card {
     overflow: hidden;
     background: #202020;
     border: 1px solid rgba(255,255,255,.12);
 }
-
 .gallery-card img {
     display: block;
     width: 100%;
@@ -291,7 +253,6 @@ body { overflow-x: hidden; }
     user-select: none;
     -webkit-user-drag: none;
 }
-
 .gallery-caption {
     padding: 10px;
     color: #e8f0d9;
@@ -299,7 +260,6 @@ body { overflow-x: hidden; }
     font-weight: bold;
     text-align: center;
 }
-
 .gallery-description {
     padding: 0 12px 13px;
     color: #b9c3ae;
@@ -307,9 +267,7 @@ body { overflow-x: hidden; }
     line-height: 1.6;
     text-align: center;
 }
-
 .gallery-card.hidden { display: none; }
-
 .gallery-empty {
     padding: 30px 15px;
     color: #b9c3ae;
@@ -319,13 +277,11 @@ body { overflow-x: hidden; }
     font-size: 12px;
     line-height: 1.7;
 }
-
 .gallery-empty strong {
     display: block;
     margin-bottom: 8px;
     color: #a3bb89;
 }
-
 .modal-footer {
     display: flex;
     justify-content: space-between;
@@ -335,12 +291,10 @@ body { overflow-x: hidden; }
     padding-top: 12px;
     border-top: 1px solid rgba(255,255,255,.12);
 }
-
 .archive-count {
     color: #849078;
     font-size: 9px;
 }
-
 @media (max-width: 650px) {
     .page { padding: 18px 8px 25px; }
     .archive-header { padding: 42px 0 0; }
@@ -350,46 +304,37 @@ body { overflow-x: hidden; }
     .show-buttons { grid-template-columns: repeat(2, minmax(0,1fr)); }
     .gallery-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
 }
-
 @media (max-width: 380px) {
     .archive-buttons, .gallery-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
-
 <body>
 <div class="page">
-
 <header class="archive-header">
     <button class="language-button" id="languageButton" onclick="toggleLanguage()">ESPAÑOL</button>
     <h1 id="pageTitle">Disney Channel Merchandise Archive</h1>
-
     <div class="search-container">
         <input type="search" class="search-bar" id="archiveSearch"
             placeholder="Search the merchandise archive..."
             oninput="globalSearch()">
     </div>
 </header>
-
 <main>
     <div class="cabinet-stage">
         <button class="shelf-hotspot ads-hotspot"
             onclick="openAdsMenu()" aria-label="Open advertising archive"></button>
-
         <button class="shelf-hotspot merch-hotspot"
             onclick="openMerchMenu()" aria-label="Open merchandise collections"></button>
     </div>
 </main>
-
 <footer class="main-footer">
     <a class="back-home" id="homeButton"
        href="https://disneyrocklover.itch.io/disneychannelhomeexparchive">
        BACK TO THE LIVING ROOM
     </a>
 </footer>
-
 </div>
-
 <div class="modal" id="archiveModal">
     <div class="modal-window">
         <div class="modal-header">
@@ -399,13 +344,10 @@ body { overflow-x: hidden; }
         <div id="modalContent"></div>
     </div>
 </div>
-
 <script>
-
 /* =========================================
    PHYSICAL ADVERTISEMENTS
 ========================================= */
-
 const physicalAds = [
     {
         src: "merch/ads/hannah-japan-magazine-nov-2026.jpeg",
@@ -453,25 +395,18 @@ const physicalAds = [
     }
 ];
 
-
 /* =========================================
    LOST MEDIA PLAYLIST
 ========================================= */
-
 const lostMediaPlaylist =
     "https://www.youtube.com/playlist?list=PLWpcZxU5Jq5s";
-
 
 /* =========================================
    MERCHANDISE COLLECTIONS
 ========================================= */
-
 const merchCollections = {
-
     series: {
-
         "Hannah Montana": [
-
             {
                 src: "merch/series/hannah-rhein-notebooks-2009.jpg",
                 title: {
@@ -483,7 +418,6 @@ const merchCollections = {
                     es: "Línea de cuadernos lanzada por Rhein en Chile a fines de 2009. Valor original de mercado: $1.190 CLP. Valor estimado actual: $2.000–$2.500 CLP."
                 }
             },
-
             {
                 src: "merch/series/Screenshot_20260714_181909_Chrome-Photoroom.png",
                 title: {
@@ -495,7 +429,6 @@ const merchCollections = {
                     es: "Panel para ventana de Hannah Montana Forever lanzado en 2010."
                 }
             },
-
             {
                 src: "merch/series/Screenshot_20221112-223034_eBay-removebg-preview.png",
                 title: {
@@ -507,7 +440,6 @@ const merchCollections = {
                     es: "Lanzadas en Estados Unidos en 2010. Este modelo se distribuyó internacionalmente y llegó a Europa, Asia y Latinoamérica entre 2010 y 2011."
                 }
             },
-
             {
                 src: "merch/series/Screenshot_20221014-190721_eBay-removebg-preview.png",
                 title: {
@@ -519,7 +451,6 @@ const merchCollections = {
                     es: "Coleteros con diseño de la primera temporada de Hannah Montana, lanzados en 2007."
                 }
             },
-
             {
                 src: "merch/series/1784089173505-Photoroom.png",
                 title: {
@@ -531,7 +462,6 @@ const merchCollections = {
                     es: "Lanzada en 2008 y distribuida en Latinoamérica a fines de ese año. La mochila incluía una etiqueta con una imagen de la primera temporada."
                 }
             },
-
             {
                 src: "merch/series/91Xz4VWX5jL._AC_SL1500_-Photoroom.png",
                 title: {
@@ -543,7 +473,6 @@ const merchCollections = {
                     es: "Set de artículos de escritorio lanzado en España en 2009, que incluye marcadores, un sacapuntas y cinta adhesiva."
                 }
             },
-
             {
                 src: "merch/series/20230922_143704-Photoroom.png",
                 title: {
@@ -555,7 +484,6 @@ const merchCollections = {
                     es: "Máquina para hacer cabritas con diseño de la segunda temporada de Hannah Montana, lanzada en 2008."
                 }
             },
-
             {
                 src: "merch/series/20230922_143707-Photoroom.png",
                 title: {
@@ -567,7 +495,6 @@ const merchCollections = {
                     es: "Sandwichera de Hannah Montana con diseño de la tercera temporada, lanzada en 2009."
                 }
             },
-
             {
                 src: "merch/series/20231122_210615-Photoroom.png",
                 title: {
@@ -579,7 +506,6 @@ const merchCollections = {
                     es: "Secador de pelo de viaje de Hannah Montana con una potencia de 1200 W, lanzado en 2007."
                 }
             },
-
             {
                 src: "merch/series/Screenshot_20260417_232838_TikTok Lite-Photoroom.png",
                 title: {
@@ -591,7 +517,6 @@ const merchCollections = {
                     es: "Bola de nieve de Hannah Montana con el diseño de la temporada 2, lanzada a finales de 2007."
                 }
             },
-
             {
                 src: "merch/series/Screenshot_20260417_232827_TikTok Lite-Photoroom.png",
                 title: {
@@ -603,7 +528,6 @@ const merchCollections = {
                     es: "Adorno navideño con el diseño de Hannah Montana de la temporada 2."
                 }
             },
-
             {
                 src: "merch/series/Screenshot_20260330_202703_Instagram-Photoroom.png",
                 title: {
@@ -615,7 +539,6 @@ const merchCollections = {
                     es: "Taza con diseño de la temporada 1, uno de los primeros productos de Hannah Montana en llegar a mercados internacionales, incluyendo Latinoamérica, a comienzos de 2007."
                 }
             },
-
             {
                 src: "merch/series/Screenshot_20240613_210143_eBay-Photoroom.png",
                 title: {
@@ -627,7 +550,6 @@ const merchCollections = {
                     es: "Set de cuatro lápices con clip y cuerda de Hannah Montana, con el diseño de la temporada 2."
                 }
             },
-
             {
                 src: "merch/series/Screenshot_20240612_221922_eBay-Photoroom.png",
                 title: {
@@ -639,7 +561,6 @@ const merchCollections = {
                     es: "Set Boxed Secrets de Hannah Montana con diseño de la temporada 3, lanzado alrededor de 2009–2010. Incluye un libro de secretos, llavero, lápiz de gel y caja para guardar secretos."
                 }
             },
-
             {
                 src: "merch/series/Screenshot_20240612_221929_eBay-Photoroom.png",
                 title: {
@@ -651,7 +572,6 @@ const merchCollections = {
                     es: "Otra fotografía del set Boxed Secrets de Hannah Montana de la temporada 3, que incluye el libro de secretos, llavero, lápiz de gel y caja para guardar secretos."
                 }
             },
-
             {
                 src: "merch/series/Screenshot_20240612_221940_eBay-Photoroom.png",
                 title: {
@@ -663,7 +583,6 @@ const merchCollections = {
                     es: "Fotografía adicional del set Boxed Secrets de Hannah Montana de la temporada 3, lanzado alrededor de 2009–2010."
                 }
             },
-
             {
                 src: "merch/series/Screenshot_20241008_231309_eBay-Photoroom.png",
                 title: {
@@ -675,7 +594,6 @@ const merchCollections = {
                     es: "Peluche de Hannah Montana con forma de guitarra, lanzado en 2007. Incluye una etiqueta de la temporada 1."
                 }
             },
-
             {
                 src: "merch/series/Screenshot_20240105_231732_eBay-Photoroom.png",
                 title: {
@@ -687,7 +605,6 @@ const merchCollections = {
                     es: "Uno de los artículos de merchandising de Hannah Montana más desconocidos a nivel mundial: una caña de pescar de la temporada 1."
                 }
             },
-
             {
                 src: "merch/series/Screenshot_20231224_233146_eBay-Photoroom.png",
                 title: {
@@ -699,7 +616,6 @@ const merchCollections = {
                     es: "Uno de los primeros productos de maquillaje de Hannah Montana, lanzado en 2007. El set contiene distintos artículos de maquillaje y accesorios glam."
                 }
             },
-
             {
                 src: "merch/series/HIdZpqoWkAAt3el-Photoroom.png",
                 title: {
@@ -711,7 +627,6 @@ const merchCollections = {
                     es: "Bolso de Hannah Montana con diseño de la temporada 3, lanzado en 2026."
                 }
             },
-
             {
                 src: "merch/series/HCb-YhhXIAI1O8W-Photoroom.png",
                 title: {
@@ -723,7 +638,6 @@ const merchCollections = {
                     es: "Natural Spray de Hannah Montana Forever, lanzado en 2011."
                 }
             },
-
             {
                 src: "merch/series/cartoonfansclub_2270_1313196722-Photoroom.png",
                 title: {
@@ -735,7 +649,6 @@ const merchCollections = {
                     es: "Set de artículos de escritorio de la temporada 2, lanzado en 2007. Incluye un estuche para lápices, un sacapuntas de la temporada 1, una regla y una goma de borrar."
                 }
             },
-
             {
                 src: "merch/series/20260722_165158-Photoroom.png",
                 title: {
@@ -747,7 +660,6 @@ const merchCollections = {
                     es: "Toalla de mano rosa Secret Star, lanzada en 2008 junto a la toalla celeste Part Time Pop Star."
                 }
             },
-
             {
                 src: "merch/series/20260722_165259-Photoroom.png",
                 title: {
@@ -759,7 +671,6 @@ const merchCollections = {
                     es: "Toalla de mano celeste Part Time Pop Star, lanzada en 2008 junto a la toalla rosa Secret Star."
                 }
             },
-
             {
                 src: "merch/series/20260328_155221-Photoroom.png",
                 title: {
@@ -771,9 +682,6 @@ const merchCollections = {
                     es: "Botella de agua rosa de Hannah Montana de la temporada 2, fabricada en vidrio y plástico y lanzada a finales de 2007."
                 }
             },
-
-            /* NEWLY ADDED PRODUCTS */
-
             {
                 src: "merch/series/20260423_173347-Photoroom.png",
                 title: {
@@ -785,7 +693,6 @@ const merchCollections = {
                     es: "Lámpara decorativa de Hannah Montana con diseño de la temporada 1, lanzada en 2007."
                 }
             },
-
             {
                 src: "merch/series/1772825325348-Photoroom.png",
                 title: {
@@ -797,7 +704,6 @@ const merchCollections = {
                     es: "Bolso Bersha de Hannah Montana con diseño de la temporada 2, lanzado en 2026."
                 }
             },
-
             {
                 src: "merch/series/images (6)-Photoroom.png",
                 title: {
@@ -809,7 +715,6 @@ const merchCollections = {
                     es: "Set de calculadora de siete piezas de Hannah Montana con diseño de la temporada 2, lanzado en 2008."
                 }
             },
-
             {
                 src: "merch/series/Screenshot_20240203_154556_Facebook-Photoroom.png",
                 title: {
@@ -821,7 +726,6 @@ const merchCollections = {
                     es: "Adorno de Hannah Montana de la temporada 2 que también presenta el característico cabello castaño de Miley Stewart."
                 }
             },
-
             {
                 src: "merch/series/HNNBrpyWoAAG9y7-Photoroom.png",
                 title: {
@@ -833,7 +737,6 @@ const merchCollections = {
                     es: "Cologne Spray de Hannah Montana, ampliamente distribuido en distintas partes del mundo a finales de los años 2000."
                 }
             },
-
             {
                 src: "merch/series/20260722_165426-Photoroom.png",
                 title: {
@@ -845,7 +748,6 @@ const merchCollections = {
                     es: "Estuche pequeño lanzado en Latinoamérica en 2011 como parte de la última colección de artículos escolares de Hannah Montana distribuida en la región."
                 }
             },
-
             {
                 src: "merch/series/Screenshot_20250819_155039_TikTok-Photoroom.png",
                 title: {
@@ -857,7 +759,6 @@ const merchCollections = {
                     es: "Uno de los artículos de merchandising de Hannah Montana más desconocidos: un chaleco salvavidas de la temporada 1."
                 }
             },
-
             {
                 src: "merch/series/D_NQ_NP_2X_1512-MLC4758681876_082013-F-Photoroom.png",
                 title: {
@@ -868,32 +769,102 @@ const merchCollections = {
                     en: "Hannah Montana Season 2 SMS text message machine released in late 2007. It became one of the most widely distributed Hannah Montana merchandise items across Latin America in the late 2000s.",
                     es: "Máquina de mensajes SMS de Hannah Montana con diseño de la temporada 2, lanzada a finales de 2007. Se convirtió en uno de los artículos de merchandising de Hannah Montana más distribuidos en Latinoamérica a finales de los años 2000."
                 }
+            },
+            /* SEVEN NEW PRODUCTS */
+            {
+                src: "merch/series/1784089173606-Photoroom.png",
+                title: {
+                    en: "Hannah Montana Forever — Silly Bandz (2010)",
+                    es: "Hannah Montana Forever — Silly Bandz (2010)"
+                },
+                description: {
+                    en: "Hannah Montana Forever Silly Bandz released in 2010.",
+                    es: "Silly Bandz de Hannah Montana Forever, lanzados en 2010."
+                }
+            },
+            {
+                src: "merch/series/20260308_192315-Photoroom.png",
+                title: {
+                    en: "Hannah Montana — Season 1 Pink Metallic Bag",
+                    es: "Hannah Montana — Bolso metálico rosa de la temporada 1"
+                },
+                description: {
+                    en: "Pink metallic Hannah Montana bag featuring Season 1 artwork.",
+                    es: "Bolso metálico rosa de Hannah Montana con ilustraciones de la temporada 1."
+                }
+            },
+            {
+                src: "merch/series/m52166690375_1-Photoroom.png",
+                title: {
+                    en: "Hannah Montana — Girl Talk Board Game (2007)",
+                    es: "Hannah Montana — Juego de mesa Girl Talk (2007)"
+                },
+                description: {
+                    en: "Hannah Montana Girl Talk board game released in 2007.",
+                    es: "Juego de mesa Girl Talk de Hannah Montana, lanzado en 2007."
+                }
+            },
+            {
+                src: "merch/series/5fd0cf5e-9650-434f-a864-9a8a5f83fd2e-Photoroom.png",
+                title: {
+                    en: "Hannah Montana — DVD Player",
+                    es: "Hannah Montana — Reproductor de DVD"
+                },
+                description: {
+                    en: "Hannah Montana-branded DVD player.",
+                    es: "Reproductor de DVD con diseño de Hannah Montana."
+                }
+            },
+            {
+                src: "merch/series/86a79296-28ac-487d-9468-543c2b83291a-Photoroom.png",
+                title: {
+                    en: "Hannah Montana — Season 2 Beauty Set (Europe and Canada)",
+                    es: "Hannah Montana — Set de belleza de la temporada 2 (Europa y Canadá)"
+                },
+                description: {
+                    en: "Season 2 beauty set distributed in Europe and Canada.",
+                    es: "Set de belleza de la temporada 2, distribuido en Europa y Canadá."
+                }
+            },
+            {
+                src: "merch/series/20220815_155512.jpg",
+                title: {
+                    en: "Hannah Montana — Season 3 Makeup Set (2009)",
+                    es: "Hannah Montana — Set de maquillaje de la temporada 3 (2009)"
+                },
+                description: {
+                    en: "Season 3 makeup set released in 2009; it expired in 2011.",
+                    es: "Set de maquillaje de la temporada 3, lanzado en 2009 y vencido en 2011."
+                }
+            },
+            {
+                src: "merch/series/20220815_151926.jpg",
+                title: {
+                    en: "Hannah Montana — Season 2 Four Pop-Up Pencils (2008)",
+                    es: "Hannah Montana — Cuatro lápices pop-up de la temporada 2 (2008)"
+                },
+                description: {
+                    en: "Four pop-up pencils released in 2008 and widely distributed across Latin America until the early 2010s.",
+                    es: "Cuatro lápices pop-up lanzados en 2008 y ampliamente distribuidos en Latinoamérica hasta principios de la década de 2010."
+                }
             }
-
         ],
-
         "That's So Raven": [],
         "Kim Possible": [],
         "Wizards of Waverly Place": [],
         "The Proud Family": []
-
     },
-
     movies: {
         "Camp Rock": [],
         "High School Musical": [],
         "The Cheetah Girls": []
     }
-
 };
-
 
 /* =========================================
    TRANSLATIONS
 ========================================= */
-
 const translations = {
-
     en: {
         title: "Disney Channel Merchandise Archive",
         search: "Search the merchandise archive...",
@@ -918,7 +889,6 @@ const translations = {
         noResults: "No matching items were found.",
         itemCount: "ARCHIVED ITEMS"
     },
-
     es: {
         title: "Archivo de Merchandising de Disney Channel",
         search: "Buscar en el archivo de merchandising...",
@@ -943,9 +913,7 @@ const translations = {
         noResults: "No se encontraron artículos.",
         itemCount: "ARTÍCULOS ARCHIVADOS"
     }
-
 };
-
 const showNames = {
     en: {
         "Hannah Montana": "Hannah Montana",
@@ -969,11 +937,9 @@ const showNames = {
     }
 };
 
-
 /* =========================================
    LANGUAGE AND STATE
 ========================================= */
-
 let english = true;
 let currentView = "home";
 let selectedSection = "";
@@ -982,122 +948,97 @@ let selectedShow = "";
 function getT() {
     return english ? translations.en : translations.es;
 }
-
 function toggleLanguage() {
     english = !english;
     const t = getT();
-
     document.documentElement.lang = english ? "en" : "es";
     document.getElementById("languageButton").textContent =
         english ? "ESPAÑOL" : "ENGLISH";
-
     document.getElementById("pageTitle").textContent = t.title;
     document.getElementById("archiveSearch").placeholder = t.search;
     document.getElementById("homeButton").textContent = t.home;
     document.getElementById("homeButton").href = english
         ? "https://disneyrocklover.itch.io/disneychannelhomeexparchive"
         : "https://disneyrocklover.itch.io/lacasaexpdisneychannelarchivo";
-
     document.getElementById("closeButton").textContent = t.close;
-
     if (currentView !== "home") renderCurrentView();
 }
-
 
 /* =========================================
    MODAL CONTROLS
 ========================================= */
-
 function openModal() {
     document.getElementById("archiveModal").classList.add("active");
 }
-
 function closeModal() {
     document.getElementById("archiveModal").classList.remove("active");
     currentView = "home";
 }
-
 function setTitle(title) {
     document.getElementById("modalTitle").textContent = title;
 }
 
-
 /* =========================================
    SEARCH
 ========================================= */
-
 function globalSearch() {
     const query = document.getElementById("archiveSearch")
         .value.trim().toLowerCase();
-
     if (!query) {
         if (currentView === "global-search") closeModal();
         return;
     }
-
     currentView = "global-search";
     openModal();
     renderCurrentView();
 }
-
 function filterCollection() {
     const input = document.getElementById("collectionSearch");
     if (!input) return;
-
     const query = input.value.toLowerCase().trim();
     const cards = document.querySelectorAll(".gallery-card");
     let visible = 0;
-
     cards.forEach(card => {
         const matches = card.dataset.search.includes(query);
         card.classList.toggle("hidden", !matches);
         if (matches) visible++;
     });
-
     let noResults = document.getElementById("noResults");
-
     if (!noResults && cards.length > 0) {
         noResults = document.createElement("div");
         noResults.id = "noResults";
         noResults.className = "gallery-empty";
         document.getElementById("galleryGrid").after(noResults);
     }
-
     if (noResults) {
         noResults.textContent = getT().noResults;
         noResults.style.display = visible === 0 ? "block" : "none";
     }
 }
 
-
 /* =========================================
    NAVIGATION
 ========================================= */
-
 function openAdsMenu() {
     currentView = "ads";
     openModal();
     renderCurrentView();
 }
-
 function openPhysicalAds() {
     currentView = "physical";
     renderCurrentView();
 }
-
 function openMerchMenu() {
     currentView = "merch";
     openModal();
     renderCurrentView();
 }
-
 function openCollection(section, show) {
     selectedSection = section;
     selectedShow = show;
     currentView = "collection";
     renderCurrentView();
 }
-
 function goBack() {
     if (currentView === "physical") {
         currentView = "ads";
@@ -1107,15 +1048,12 @@ function goBack() {
         closeModal();
         return;
     }
-
     renderCurrentView();
 }
-
 
 /* =========================================
    SAFE HTML
 ========================================= */
-
 function escapeHTML(value) {
     return String(value).replace(/[&<>"']/g, char => ({
         "&": "&amp;",
@@ -1126,14 +1064,11 @@ function escapeHTML(value) {
     }[char]));
 }
 
-
 /* =========================================
    GALLERY
 ========================================= */
-
 function renderGallery(items, emptyMessage) {
     const t = getT();
-
     if (!items || items.length === 0) {
         return `
             <div class="gallery-empty">
@@ -1142,7 +1077,6 @@ function renderGallery(items, emptyMessage) {
             </div>
         `;
     }
-
     return `
         <div class="gallery-grid" id="galleryGrid">
             ${items.map(item => {
@@ -1151,13 +1085,11 @@ function renderGallery(items, emptyMessage) {
                         ? item.title[english ? "en" : "es"]
                         : item.title)
                     : "";
-
                 const description = item.description
                     ? (typeof item.description === "object"
                         ? item.description[english ? "en" : "es"]
                         : item.description)
                     : "";
-
                 return `
                     <div class="gallery-card"
                          data-search="${escapeHTML((title + " " + description).toLowerCase())}">
@@ -1166,9 +1098,7 @@ function renderGallery(items, emptyMessage) {
                              loading="lazy"
                              draggable="false"
                              oncontextmenu="return false">
-
                         <div class="gallery-caption">${escapeHTML(title)}</div>
-
                         ${description ? `
                             <div class="gallery-description">
                                 ${escapeHTML(description)}
@@ -1181,27 +1111,22 @@ function renderGallery(items, emptyMessage) {
     `;
 }
 
-
 /* =========================================
    RENDER ARCHIVE
 ========================================= */
-
 function renderCurrentView() {
     const t = getT();
     const content = document.getElementById("modalContent");
 
     if (currentView === "ads") {
         setTitle(t.adsTitle);
-
         content.innerHTML = `
             <p class="modal-description">${t.adsDescription}</p>
-
             <div class="archive-buttons">
                 <button class="archive-button" onclick="openPhysicalAds()">
                     ${t.physical}
                     <small>${t.physicalDescription}</small>
                 </button>
-
                 <a class="archive-button"
                    href="${lostMediaPlaylist}"
                    target="_blank"
@@ -1212,36 +1137,28 @@ function renderCurrentView() {
             </div>
         `;
     }
-
     else if (currentView === "physical") {
         setTitle(t.physicalTitle);
-
         content.innerHTML = `
             ${renderGallery(physicalAds, t.emptyAds)}
-
             <div class="modal-footer">
                 <button class="back-button" onclick="goBack()">← ${t.back}</button>
                 <span class="archive-count">${physicalAds.length} ${t.itemCount}</span>
             </div>
         `;
     }
-
     else if (currentView === "merch") {
         setTitle(t.merchTitle);
-
         const query = document.getElementById("archiveSearch")
             .value.toLowerCase().trim();
-
         content.innerHTML = `
             <p class="modal-description">${t.merchDescription}</p>
-
             <section class="category-section">
                 <h3 class="category-title">${t.series}</h3>
                 <div class="show-buttons">
                     ${Object.keys(merchCollections.series).map(show => {
                         const name = showNames[english ? "en" : "es"][show];
                         const matches = (show + " " + name).toLowerCase().includes(query);
-
                         return `
                             <button class="show-button ${matches ? "" : "hidden"}"
                                 onclick="openCollection('series','${escapeHTML(show)}')">
@@ -1251,14 +1168,12 @@ function renderCurrentView() {
                     }).join("")}
                 </div>
             </section>
-
             <section class="category-section">
                 <h3 class="category-title">${t.movies}</h3>
                 <div class="show-buttons">
                     ${Object.keys(merchCollections.movies).map(show => {
                         const name = showNames[english ? "en" : "es"][show];
                         const matches = (show + " " + name).toLowerCase().includes(query);
-
                         return `
                             <button class="show-button ${matches ? "" : "hidden"}"
                                 onclick="openCollection('movies','${escapeHTML(show)}')">
@@ -1270,61 +1185,47 @@ function renderCurrentView() {
             </section>
         `;
     }
-
     else if (currentView === "collection") {
         const items = merchCollections[selectedSection][selectedShow] || [];
         const translatedName =
             showNames[english ? "en" : "es"][selectedShow] || selectedShow;
-
         setTitle(translatedName);
-
         content.innerHTML = `
             <p class="modal-description">${t.merchDescription}</p>
-
             <input type="search"
                 class="collection-search"
                 id="collectionSearch"
                 placeholder="${t.collectionSearch}"
                 oninput="filterCollection()">
-
             <div id="collectionGallery">
                 ${renderGallery(items, t.emptyText)}
             </div>
-
             <div class="modal-footer">
                 <button class="back-button" onclick="goBack()">← ${t.back}</button>
                 <span class="archive-count">${items.length} ${t.itemCount}</span>
             </div>
         `;
     }
-
     else if (currentView === "global-search") {
         setTitle(t.merchTitle);
-
         const query = document.getElementById("archiveSearch")
             .value.toLowerCase().trim();
-
         const allShows = [
             ...Object.keys(merchCollections.series),
             ...Object.keys(merchCollections.movies)
         ];
-
         const results = allShows.filter(show => {
             const translated = showNames[english ? "en" : "es"][show] || show;
             return (show + " " + translated).toLowerCase().includes(query);
         });
-
         content.innerHTML = `
             <p class="modal-description">${t.merchDescription}</p>
-
             <div class="show-buttons">
                 ${results.map(show => {
                     const section = merchCollections.series[show] !== undefined
                         ? "series" : "movies";
-
                     const translated =
                         showNames[english ? "en" : "es"][show] || show;
-
                     return `
                         <button class="show-button"
                             onclick="openCollection('${section}','${escapeHTML(show)}')">
@@ -1333,7 +1234,6 @@ function renderCurrentView() {
                     `;
                 }).join("")}
             </div>
-
             ${results.length === 0
                 ? `<div class="gallery-empty">${t.noResults}</div>`
                 : ""}
@@ -1341,24 +1241,19 @@ function renderCurrentView() {
     }
 }
 
-
 /* =========================================
    CLOSE CONTROLS
 ========================================= */
-
 document.getElementById("archiveModal").addEventListener("click", event => {
     if (event.target === document.getElementById("archiveModal")) {
         closeModal();
     }
 });
-
 document.addEventListener("keydown", event => {
     if (event.key === "Escape") closeModal();
 });
-
 document.getElementById("homeButton").href =
     "https://disneyrocklover.itch.io/disneychannelhomeexparchive";
-
 </script>
 </body>
 </html>
