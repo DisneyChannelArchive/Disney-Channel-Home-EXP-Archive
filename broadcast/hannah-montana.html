@@ -153,6 +153,13 @@ body {
 }
 
 /* VIDEOS */
+.video-description {
+    margin: 0 0 13px;
+    color: #dedede;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
 .video-container {
     position: relative;
     width: 100%;
@@ -199,7 +206,8 @@ body {
         font-size: 12px;
     }
 
-    .history-block p {
+    .history-block p,
+    .video-description {
         font-size: 11px;
     }
 }
@@ -312,6 +320,33 @@ No airing on December 12 and 13, 2026
 
 </div>
 
+
+<!-- POLAND -->
+<div class="history-block">
+
+<h3 id="poland-title">Poland</h3>
+
+<p>
+<strong id="poland-first-label">First airing:</strong>
+December 2, 2006
+</p>
+
+<p>
+<strong id="poland-return-label">Returning to Disney Channel:</strong>
+December 3, 2026
+</p>
+
+<p>
+<strong id="poland-status-label">Broadcast schedule:</strong>
+Every day, 5:30 PM
+</p>
+
+<p id="poland-timezone">
+Poland local time
+</p>
+
+</div>
+
 </section>
 
 
@@ -321,6 +356,10 @@ No airing on December 12 and 13, 2026
 <h2 class="section-title" id="videos-title">
     Videos
 </h2>
+
+<p class="video-description" id="video-description">
+This playlist features recordings of Hannah Montana broadcasts from around the world, including full television airings, end credits, opening and closing credits, and channel bumpers. It documents how the series was presented and broadcast across different countries and Disney Channel feeds.
+</p>
 
 <div class="video-container">
 <iframe
@@ -403,6 +442,22 @@ function toggleLanguage() {
          "Returning to television:",
          "Regresa a la televisión:"],
 
+        ["poland-title",
+         "Poland",
+         "Polonia"],
+
+        ["poland-first-label",
+         "First airing:",
+         "Primera transmisión:"],
+
+        ["poland-return-label",
+         "Returning to Disney Channel:",
+         "Regresa a Disney Channel:"],
+
+        ["poland-status-label",
+         "Broadcast schedule:",
+         "Horario de transmisión:"],
+
         ["videos-title",
          "Videos",
          "Videos"],
@@ -447,6 +502,20 @@ function toggleLanguage() {
         isSpanish
         ? "No airing on December 12 and 13, 2026"
         : "No se transmite el 12 y 13 de diciembre de 2026";
+
+
+    /* POLAND */
+    document.getElementById("poland-timezone").textContent =
+        isSpanish
+        ? "Poland local time"
+        : "Hora local de Polonia";
+
+
+    /* VIDEO PLAYLIST DESCRIPTION */
+    document.getElementById("video-description").textContent =
+        isSpanish
+        ? "Esta lista de reproducción reúne grabaciones de transmisiones de Hannah Montana de distintas partes del mundo, incluyendo emisiones televisivas completas, créditos finales, créditos de apertura y cierre, y bumpers de los canales. Documenta cómo se presentó y transmitió la serie en diferentes países y señales de Disney Channel."
+        : "This playlist features recordings of Hannah Montana broadcasts from around the world, including full television airings, end credits, opening and closing credits, and channel bumpers. It documents how the series was presented and broadcast across different countries and Disney Channel feeds.";
 
 
     /* LANGUAGE */
