@@ -1,1518 +1,533 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Disney Channel Merchandise Archive</title>
+<title>Hannah Montana — Broadcast Archive</title>
 
 <style>
-* { box-sizing: border-box; }
+* {
+    box-sizing: border-box;
+}
 
 html, body {
     margin: 0;
     padding: 0;
+    width: 100%;
     min-height: 100%;
-    background: #101010;
+}
+
+body {
+    background: #000;
     font-family: Arial, Helvetica, sans-serif;
-    color: white;
+    overflow-x: hidden;
 }
 
-body { overflow-x: hidden; }
-
-.page {
-    width: 100%;
-    min-height: 100vh;
-    padding: 25px 12px 35px;
-}
-
-.archive-header {
-    width: min(1450px, 100%);
-    margin: 0 auto 22px;
+/* TV ROOM */
+.tv-room {
     position: relative;
-    text-align: center;
-    padding: 0 100px;
-}
-
-.archive-header h1 {
-    margin: 0;
-    color: #e8f0d9;
-    font-size: clamp(22px, 4vw, 38px);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-.language-button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 8px 12px;
-    background: #30452c;
-    border: 1px solid rgba(255,255,255,.3);
-    border-radius: 4px;
-    color: white;
-    font-size: 10px;
-    cursor: pointer;
-}
-
-.language-button:hover,
-.back-home:hover,
-.archive-button:hover,
-.show-button:hover,
-.close-button:hover,
-.back-button:hover {
-    background: #496541;
-}
-
-.search-container {
-    width: min(650px, 100%);
-    margin: 17px auto 0;
-}
-
-.search-bar, .collection-search {
-    width: 100%;
-    padding: 12px 15px;
-    background: #1b1b1b;
-    border: 1px solid #596e49;
-    border-left: 3px solid #78905f;
-    border-radius: 3px;
-    color: white;
-    font-size: 12px;
-    outline: none;
-}
-
-.search-bar:focus, .collection-search:focus {
-    border-color: #a3bb89;
-}
-
-.search-bar::placeholder, .collection-search::placeholder {
-    color: #9ba591;
-}
-
-/* CABINET BACKGROUND */
-.cabinet-stage {
-    position: relative;
-    width: min(1600px, 100%);
-    aspect-ratio: 1280 / 270;
+    width: min(1188px, 100vw);
     margin: 0 auto;
-    background-image: url("merchandise%20and%20archives.png");
+    aspect-ratio: 1188 / 600;
+    background-image: url("../TV.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 
-.shelf-hotspot {
+/* TV SCREEN */
+.tv-screen {
     position: absolute;
-    top: 2%;
-    height: 96%;
-    border: 2px solid transparent;
-    background: transparent;
-    cursor: pointer;
-    transition: background .2s, border .2s;
+    left: 13.45%;
+    top: 20.45%;
+    width: 74.25%;
+    height: 58.5%;
+    overflow: hidden;
+    background: #101010;
+    color: white;
 }
 
-.shelf-hotspot:hover,
-.shelf-hotspot:focus-visible {
-    background: rgba(120,144,95,.13);
-    border: 2px solid rgba(180,205,145,.65);
-    outline: none;
-}
-
-.ads-hotspot {
-    left: 12%;
-    width: 22%;
-}
-
-.merch-hotspot {
-    left: 65%;
-    width: 22%;
-}
-
-.main-footer {
-    max-width: 1400px;
-    margin: 28px auto 0;
-    text-align: center;
-}
-
-.back-home {
-    display: inline-block;
-    padding: 10px 15px;
-    background: #30452c;
-    border-left: 3px solid #78905f;
-    border-radius: 3px;
-    color: #e8f0d9;
-    text-decoration: none;
-    font-size: 10px;
-    font-weight: bold;
-}
-
-/* MODAL */
-.modal {
-    display: none;
-    position: fixed;
+/* CONTENT */
+.screen-content {
+    position: absolute;
     inset: 0;
-    z-index: 1000;
-    padding: 18px;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0,0,0,.90);
-}
-
-.modal.active { display: flex; }
-
-.modal-window {
-    position: relative;
-    width: min(1000px, 100%);
-    max-height: 90vh;
     overflow-y: auto;
-    padding: 25px;
-    background: #151515;
-    border: 1px solid #596e49;
-    border-top: 4px solid #78905f;
-    box-shadow: 0 0 35px rgba(0,0,0,.8);
+    overflow-x: hidden;
+    padding: 20px 30px 35px;
+    scrollbar-width: thin;
+    scrollbar-color: #78905f #171717;
 }
 
-.modal-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-    padding-bottom: 15px;
-    margin-bottom: 20px;
-    border-bottom: 1px solid rgba(255,255,255,.15);
+.screen-content::-webkit-scrollbar {
+    width: 8px;
 }
 
-.modal-header h2 {
+.screen-content::-webkit-scrollbar-track {
+    background: #171717;
+}
+
+.screen-content::-webkit-scrollbar-thumb {
+    background: #78905f;
+    border-radius: 10px;
+}
+
+/* HEADER */
+.broadcast-header {
+    position: relative;
+    padding-bottom: 14px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid rgba(255,255,255,.18);
+}
+
+.broadcast-header h1 {
     margin: 0;
-    color: #e8f0d9;
-    font-size: 20px;
+    font-size: clamp(22px, 3vw, 38px);
     letter-spacing: 1px;
+    color: #e8f0d9;
     text-transform: uppercase;
 }
 
-.close-button, .back-button {
-    padding: 8px 11px;
+.broadcast-header p {
+    margin: 5px 0 0;
+    color: #aeb9a5;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+/* LANGUAGE BUTTON */
+.language-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 1px solid rgba(255,255,255,.3);
     background: #30452c;
-    border: 1px solid rgba(255,255,255,.2);
     color: white;
-    border-radius: 3px;
-    font-size: 10px;
+    padding: 7px 11px;
+    border-radius: 4px;
     cursor: pointer;
+    font-size: 10px;
+    text-transform: uppercase;
 }
 
-.modal-description {
-    margin: 0 0 18px;
-    color: #b9c3ae;
+.language-button:hover {
+    background: #496541;
+}
+
+/* SECTIONS */
+.archive-section {
+    margin-bottom: 25px;
+}
+
+.section-title {
+    margin: 0 0 10px;
+    padding-bottom: 5px;
+    color: #dfead0;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-bottom: 2px solid #596e49;
+}
+
+/* HISTORY */
+.history-block {
+    margin-bottom: 17px;
+}
+
+.history-block h3 {
+    margin: 0 0 8px;
+    color: #b9cba9;
+    font-size: 13px;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+}
+
+.history-block p {
+    margin: 5px 0;
+    color: #dedede;
     font-size: 12px;
-    line-height: 1.7;
-}
-
-.archive-buttons {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0,1fr));
-    gap: 12px;
-}
-
-.archive-button {
-    display: block;
-    padding: 22px 15px;
-    text-align: left;
-    background: #222;
-    border: 1px solid rgba(255,255,255,.12);
-    border-left: 4px solid #78905f;
-    color: #e8f0d9;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: bold;
-    text-decoration: none;
-    transition: background .2s;
-}
-
-.archive-button small {
-    display: block;
-    margin-top: 8px;
-    color: #a3bb89;
-    font-size: 10px;
-    font-weight: normal;
-    line-height: 1.5;
-}
-
-.category-section { margin-bottom: 25px; }
-
-.category-title {
-    margin: 0 0 12px;
-    padding-bottom: 7px;
-    color: #a3bb89;
-    font-size: 13px;
-    letter-spacing: 2px;
-    border-bottom: 1px solid #596e49;
-}
-
-.show-buttons {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0,1fr));
-    gap: 10px;
-}
-
-.show-button {
-    min-height: 48px;
-    padding: 12px 8px;
-    background: #222;
-    border: 1px solid rgba(255,255,255,.12);
-    border-left: 3px solid #78905f;
-    color: white;
-    font-size: 11px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background .2s;
-}
-
-.show-button.hidden { display: none; }
-
-.collection-search { margin: 0 0 18px; }
-
-/* GALLERY */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0,1fr));
-    gap: 14px;
-}
-
-.gallery-card {
-    overflow: hidden;
-    background: #202020;
-    border: 1px solid rgba(255,255,255,.12);
-}
-
-.gallery-card img {
-    display: block;
-    width: 100%;
-    aspect-ratio: 3 / 4;
-    object-fit: contain;
-    background: #111;
-    user-select: none;
-    -webkit-user-drag: none;
-}
-
-.gallery-caption {
-    padding: 10px;
-    color: #e8f0d9;
-    font-size: 11px;
-    font-weight: bold;
-    text-align: center;
-}
-
-.gallery-description {
-    padding: 0 12px 13px;
-    color: #b9c3ae;
-    font-size: 10px;
     line-height: 1.6;
-    text-align: center;
 }
 
-.gallery-card.hidden { display: none; }
+.history-block strong {
+    color: #e8f0d9;
+}
 
-.gallery-empty {
-    padding: 30px 15px;
-    color: #b9c3ae;
-    background: #202020;
-    border: 1px dashed #596e49;
-    text-align: center;
+/* VIDEOS */
+.video-description {
+    margin: 0 0 13px;
+    color: #dedede;
     font-size: 12px;
     line-height: 1.7;
 }
 
-.gallery-empty strong {
-    display: block;
-    margin-bottom: 8px;
-    color: #a3bb89;
+.video-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    overflow: hidden;
 }
 
-.modal-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-    margin-top: 22px;
-    padding-top: 12px;
-    border-top: 1px solid rgba(255,255,255,.12);
+.video-container iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
 }
 
-.archive-count {
-    color: #849078;
-    font-size: 9px;
+/* FOOTER */
+.broadcast-footer {
+    margin-top: 25px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255,255,255,.15);
+    color: #899582;
+    font-size: 10px;
+    text-align: center;
 }
 
-@media (max-width: 650px) {
-    .page { padding: 18px 8px 25px; }
-    .archive-header { padding: 42px 0 0; }
-    .language-button { top: 0; right: 0; }
-    .cabinet-stage { width: 100%; }
-    .modal-window { padding: 15px; }
-    .show-buttons { grid-template-columns: repeat(2, minmax(0,1fr)); }
-    .gallery-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
-}
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .screen-content {
+        padding: 12px 15px 25px;
+    }
 
-@media (max-width: 380px) {
-    .archive-buttons, .gallery-grid { grid-template-columns: 1fr; }
+    .broadcast-header h1 {
+        font-size: 21px;
+        padding-right: 65px;
+    }
+
+    .language-button {
+        padding: 6px 8px;
+        font-size: 9px;
+    }
+
+    .section-title {
+        font-size: 12px;
+    }
+
+    .history-block p,
+    .video-description {
+        font-size: 11px;
+    }
 }
 </style>
 </head>
 
 <body>
-<div class="page">
 
-<header class="archive-header">
-    <button class="language-button" id="languageButton" onclick="toggleLanguage()">ESPAÑOL</button>
-    <h1 id="pageTitle">Disney Channel Merchandise Archive</h1>
+<div class="tv-room">
+<div class="tv-screen">
+<div class="screen-content">
 
-    <div class="search-container">
-        <input type="search" class="search-bar" id="archiveSearch"
-            placeholder="Search the merchandise archive..."
-            oninput="globalSearch()">
-    </div>
+<header class="broadcast-header">
+    <button class="language-button" onclick="toggleLanguage()">Español</button>
+    <h1 id="page-title">Hannah Montana</h1>
+    <p id="subtitle">DISNEY CHANNEL HOME EXP ARCHIVE</p>
 </header>
 
-<main>
-    <div class="cabinet-stage">
-        <button class="shelf-hotspot ads-hotspot"
-            onclick="openAdsMenu()" aria-label="Open advertising archive"></button>
 
-        <button class="shelf-hotspot merch-hotspot"
-            onclick="openMerchMenu()" aria-label="Open merchandise collections"></button>
-    </div>
-</main>
+<!-- BROADCAST HISTORY -->
+<section class="archive-section">
 
-<footer class="main-footer">
-    <a class="back-home" id="homeButton"
-       href="https://disneyrocklover.itch.io/disneychannelhomeexparchive">
-       BACK TO THE LIVING ROOM
-    </a>
+<h2 class="section-title" id="history-title">
+    Broadcast History
+</h2>
+
+
+<!-- LATIN AMERICA -->
+<div class="history-block">
+
+<h3 id="latam-title">Latin America</h3>
+
+<p>
+<strong id="latam-first-label">First airing:</strong>
+November 11, 2006
+</p>
+
+<p>
+<strong id="latam-status-label">Still airing on:</strong>
+Disney Channel
+</p>
+
+<p id="latam-schedule">
+Monday–Thursday: 9:30 PM<br>
+Friday: 1:00 PM<br>
+Sunday: 2:00 PM
+</p>
+
+<p id="latam-timezone">
+Argentina, Chile and Mexico time
+</p>
+
+</div>
+
+
+<!-- UNITED STATES -->
+<div class="history-block">
+
+<h3 id="usa-title">United States</h3>
+
+<p>
+<strong id="usa-first-label">First airing:</strong>
+March 24, 2006
+</p>
+
+<p>
+<strong id="usa-last-label">Last airing on Disney Channel:</strong>
+June 2, 2026
+</p>
+
+<p>
+<strong id="usa-status-label">Still airing on:</strong>
+Disney XD
+</p>
+
+<p id="usa-schedule">
+Fridays, 7 PM–6 AM
+</p>
+
+</div>
+
+
+<!-- JAPAN -->
+<div class="history-block">
+
+<h3 id="japan-title">Japan</h3>
+
+<p>
+<strong id="japan-first-label">First airing:</strong>
+August 19, 2006 (sneak peek)
+</p>
+
+<p>
+<strong id="japan-premiere-label">Official premiere:</strong>
+October 14, 2006
+</p>
+
+<p>
+<strong id="japan-status-label">Returning to television:</strong>
+December 5, 2026
+</p>
+
+<p id="japan-schedule">
+Saturdays and Sundays, 4:30 PM
+</p>
+
+<p id="japan-exceptions">
+No airing on December 12 and 13, 2026
+</p>
+
+</div>
+
+
+<!-- POLAND -->
+<div class="history-block">
+
+<h3 id="poland-title">Poland</h3>
+
+<p>
+<strong id="poland-first-label">First airing:</strong>
+December 2, 2006
+</p>
+
+<p>
+<strong id="poland-return-label">Returning to Disney Channel:</strong>
+December 3, 2026
+</p>
+
+<p>
+<strong id="poland-status-label">Broadcast schedule:</strong>
+Every day, 5:30 PM
+</p>
+
+<p id="poland-timezone">
+Poland local time
+</p>
+
+</div>
+
+</section>
+
+
+<!-- VIDEOS -->
+<section class="archive-section">
+
+<h2 class="section-title" id="videos-title">
+    Videos
+</h2>
+
+<p class="video-description" id="video-description">
+This playlist features recordings of Hannah Montana broadcasts from around the world, including full television airings, end credits, opening and closing credits, and channel bumpers. It documents how the series was presented and broadcast across different countries and Disney Channel feeds.
+</p>
+
+<div class="video-container">
+<iframe
+    src="https://www.youtube-nocookie.com/embed/videoseries?list=PLJw4UIbazcHg"
+    title="Hannah Montana Broadcast Archive"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen>
+</iframe>
+</div>
+
+</section>
+
+
+<footer class="broadcast-footer" id="footer">
+DISNEY CHANNEL HOME EXP ARCHIVE
 </footer>
 
 </div>
-
-<div class="modal" id="archiveModal">
-    <div class="modal-window">
-        <div class="modal-header">
-            <h2 id="modalTitle">ARCHIVE</h2>
-            <button class="close-button" id="closeButton" onclick="closeModal()">CLOSE ✕</button>
-        </div>
-        <div id="modalContent"></div>
-    </div>
+</div>
 </div>
 
+
 <script>
-
-/* =========================================
-   PHYSICAL ADVERTISEMENTS
-========================================= */
-
-const physicalAds = [
-    {
-        src: "merch/ads/hannah-japan-magazine-nov-2026.jpeg",
-        title: {
-            en: "Hannah Montana — Japanese Magazine Ad",
-            es: "Hannah Montana — Anuncio de revista japonesa"
-        },
-        description: {
-            en: "Featured in a Japanese magazine in November 2026 to promote the comeback of Hannah Montana to Disney Channel Japan in December 2026.",
-            es: "Publicado en una revista japonesa en noviembre de 2026 para promocionar el regreso de Hannah Montana a Disney Channel Japón en diciembre de 2026."
-        }
-    },
-    {
-        src: "merch/ads/hannah-us-magazine-ad-mid-2007.jpg",
-        title: {
-            en: "Hannah Montana — US Magazine Ad (Mid-2007)",
-            es: "Hannah Montana — Anuncio de revista estadounidense (mediados de 2007)"
-        },
-        description: {
-            en: "Hannah Montana advertisement featured in a US magazine in mid-2007, promoting the series' daily television timeslot in the United States.",
-            es: "Anuncio de Hannah Montana publicado en una revista estadounidense a mediados de 2007, promocionando el horario diario de la serie en Estados Unidos."
-        }
-    },
-    {
-        src: "merch/ads/jump-in-dvd-ad-2007.jpg",
-        title: {
-            en: "Jump In! — Disney Channel DVD Advertisement (2007)",
-            es: "Jump In! — Anuncio de DVD de Disney Channel (2007)"
-        },
-        description: {
-            en: "A Jump In! advertisement featured on early and mid-2007 Disney Channel DVD releases.",
-            es: "Anuncio de Jump In! incluido en lanzamientos de DVD de Disney Channel de principios y mediados de 2007."
-        }
-    },
-    {
-        src: "merch/ads/jump-in-dvd-insert-inside-2007.jpg",
-        title: {
-            en: "Jump In! — Inside of the DVD Insert (2007)",
-            es: "Jump In! — Interior del inserto del DVD (2007)"
-        },
-        description: {
-            en: "The inside of the Jump In! DVD promotional insert, featuring Disney Channel CD promotions and a Cory in the House advertisement.",
-            es: "Interior del inserto promocional del DVD de Jump In!, con promociones de CD de Disney Channel y un anuncio de Cory in the House."
-        }
-    }
-];
-
-/* =========================================
-   LOST MEDIA PLAYLIST
-========================================= */
-
-const lostMediaPlaylist =
-    "https://www.youtube.com/playlist?list=PLWpcZxU5Jq5s";
-
-/* =========================================
-   MERCHANDISE COLLECTIONS
-========================================= */
-
-const merchCollections = {
-
-    series: {
-
-        "Hannah Montana": [
-
-            {
-                src: "merch/series/hannah-rhein-notebooks-2009.jpg",
-                title: {
-                    en: "Hannah Montana Season 3 — Rhein Notebook Collection",
-                    es: "Hannah Montana Temporada 3 — Cuadernos Rhein"
-                },
-                description: {
-                    en: "Notebook line released by Rhein in Chile in late 2009. Original market value: CLP $1,190. Estimated current market value: CLP $2,000–$2,500.",
-                    es: "Línea de cuadernos lanzada por Rhein en Chile a fines de 2009. Valor original de mercado: $1.190 CLP. Valor estimado actual: $2.000–$2.500 CLP."
-                }
-            },
-
-            {
-                src: "merch/series/Screenshot_20260714_181909_Chrome-Photoroom.png",
-                title: {
-                    en: "Hannah Montana Forever — Window Panel (2010)",
-                    es: "Hannah Montana Forever — Panel para ventana (2010)"
-                },
-                description: {
-                    en: "Hannah Montana Forever window panel released in 2010.",
-                    es: "Panel para ventana de Hannah Montana Forever lanzado en 2010."
-                }
-            },
-
-            {
-                src: "merch/series/Screenshot_20221112-223034_eBay-removebg-preview.png",
-                title: {
-                    en: "Hannah Montana Forever — Flip Flops (2010)",
-                    es: "Hannah Montana Forever — Sandalias (2010)"
-                },
-                description: {
-                    en: "Released in the United States in 2010. This model was distributed internationally, reaching Europe, Asia and Latin America between 2010 and 2011.",
-                    es: "Lanzadas en Estados Unidos en 2010. Este modelo se distribuyó internacionalmente y llegó a Europa, Asia y Latinoamérica entre 2010 y 2011."
-                }
-            },
-
-            {
-                src: "merch/series/Screenshot_20221014-190721_eBay-removebg-preview.png",
-                title: {
-                    en: "Hannah Montana — Season 1 Ponytail Holders (2007)",
-                    es: "Hannah Montana — Coleteros de la primera temporada (2007)"
-                },
-                description: {
-                    en: "Ponytail holders featuring a Season 1 Hannah Montana design, released in 2007.",
-                    es: "Coleteros con diseño de la primera temporada de Hannah Montana, lanzados en 2007."
-                }
-            },
-
-            {
-                src: "merch/series/1784089173505-Photoroom.png",
-                title: {
-                    en: "Hannah Montana — Season 2 Backpack (2008)",
-                    es: "Hannah Montana — Mochila de la segunda temporada (2008)"
-                },
-                description: {
-                    en: "Released in 2008 and distributed in Latin America in late 2008. The backpack came with a tag featuring a Season 1 image.",
-                    es: "Lanzada en 2008 y distribuida en Latinoamérica a fines de ese año. La mochila incluía una etiqueta con una imagen de la primera temporada."
-                }
-            },
-
-            {
-                src: "merch/series/91Xz4VWX5jL._AC_SL1500_-Photoroom.png",
-                title: {
-                    en: "Hannah Montana Stationery Set (2009)",
-                    es: "Set de artículos de escritorio Hannah Montana (2009)"
-                },
-                description: {
-                    en: "Stationery set released in Spain in 2009, including markers, a sharpener and tape.",
-                    es: "Set de artículos de escritorio lanzado en España en 2009, que incluye marcadores, un sacapuntas y cinta adhesiva."
-                }
-            },
-
-            {
-                src: "merch/series/20230922_143704-Photoroom.png",
-                title: {
-                    en: "Hannah Montana Season 2 — Popcorn Maker (2008)",
-                    es: "Hannah Montana Temporada 2 — Máquina para hacer cabritas (2008)"
-                },
-                description: {
-                    en: "Hannah Montana popcorn maker featuring a Season 2 design, released in 2008.",
-                    es: "Máquina para hacer cabritas con diseño de la segunda temporada de Hannah Montana, lanzada en 2008."
-                }
-            },
-
-            {
-                src: "merch/series/20230922_143707-Photoroom.png",
-                title: {
-                    en: "Hannah Montana Season 3 — Sandwich Maker (2009)",
-                    es: "Hannah Montana Temporada 3 — Sandwichera (2009)"
-                },
-                description: {
-                    en: "Hannah Montana sandwich maker featuring a Season 3 design, released in 2009.",
-                    es: "Sandwichera de Hannah Montana con diseño de la tercera temporada, lanzada en 2009."
-                }
-            },
-
-            {
-                src: "merch/series/20231122_210615-Photoroom.png",
-                title: {
-                    en: "Hannah Montana — Travel Hair Dryer, 1200 W (2007)",
-                    es: "Hannah Montana — Secador de pelo de viaje, 1200 W (2007)"
-                },
-                description: {
-                    en: "Hannah Montana travel hair dryer with a power rating of 1200 W, released in 2007.",
-                    es: "Secador de pelo de viaje de Hannah Montana con una potencia de 1200 W, lanzado en 2007."
-                }
-            },
-
-            {
-                src: "merch/series/Screenshot_20260417_232838_TikTok Lite-Photoroom.png",
-                title: {
-                    en: "Hannah Montana — Season 2 Snowball (Late 2007)",
-                    es: "Hannah Montana — Bola de nieve, diseño de la temporada 2 (Finales de 2007)"
-                },
-                description: {
-                    en: "Hannah Montana snowball featuring the Season 2 design, released in late 2007.",
-                    es: "Bola de nieve de Hannah Montana con el diseño de la temporada 2, lanzada a finales de 2007."
-                }
-            },
-
-            {
-                src: "merch/series/Screenshot_20260417_232827_TikTok Lite-Photoroom.png",
-                title: {
-                    en: "Hannah Montana — Season 2 Christmas Ornament",
-                    es: "Hannah Montana — Adorno navideño de la temporada 2"
-                },
-                description: {
-                    en: "Christmas ornament featuring Hannah Montana's Season 2 design.",
-                    es: "Adorno navideño con el diseño de Hannah Montana de la temporada 2."
-                }
-            },
-
-            {
-                src: "merch/series/Screenshot_20260330_202703_Instagram-Photoroom.png",
-                title: {
-                    en: "Hannah Montana — Season 1 Mug (2007)",
-                    es: "Hannah Montana — Taza con diseño de la temporada 1 (2007)"
-                },
-                description: {
-                    en: "Season 1 design mug, among the first Hannah Montana products to reach international markets, including Latin America, in early 2007.",
-                    es: "Taza con diseño de la temporada 1, uno de los primeros productos de Hannah Montana en llegar a mercados internacionales, incluyendo Latinoamérica, a comienzos de 2007."
-                }
-            },
-
-            {
-                src: "merch/series/Screenshot_20240613_210143_eBay-Photoroom.png",
-                title: {
-                    en: "Hannah Montana — Season 2 Clip Pens with Rope (Set of 4)",
-                    es: "Hannah Montana — Set de 4 lápices con clip y cuerda, temporada 2"
-                },
-                description: {
-                    en: "Set of four Hannah Montana clip pens with rope, featuring the Season 2 design.",
-                    es: "Set de cuatro lápices con clip y cuerda de Hannah Montana, con el diseño de la temporada 2."
-                }
-            },
-
-            {
-                src: "merch/series/Screenshot_20240612_221922_eBay-Photoroom.png",
-                title: {
-                    en: "Hannah Montana — Season 3 Boxed Secrets Set (2009–2010)",
-                    es: "Hannah Montana — Set de secretos en caja, temporada 3 (2009–2010)"
-                },
-                description: {
-                    en: "Hannah Montana Season 3 Boxed Secrets Set, released around 2009–2010. Includes a Secrets Book, Keychain, Gel Pen, and Secret Storage Box.",
-                    es: "Set Boxed Secrets de Hannah Montana con diseño de la temporada 3, lanzado alrededor de 2009–2010. Incluye un libro de secretos, llavero, lápiz de gel y caja para guardar secretos."
-                }
-            },
-
-            {
-                src: "merch/series/Screenshot_20240612_221929_eBay-Photoroom.png",
-                title: {
-                    en: "Hannah Montana — Season 3 Boxed Secrets Set (2009–2010)",
-                    es: "Hannah Montana — Set de secretos en caja, temporada 3 (2009–2010)"
-                },
-                description: {
-                    en: "Another view of the Hannah Montana Season 3 Boxed Secrets Set, including its Secrets Book, Keychain, Gel Pen, and Secret Storage Box.",
-                    es: "Otra fotografía del set Boxed Secrets de Hannah Montana de la temporada 3, que incluye el libro de secretos, llavero, lápiz de gel y caja para guardar secretos."
-                }
-            },
-
-            {
-                src: "merch/series/Screenshot_20240612_221940_eBay-Photoroom.png",
-                title: {
-                    en: "Hannah Montana — Season 3 Boxed Secrets Set (2009–2010)",
-                    es: "Hannah Montana — Set de secretos en caja, temporada 3 (2009–2010)"
-                },
-                description: {
-                    en: "Additional view of the Hannah Montana Season 3 Boxed Secrets Set, released around 2009–2010.",
-                    es: "Fotografía adicional del set Boxed Secrets de Hannah Montana de la temporada 3, lanzado alrededor de 2009–2010."
-                }
-            },
-
-            {
-                src: "merch/series/Screenshot_20241008_231309_eBay-Photoroom.png",
-                title: {
-                    en: "Hannah Montana — Guitar Plush (2007)",
-                    es: "Hannah Montana — Peluche de guitarra (2007)"
-                },
-                description: {
-                    en: "Hannah Montana guitar-shaped plush released in 2007. It includes a Season 1 tag.",
-                    es: "Peluche de Hannah Montana con forma de guitarra, lanzado en 2007. Incluye una etiqueta de la temporada 1."
-                }
-            },
-
-            {
-                src: "merch/series/Screenshot_20240105_231732_eBay-Photoroom.png",
-                title: {
-                    en: "Hannah Montana — Season 1 Fishing Rod",
-                    es: "Hannah Montana — Caña de pescar de la temporada 1"
-                },
-                description: {
-                    en: "One of the most obscure Hannah Montana merchandise items worldwide: a Season 1 fishing rod.",
-                    es: "Uno de los artículos de merchandising de Hannah Montana más desconocidos a nivel mundial: una caña de pescar de la temporada 1."
-                }
-            },
-
-            {
-                src: "merch/series/Screenshot_20231224_233146_eBay-Photoroom.png",
-                title: {
-                    en: "Hannah Montana — Season 1 Glam Set (2007)",
-                    es: "Hannah Montana — Set Glam de la temporada 1 (2007)"
-                },
-                description: {
-                    en: "One of the first Hannah Montana makeup products released in 2007. The set contains a variety of makeup and glam accessories.",
-                    es: "Uno de los primeros productos de maquillaje de Hannah Montana, lanzado en 2007. El set contiene distintos artículos de maquillaje y accesorios glam."
-                }
-            },
-
-            {
-                src: "merch/series/HIdZpqoWkAAt3el-Photoroom.png",
-                title: {
-                    en: "Hannah Montana — Season 3 Bag (2026)",
-                    es: "Hannah Montana — Bolso de la temporada 3 (2026)"
-                },
-                description: {
-                    en: "Hannah Montana bag featuring a Season 3 design, released in 2026.",
-                    es: "Bolso de Hannah Montana con diseño de la temporada 3, lanzado en 2026."
-                }
-            },
-
-            {
-                src: "merch/series/HCb-YhhXIAI1O8W-Photoroom.png",
-                title: {
-                    en: "Hannah Montana Forever — Natural Spray (2011)",
-                    es: "Hannah Montana Forever — Natural Spray (2011)"
-                },
-                description: {
-                    en: "Hannah Montana Forever Natural Spray released in 2011.",
-                    es: "Natural Spray de Hannah Montana Forever, lanzado en 2011."
-                }
-            },
-
-            {
-                src: "merch/series/cartoonfansclub_2270_1313196722-Photoroom.png",
-                title: {
-                    en: "Hannah Montana — Season 2 Stationery Set (2007)",
-                    es: "Hannah Montana — Set de artículos de escritorio de la temporada 2 (2007)"
-                },
-                description: {
-                    en: "Season 2 stationery set released in 2007. It contains a pencil pouch, a Season 1 sharpener, a ruler, and an eraser.",
-                    es: "Set de artículos de escritorio de la temporada 2, lanzado en 2007. Incluye un estuche para lápices, un sacapuntas de la temporada 1, una regla y una goma de borrar."
-                }
-            },
-
-            {
-                src: "merch/series/20260722_165158-Photoroom.png",
-                title: {
-                    en: "Hannah Montana — Season 2 Secret Star Pink Hand Towel (2008)",
-                    es: "Hannah Montana — Toalla de mano rosa Secret Star de la temporada 2 (2008)"
-                },
-                description: {
-                    en: "Pink Secret Star hand towel released in 2008 alongside the cyan Part Time Pop Star hand towel.",
-                    es: "Toalla de mano rosa Secret Star, lanzada en 2008 junto a la toalla celeste Part Time Pop Star."
-                }
-            },
-
-            {
-                src: "merch/series/20260722_165259-Photoroom.png",
-                title: {
-                    en: "Hannah Montana — Season 2 Part Time Pop Star Cyan Hand Towel (2008)",
-                    es: "Hannah Montana — Toalla de mano celeste Part Time Pop Star de la temporada 2 (2008)"
-                },
-                description: {
-                    en: "Cyan Part Time Pop Star hand towel released in 2008 alongside the pink Secret Star hand towel.",
-                    es: "Toalla de mano celeste Part Time Pop Star, lanzada en 2008 junto a la toalla rosa Secret Star."
-                }
-            },
-
-            {
-                src: "merch/series/20260328_155221-Photoroom.png",
-                title: {
-                    en: "Hannah Montana — Season 2 Pink Glass and Plastic Water Bottle (Late 2007)",
-                    es: "Hannah Montana — Botella de agua rosa de vidrio y plástico de la temporada 2 (Finales de 2007)"
-                },
-                description: {
-                    en: "Pink Hannah Montana Season 2 water bottle made of glass and plastic, released in late 2007.",
-                    es: "Botella de agua rosa de Hannah Montana de la temporada 2, fabricada en vidrio y plástico y lanzada a finales de 2007."
-                }
-            },
-
-            /* NEWLY ADDED PRODUCTS */
-
-            {
-                src: "merch/series/20260423_173347-Photoroom.png",
-                title: {
-                    en: "Hannah Montana — Season 1 Decorative Lamp (2007)",
-                    es: "Hannah Montana — Lámpara decorativa de la temporada 1 (2007)"
-                },
-                description: {
-                    en: "Hannah Montana decorative lamp featuring a Season 1 design, released in 2007.",
-                    es: "Lámpara decorativa de Hannah Montana con diseño de la temporada 1, lanzada en 2007."
-                }
-            },
-
-            {
-                src: "merch/series/1772825325348-Photoroom.png",
-                title: {
-                    en: "Hannah Montana — Season 2 Bersha Bag (2026)",
-                    es: "Hannah Montana — Bolso Bersha de la temporada 2 (2026)"
-                },
-                description: {
-                    en: "Hannah Montana Season 2 Bersha bag released in 2026.",
-                    es: "Bolso Bersha de Hannah Montana con diseño de la temporada 2, lanzado en 2026."
-                }
-            },
-
-            {
-                src: "merch/series/images (6)-Photoroom.png",
-                title: {
-                    en: "Hannah Montana — Season 2 7-Piece Calculator Set (2008)",
-                    es: "Hannah Montana — Set de calculadora de 7 piezas de la temporada 2 (2008)"
-                },
-                description: {
-                    en: "Seven-piece Hannah Montana Season 2 calculator set released in 2008.",
-                    es: "Set de calculadora de siete piezas de Hannah Montana con diseño de la temporada 2, lanzado en 2008."
-                }
-            },
-
-            {
-                src: "merch/series/Screenshot_20240203_154556_Facebook-Photoroom.png",
-                title: {
-                    en: "Hannah Montana — Season 2 Ornament",
-                    es: "Hannah Montana — Adorno de la temporada 2"
-                },
-                description: {
-                    en: "Season 2 Hannah Montana ornament that also features Miley Stewart's signature brown hair.",
-                    es: "Adorno de Hannah Montana de la temporada 2 que también presenta el característico cabello castaño de Miley Stewart."
-                }
-            },
-
-            {
-                src: "merch/series/HNNBrpyWoAAG9y7-Photoroom.png",
-                title: {
-                    en: "Hannah Montana — Cologne Spray (Late 2000s)",
-                    es: "Hannah Montana — Spray de colonia (Finales de los 2000)"
-                },
-                description: {
-                    en: "Hannah Montana Cologne Spray, widely distributed around the world in the late 2000s.",
-                    es: "Cologne Spray de Hannah Montana, ampliamente distribuido en distintas partes del mundo a finales de los años 2000."
-                }
-            },
-
-            {
-                src: "merch/series/20260722_165426-Photoroom.png",
-                title: {
-                    en: "Hannah Montana Forever — Small Pencil Case (Latin America, 2011)",
-                    es: "Hannah Montana Forever — Estuche pequeño (Latinoamérica, 2011)"
-                },
-                description: {
-                    en: "Small pencil case released in Latin America in 2011 as part of the latest Hannah Montana back-to-school collection distributed in the region.",
-                    es: "Estuche pequeño lanzado en Latinoamérica en 2011 como parte de la última colección de artículos escolares de Hannah Montana distribuida en la región."
-                }
-            },
-
-            {
-                src: "merch/series/Screenshot_20250819_155039_TikTok-Photoroom.png",
-                title: {
-                    en: "Hannah Montana — Season 1 Life Vest",
-                    es: "Hannah Montana — Chaleco salvavidas de la temporada 1"
-                },
-                description: {
-                    en: "One of the most obscure Hannah Montana merchandise items: a Season 1 life vest.",
-                    es: "Uno de los artículos de merchandising de Hannah Montana más desconocidos: un chaleco salvavidas de la temporada 1."
-                }
-            },
-
-            {
-                src: "merch/series/D_NQ_NP_2X_1512-MLC4758681876_082013-F-Photoroom.png",
-                title: {
-                    en: "Hannah Montana — Season 2 SMS Text Message Machine (Late 2007)",
-                    es: "Hannah Montana — Máquina de mensajes SMS de la temporada 2 (Finales de 2007)"
-                },
-                description: {
-                    en: "Hannah Montana Season 2 SMS text message machine released in late 2007. It became one of the most widely distributed Hannah Montana merchandise items across Latin America in the late 2000s.",
-                    es: "Máquina de mensajes SMS de Hannah Montana con diseño de la temporada 2, lanzada a finales de 2007. Se convirtió en uno de los artículos de merchandising de Hannah Montana más distribuidos en Latinoamérica a finales de los años 2000."
-                }
-            },
-            {
-                src: "merch/series/1784089173606-Photoroom.png",
-                title: {
-                    en: "Hannah Montana Forever — Silly Bandz (2010)",
-                    es: "Hannah Montana Forever — Silly Bandz (2010)"
-                },
-                description: {
-                    en: "Hannah Montana Forever Silly Bandz released in 2010.",
-                    es: "Silly Bandz de Hannah Montana Forever, lanzados en 2010."
-                }
-            },
-            {
-                src: "merch/series/20260308_192315-Photoroom.png",
-                title: {
-                    en: "Hannah Montana — Season 1 Pink Metallic Bag",
-                    es: "Hannah Montana — Bolso metálico rosa de la temporada 1"
-                },
-                description: {
-                    en: "Pink metallic Hannah Montana bag featuring Season 1 artwork.",
-                    es: "Bolso metálico rosa de Hannah Montana con ilustraciones de la temporada 1."
-                }
-            },
-            {
-                src: "merch/series/m52166690375_1-Photoroom.png",
-                title: {
-                    en: "Hannah Montana — Girl Talk Board Game (2007)",
-                    es: "Hannah Montana — Juego de mesa Girl Talk (2007)"
-                },
-                description: {
-                    en: "Hannah Montana Girl Talk board game released in 2007.",
-                    es: "Juego de mesa Girl Talk de Hannah Montana, lanzado en 2007."
-                }
-            },
-            {
-                src: "merch/series/5fd0cf5e-9650-434f-a864-9a8a5f83fd2e-Photoroom.png",
-                title: {
-                    en: "Hannah Montana — DVD Player",
-                    es: "Hannah Montana — Reproductor de DVD"
-                },
-                description: {
-                    en: "Hannah Montana-branded DVD player.",
-                    es: "Reproductor de DVD con diseño de Hannah Montana."
-                }
-            },
-            {
-                src: "merch/series/86a79296-28ac-487d-9468-543c2b83291a-Photoroom.png",
-                title: {
-                    en: "Hannah Montana — Season 2 Beauty Set (Europe and Canada)",
-                    es: "Hannah Montana — Set de belleza de la temporada 2 (Europa y Canadá)"
-                },
-                description: {
-                    en: "Season 2 beauty set distributed in Europe and Canada.",
-                    es: "Set de belleza de la temporada 2, distribuido en Europa y Canadá."
-                }
-            },
-            {
-                src: "merch/series/20220815_155512.jpg",
-                title: {
-                    en: "Hannah Montana — Season 3 Makeup Set (2009)",
-                    es: "Hannah Montana — Set de maquillaje de la temporada 3 (2009)"
-                },
-                description: {
-                    en: "Season 3 makeup set released in 2009; it expired in 2011.",
-                    es: "Set de maquillaje de la temporada 3, lanzado en 2009 y vencido en 2011."
-                }
-            },
-            {
-                src: "merch/series/20220815_151926.jpg",
-                title: {
-                    en: "Hannah Montana — Season 2 Four Pop-Up Pencils (2008)",
-                    es: "Hannah Montana — Cuatro lápices pop-up de la temporada 2 (2008)"
-                },
-                description: {
-                    en: "Four pop-up pencils released in 2008 and widely distributed across Latin America until the early 2010s.",
-                    es: "Cuatro lápices pop-up lanzados en 2008 y ampliamente distribuidos en Latinoamérica hasta principios de la década de 2010."
-                }
-            },
-            {
-                src: "merch/series/1065_Cojin_Hanna_Montana.jpg",
-                title: {
-                    en: "Hannah Montana: The Movie — Pillow (2009)",
-                    es: "Hannah Montana: La película — Cojín (2009)"
-                },
-                description: {
-                    en: "Hannah Montana: The Movie pillow released in 2009. It comes with a Season 3 tag and was widely distributed worldwide in 2009 and the early 2010s.",
-                    es: "Cojín de Hannah Montana: La película, lanzado en 2009. Incluye una etiqueta de la temporada 3 y fue ampliamente distribuido en todo el mundo durante 2009 y principios de la década de 2010."
-                }
-            },
-            {
-                src: "merch/series/20220815_172544.jpg",
-                title: {
-                    en: "Hannah Montana — Season 3 Body Mist (2008)",
-                    es: "Hannah Montana — Body mist de la temporada 3 (2008)"
-                },
-                description: {
-                    en: "Season 3 Hannah Montana Body Mist released in 2008.",
-                    es: "Body mist de Hannah Montana con diseño de la temporada 3, lanzado en 2008."
-                }
-            },
-            {
-                src: "merch/series/Screenshot_20210911_134544_com.facebook.lite.jpg",
-                title: {
-                    en: "Hannah Montana — Set of Ornaments",
-                    es: "Hannah Montana — Set de adornos"
-                },
-                description: {
-                    en: "A set of Hannah Montana-themed ornaments.",
-                    es: "Set de adornos temáticos de Hannah Montana."
-                }
-            },
-            {
-                src: "merch/series/hannah-montana-juego-libreta-con-acesorios.jpg",
-                title: {
-                    en: "Hannah Montana — Season 1 Five-Piece Stationery Set",
-                    es: "Hannah Montana — Set de artículos de papelería de cinco piezas de la temporada 1"
-                },
-                description: {
-                    en: "Season 1 five-piece set including two pencils, a notepad, a sharpener, and an eraser.",
-                    es: "Set de cinco piezas de la temporada 1 que incluye dos lápices, una libreta, un sacapuntas y una goma de borrar."
-                }
-            },
-            {
-                src: "merch/series/20221012_162223.jpg",
-                title: {
-                    en: "Hannah Montana — Season 2 Large Photo Album (2008)",
-                    es: "Hannah Montana — Álbum de fotos grande de la temporada 2 (2008)"
-                },
-                description: {
-                    en: "Large Hannah Montana Season 2 photo album released in 2008.",
-                    es: "Álbum de fotos grande de Hannah Montana con diseño de la temporada 2, lanzado en 2008."
-                }
-            },
-            {
-                src: "merch/series/0c4f50565c9cf253f435dd966d175b71.jpg",
-                title: {
-                    en: "Hannah Montana — Season 1 Secret Star Lip Balms Set",
-                    es: "Hannah Montana — Set de bálsamos labiales Secret Star de la temporada 1"
-                },
-                description: {
-                    en: "Season 1 Secret Star set of Hannah Montana lip balms.",
-                    es: "Set Secret Star de bálsamos labiales de Hannah Montana con diseño de la temporada 1."
-                }
-            },
-            {
-                src: "merch/series/1ba16720d2e70a5ac9f9c8cd8b3d782a.jpg",
-                title: {
-                    en: "Hannah Montana — Season 2 Three Gel Pencils Set",
-                    es: "Hannah Montana — Set de tres lápices de gel de la temporada 2"
-                },
-                description: {
-                    en: "Set of three Hannah Montana Season 2 gel pencils.",
-                    es: "Set de tres lápices de gel de Hannah Montana con diseño de la temporada 2."
-                }
-            },
-            {
-                src: "merch/series/8fbc1259266e976b7f937764d5294c5b.jpg",
-                title: {
-                    en: "Hannah Montana — Season 3 Eight-Pencil Set",
-                    es: "Hannah Montana — Set de ocho lápices de la temporada 3"
-                },
-                description: {
-                    en: "Set of eight Hannah Montana Season 3 pencils.",
-                    es: "Set de ocho lápices de Hannah Montana con diseño de la temporada 3."
-                }
-            }
-
-        ],
-
-        "That's So Raven": [],
-        "Kim Possible": [],
-        "Wizards of Waverly Place": [],
-        "The Proud Family": []
-
-    },
-
-    movies: {
-        "Camp Rock": [],
-        "High School Musical": [],
-        "The Cheetah Girls": []
-    }
-
-};
-
-/* =========================================
-   TRANSLATIONS
-========================================= */
-
-const translations = {
-
-    en: {
-        title: "Disney Channel Merchandise Archive",
-        search: "Search the merchandise archive...",
-        home: "BACK TO THE LIVING ROOM",
-        close: "CLOSE ✕",
-        back: "BACK",
-        adsTitle: "ADVERTISING ARCHIVE",
-        adsDescription: "Explore the advertising and promotional materials preserved in the archive.",
-        physical: "PHYSICAL ADS",
-        physicalDescription: "Scanned printed advertisements, magazines, catalogs and promotional materials.",
-        lost: "LOST MEDIA",
-        lostDescription: "Explore the recovered and archived Disney Channel commercials and promotional recordings.",
-        physicalTitle: "PHYSICAL ADVERTISEMENTS",
-        merchTitle: "MERCHANDISE COLLECTIONS",
-        merchDescription: "Explore the archived merchandise collections.",
-        series: "TELEVISION SERIES",
-        movies: "MOVIES",
-        collectionSearch: "Search this collection...",
-        emptyTitle: "COLLECTION UNDER CONSTRUCTION",
-        emptyText: "No merchandise has been added to this collection yet.",
-        emptyAds: "No scanned advertisements have been added yet.",
-        noResults: "No matching items were found.",
-        itemCount: "ARCHIVED ITEMS"
-    },
-
-    es: {
-        title: "Archivo de Merchandising de Disney Channel",
-        search: "Buscar en el archivo de merchandising...",
-        home: "VOLVER AL LIVING",
-        close: "CERRAR ✕",
-        back: "VOLVER",
-        adsTitle: "ARCHIVO DE PUBLICIDAD",
-        adsDescription: "Explora los materiales publicitarios y promocionales preservados en el archivo.",
-        physical: "ANUNCIOS FÍSICOS",
-        physicalDescription: "Anuncios impresos digitalizados, revistas, catálogos y materiales promocionales.",
-        lost: "LOST MEDIA",
-        lostDescription: "Explora los comerciales y las grabaciones promocionales recuperadas y archivadas de Disney Channel.",
-        physicalTitle: "ANUNCIOS FÍSICOS",
-        merchTitle: "COLECCIONES DE MERCHANDISING",
-        merchDescription: "Explora las colecciones de productos archivados.",
-        series: "SERIES DE TELEVISIÓN",
-        movies: "PELÍCULAS",
-        collectionSearch: "Buscar en esta colección...",
-        emptyTitle: "COLECCIÓN EN CONSTRUCCIÓN",
-        emptyText: "Todavía no se han agregado productos a esta colección.",
-        emptyAds: "Todavía no se han agregado anuncios digitalizados.",
-        noResults: "No se encontraron artículos.",
-        itemCount: "ARTÍCULOS ARCHIVADOS"
-    }
-
-};
-
-const showNames = {
-    en: {
-        "Hannah Montana": "Hannah Montana",
-        "That's So Raven": "That's So Raven",
-        "Kim Possible": "Kim Possible",
-        "Wizards of Waverly Place": "Wizards of Waverly Place",
-        "The Proud Family": "The Proud Family",
-        "Camp Rock": "Camp Rock",
-        "High School Musical": "High School Musical",
-        "The Cheetah Girls": "The Cheetah Girls"
-    },
-    es: {
-        "Hannah Montana": "Hannah Montana",
-        "That's So Raven": "Es Tan Raven",
-        "Kim Possible": "Kim Possible",
-        "Wizards of Waverly Place": "Los Hechiceros de Waverly Place",
-        "The Proud Family": "La Familia Proud",
-        "Camp Rock": "Camp Rock",
-        "High School Musical": "High School Musical",
-        "The Cheetah Girls": "Las Cheetah Girls"
-    }
-};
-
-/* =========================================
-   LANGUAGE AND STATE
-========================================= */
-
-let english = true;
-let currentView = "home";
-let selectedSection = "";
-let selectedShow = "";
-
-function getT() {
-    return english ? translations.en : translations.es;
-}
+let isSpanish = false;
 
 function toggleLanguage() {
-    english = !english;
-    const t = getT();
 
-    document.documentElement.lang = english ? "en" : "es";
-    document.getElementById("languageButton").textContent =
-        english ? "ESPAÑOL" : "ENGLISH";
+    const button = document.querySelector(".language-button");
 
-    document.getElementById("pageTitle").textContent = t.title;
-    document.getElementById("archiveSearch").placeholder = t.search;
-    document.getElementById("homeButton").textContent = t.home;
-    document.getElementById("homeButton").href = english
-        ? "https://disneyrocklover.itch.io/disneychannelhomeexparchive"
-        : "https://disneyrocklover.itch.io/lacasaexpdisneychannelarchivo";
+    const fields = [
+        ["subtitle",
+         "DISNEY CHANNEL HOME EXP ARCHIVE",
+         "ARCHIVO DISNEY CHANNEL HOME EXP"],
 
-    document.getElementById("closeButton").textContent = t.close;
+        ["history-title",
+         "Broadcast History",
+         "Historial de transmisiones"],
 
-    if (currentView !== "home") renderCurrentView();
-}
+        ["latam-title",
+         "Latin America",
+         "Latinoamérica"],
 
-/* =========================================
-   MODAL CONTROLS
-========================================= */
+        ["latam-first-label",
+         "First airing:",
+         "Primera transmisión:"],
 
-function openModal() {
-    document.getElementById("archiveModal").classList.add("active");
-}
+        ["latam-status-label",
+         "Still airing on:",
+         "Continúa transmitiéndose en:"],
 
-function closeModal() {
-    document.getElementById("archiveModal").classList.remove("active");
-    currentView = "home";
-}
+        ["usa-title",
+         "United States",
+         "Estados Unidos"],
 
-function setTitle(title) {
-    document.getElementById("modalTitle").textContent = title;
-}
+        ["usa-first-label",
+         "First airing:",
+         "Primera transmisión:"],
 
-/* =========================================
-   SEARCH
-========================================= */
+        ["usa-last-label",
+         "Last airing on Disney Channel:",
+         "Última transmisión en Disney Channel:"],
 
-function globalSearch() {
-    const query = document.getElementById("archiveSearch")
-        .value.trim().toLowerCase();
+        ["usa-status-label",
+         "Still airing on:",
+         "Continúa transmitiéndose en:"],
 
-    if (!query) {
-        if (currentView === "global-search") closeModal();
-        return;
-    }
+        ["japan-title",
+         "Japan",
+         "Japón"],
 
-    currentView = "global-search";
-    openModal();
-    renderCurrentView();
-}
+        ["japan-first-label",
+         "First airing:",
+         "Primera transmisión:"],
 
-function filterCollection() {
-    const input = document.getElementById("collectionSearch");
-    if (!input) return;
+        ["japan-premiere-label",
+         "Official premiere:",
+         "Estreno oficial:"],
 
-    const query = input.value.toLowerCase().trim();
-    const cards = document.querySelectorAll(".gallery-card");
-    let visible = 0;
+        ["japan-status-label",
+         "Returning to television:",
+         "Regresa a la televisión:"],
 
-    cards.forEach(card => {
-        const matches = card.dataset.search.includes(query);
-        card.classList.toggle("hidden", !matches);
-        if (matches) visible++;
+        ["poland-title",
+         "Poland",
+         "Polonia"],
+
+        ["poland-first-label",
+         "First airing:",
+         "Primera transmisión:"],
+
+        ["poland-return-label",
+         "Returning to Disney Channel:",
+         "Regresa a Disney Channel:"],
+
+        ["poland-status-label",
+         "Broadcast schedule:",
+         "Horario de transmisión:"],
+
+        ["videos-title",
+         "Videos",
+         "Videos"],
+
+        ["footer",
+         "DISNEY CHANNEL HOME EXP ARCHIVE",
+         "ARCHIVO DISNEY CHANNEL HOME EXP"]
+    ];
+
+    fields.forEach(([id, en, es]) => {
+        document.getElementById(id).textContent =
+            isSpanish ? en : es;
     });
 
-    let noResults = document.getElementById("noResults");
 
-    if (!noResults && cards.length > 0) {
-        noResults = document.createElement("div");
-        noResults.id = "noResults";
-        noResults.className = "gallery-empty";
-        document.getElementById("galleryGrid").after(noResults);
-    }
+    /* LATIN AMERICA */
+    document.getElementById("latam-schedule").innerHTML =
+        isSpanish
+        ? "Monday–Thursday: 9:30 PM<br>Friday: 1:00 PM<br>Sunday: 2:00 PM"
+        : "Lunes–jueves: 9:30 PM<br>Viernes: 1:00 PM<br>Domingo: 2:00 PM";
 
-    if (noResults) {
-        noResults.textContent = getT().noResults;
-        noResults.style.display = visible === 0 ? "block" : "none";
-    }
+    document.getElementById("latam-timezone").textContent =
+        isSpanish
+        ? "Argentina, Chile and Mexico time"
+        : "Hora de Argentina, Chile y México";
+
+
+    /* UNITED STATES */
+    document.getElementById("usa-schedule").textContent =
+        isSpanish
+        ? "Fridays, 7 PM–6 AM"
+        : "Viernes, 7 PM–6 AM";
+
+
+    /* JAPAN */
+    document.getElementById("japan-schedule").textContent =
+        isSpanish
+        ? "Saturdays and Sundays, 4:30 PM"
+        : "Sábados y domingos, 4:30 PM";
+
+    document.getElementById("japan-exceptions").textContent =
+        isSpanish
+        ? "No airing on December 12 and 13, 2026"
+        : "No se transmite el 12 y 13 de diciembre de 2026";
+
+
+    /* POLAND */
+    document.getElementById("poland-timezone").textContent =
+        isSpanish
+        ? "Poland local time"
+        : "Hora local de Polonia";
+
+
+    /* VIDEO PLAYLIST DESCRIPTION */
+    document.getElementById("video-description").textContent =
+        isSpanish
+        ? "Esta lista de reproducción reúne grabaciones de transmisiones de Hannah Montana de distintas partes del mundo, incluyendo emisiones televisivas completas, créditos finales, créditos de apertura y cierre, y bumpers de los canales. Documenta cómo se presentó y transmitió la serie en diferentes países y señales de Disney Channel."
+        : "This playlist features recordings of Hannah Montana broadcasts from around the world, including full television airings, end credits, opening and closing credits, and channel bumpers. It documents how the series was presented and broadcast across different countries and Disney Channel feeds.";
+
+
+    /* LANGUAGE */
+    document.documentElement.lang =
+        isSpanish ? "en" : "es";
+
+    button.textContent =
+        isSpanish ? "Español" : "English";
+
+    isSpanish = !isSpanish;
 }
-
-/* =========================================
-   NAVIGATION
-========================================= */
-
-function openAdsMenu() {
-    currentView = "ads";
-    openModal();
-    renderCurrentView();
-}
-
-function openPhysicalAds() {
-    currentView = "physical";
-    renderCurrentView();
-}
-
-function openMerchMenu() {
-    currentView = "merch";
-    openModal();
-    renderCurrentView();
-}
-
-function openCollection(section, show) {
-    selectedSection = section;
-    selectedShow = show;
-    currentView = "collection";
-    renderCurrentView();
-}
-
-function goBack() {
-    if (currentView === "physical") {
-        currentView = "ads";
-    } else if (currentView === "collection") {
-        currentView = "merch";
-    } else {
-        closeModal();
-        return;
-    }
-
-    renderCurrentView();
-}
-
-/* =========================================
-   SAFE HTML
-========================================= */
-
-function escapeHTML(value) {
-    return String(value).replace(/[&<>"']/g, char => ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#39;"
-    }[char]));
-}
-
-/* =========================================
-   GALLERY
-========================================= */
-
-function renderGallery(items, emptyMessage) {
-    const t = getT();
-
-    if (!items || items.length === 0) {
-        return `
-            <div class="gallery-empty">
-                <strong>${t.emptyTitle}</strong>
-                ${emptyMessage}
-            </div>
-        `;
-    }
-
-    return `
-        <div class="gallery-grid" id="galleryGrid">
-            ${items.map(item => {
-                const title = item.title
-                    ? (typeof item.title === "object"
-                        ? item.title[english ? "en" : "es"]
-                        : item.title)
-                    : "";
-
-                const description = item.description
-                    ? (typeof item.description === "object"
-                        ? item.description[english ? "en" : "es"]
-                        : item.description)
-                    : "";
-
-                return `
-                    <div class="gallery-card"
-                         data-search="${escapeHTML((title + " " + description).toLowerCase())}">
-                        <img src="${escapeHTML(item.src)}"
-                             alt="${escapeHTML(title || "Archived item")}"
-                             loading="lazy"
-                             draggable="false"
-                             oncontextmenu="return false">
-
-                        <div class="gallery-caption">${escapeHTML(title)}</div>
-
-                        ${description ? `
-                            <div class="gallery-description">
-                                ${escapeHTML(description)}
-                            </div>
-                        ` : ""}
-                    </div>
-                `;
-            }).join("")}
-        </div>
-    `;
-}
-
-/* =========================================
-   RENDER ARCHIVE
-========================================= */
-
-function renderCurrentView() {
-    const t = getT();
-    const content = document.getElementById("modalContent");
-
-    if (currentView === "ads") {
-        setTitle(t.adsTitle);
-
-        content.innerHTML = `
-            <p class="modal-description">${t.adsDescription}</p>
-
-            <div class="archive-buttons">
-                <button class="archive-button" onclick="openPhysicalAds()">
-                    ${t.physical}
-                    <small>${t.physicalDescription}</small>
-                </button>
-
-                <a class="archive-button"
-                   href="${lostMediaPlaylist}"
-                   target="_blank"
-                   rel="noopener">
-                    ${t.lost}
-                    <small>${t.lostDescription}</small>
-                </a>
-            </div>
-        `;
-    }
-
-    else if (currentView === "physical") {
-        setTitle(t.physicalTitle);
-
-        content.innerHTML = `
-            ${renderGallery(physicalAds, t.emptyAds)}
-
-            <div class="modal-footer">
-                <button class="back-button" onclick="goBack()">← ${t.back}</button>
-                <span class="archive-count">${physicalAds.length} ${t.itemCount}</span>
-            </div>
-        `;
-    }
-
-    else if (currentView === "merch") {
-        setTitle(t.merchTitle);
-
-        const query = document.getElementById("archiveSearch")
-            .value.toLowerCase().trim();
-
-        content.innerHTML = `
-            <p class="modal-description">${t.merchDescription}</p>
-
-            <section class="category-section">
-                <h3 class="category-title">${t.series}</h3>
-                <div class="show-buttons">
-                    ${Object.keys(merchCollections.series).map(show => {
-                        const name = showNames[english ? "en" : "es"][show];
-                        const matches = (show + " " + name).toLowerCase().includes(query);
-
-                        return `
-                            <button class="show-button ${matches ? "" : "hidden"}"
-                                onclick="openCollection('series','${escapeHTML(show)}')">
-                                ${escapeHTML(name)}
-                            </button>
-                        `;
-                    }).join("")}
-                </div>
-            </section>
-
-            <section class="category-section">
-                <h3 class="category-title">${t.movies}</h3>
-                <div class="show-buttons">
-                    ${Object.keys(merchCollections.movies).map(show => {
-                        const name = showNames[english ? "en" : "es"][show];
-                        const matches = (show + " " + name).toLowerCase().includes(query);
-
-                        return `
-                            <button class="show-button ${matches ? "" : "hidden"}"
-                                onclick="openCollection('movies','${escapeHTML(show)}')">
-                                ${escapeHTML(name)}
-                            </button>
-                        `;
-                    }).join("")}
-                </div>
-            </section>
-        `;
-    }
-
-    else if (currentView === "collection") {
-        const items = merchCollections[selectedSection][selectedShow] || [];
-        const translatedName =
-            showNames[english ? "en" : "es"][selectedShow] || selectedShow;
-
-        setTitle(translatedName);
-
-        content.innerHTML = `
-            <p class="modal-description">${t.merchDescription}</p>
-
-            <input type="search"
-                class="collection-search"
-                id="collectionSearch"
-                placeholder="${t.collectionSearch}"
-                oninput="filterCollection()">
-
-            <div id="collectionGallery">
-                ${renderGallery(items, t.emptyText)}
-            </div>
-
-            <div class="modal-footer">
-                <button class="back-button" onclick="goBack()">← ${t.back}</button>
-                <span class="archive-count">${items.length} ${t.itemCount}</span>
-            </div>
-        `;
-    }
-
-    else if (currentView === "global-search") {
-        setTitle(t.merchTitle);
-
-        const query = document.getElementById("archiveSearch")
-            .value.toLowerCase().trim();
-
-        const allShows = [
-            ...Object.keys(merchCollections.series),
-            ...Object.keys(merchCollections.movies)
-        ];
-
-        const results = allShows.filter(show => {
-            const translated = showNames[english ? "en" : "es"][show] || show;
-            return (show + " " + translated).toLowerCase().includes(query);
-        });
-
-        content.innerHTML = `
-            <p class="modal-description">${t.merchDescription}</p>
-
-            <div class="show-buttons">
-                ${results.map(show => {
-                    const section = merchCollections.series[show] !== undefined
-                        ? "series" : "movies";
-
-                    const translated =
-                        showNames[english ? "en" : "es"][show] || show;
-
-                    return `
-                        <button class="show-button"
-                            onclick="openCollection('${section}','${escapeHTML(show)}')">
-                            ${escapeHTML(translated)}
-                        </button>
-                    `;
-                }).join("")}
-            </div>
-
-            ${results.length === 0
-                ? `<div class="gallery-empty">${t.noResults}</div>`
-                : ""}
-        `;
-    }
-}
-
-/* =========================================
-   CLOSE CONTROLS
-========================================= */
-
-document.getElementById("archiveModal").addEventListener("click", event => {
-    if (event.target === document.getElementById("archiveModal")) {
-        closeModal();
-    }
-});
-
-document.addEventListener("keydown", event => {
-    if (event.key === "Escape") closeModal();
-});
-
-document.getElementById("homeButton").href =
-    "https://disneyrocklover.itch.io/disneychannelhomeexparchive";
-
 </script>
+
 </body>
 </html>
